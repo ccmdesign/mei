@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import personCard from '@/ccm-ds/05-modules/personCard.vue';
+import personCard from '@ccmdesign/ccm-ds/ccm-ds/05-modules/personCard.vue';
 </script>
 
 <style lang="scss" scoped>

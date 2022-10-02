@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import baseCard from '@/ccm-ds/05-modules/baseCard.vue';
+import baseCard from '@ccmdesign/ccm-ds/ccm-ds/05-modules/baseCard.vue';
 </script>
 
 <style lang="scss" scoped>

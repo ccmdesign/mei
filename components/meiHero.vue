@@ -25,9 +25,9 @@
 </template>
 
 <script setup>
-import ccmHero from '@/ccm-ds/06-sections/ccmHero.vue';
-import centerL from '@/ccm-ds/03-objects/centerL.vue';
-import stackL from '@/ccm-ds/03-objects/stackL.vue';
+import ccmHero from '@ccmdesign/ccm-ds/ccm-ds/06-sections/ccmHero.vue';
+import centerL from '@ccmdesign/ccm-ds/ccm-ds/03-objects/centerL.vue';
+import stackL from '@ccmdesign/ccm-ds/ccm-ds/03-objects/stackL.vue';
 </script>
 
 <style lang="scss" scoped>

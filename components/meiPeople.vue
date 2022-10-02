@@ -23,9 +23,9 @@
 </template>
 
 <script setup>
-import baseSection from '@/ccm-ds/06-sections/baseSection.vue';
-import centerL from '@/ccm-ds/03-objects/centerL.vue';
-import stackL from '@/ccm-ds/03-objects/stackL.vue';
+import baseSection from '@ccmdesign/ccm-ds/ccm-ds/06-sections/baseSection.vue';
+import centerL from '@ccmdesign/ccm-ds/ccm-ds/03-objects/centerL.vue';
+import stackL from '@ccmdesign/ccm-ds/ccm-ds/03-objects/stackL.vue';
 import meiPersonCard from '@/components/meiPersonCard.vue';
 </script>
 

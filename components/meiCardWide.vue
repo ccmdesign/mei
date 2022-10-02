@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import cardWide from '@/ccm-ds/05-modules/cardWide.vue';
+import cardWide from '@ccmdesign/ccm-ds/ccm-ds/05-modules/wideCard.vue';
 </script>
 
 <style lang="scss" scoped>

@@ -8,6 +8,7 @@
     "nuxt": "^3.0.0-rc.5"
   },
   "dependencies": {
+    "@ccmdesign/ccm-ds": "^0.1.8",
     "@pinia/nuxt": "^0.4.1",
     "pinia": "^2.0.20",
     "sass": "^1.54.4"
