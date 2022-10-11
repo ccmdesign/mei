@@ -1,0 +1,89 @@
+:root {
+  /* These are the base visual configurations for a spefic project */
+  --base-border-width: 2px;
+  --base-border-radius: 6px;
+
+  --display-font:"Sentinel", Georgia, serif;
+  --body-font: sans-serif;
+  --line-height: var(--ratio);
+  --font-weight: 700;
+
+  --form-border-radius: 6px;
+  --form-font-weight: 200;
+  --form-border-hsl: transparent;
+  --form-shadow: 0 1px 2px hsla(var(--base-hsl), 0.1);
+
+  --base-padding-inline: var(--s2);
+  --base-padding-block: var(--s-1);
+
+  /* Project Official Colors  */
+  /* HSLA variables */
+  --base-hsl: 216, 34%, 23%;
+  --primary-hsl: 350, 68%, 38%;
+  --secondary-hsl: 216, 34%, 23%;
+  --accent-hsl: 185, 100%, 24%;
+
+  --primary-color: hsla(var(--primary-hsl), 1);
+  --secondary-color: hsla(var(--secondary-hsl), 1);
+
+  --base-color: hsla(var(--base-hsl), 1);
+
+  --accent-color: hsla(var(--accent-hsl), 1);
+
+  /* baseline colors */
+  --white-hsl: 0, 0%, 100%;
+  --white-color: hsla(var(--white-hsl), 1);
+
+  --black-hsl: 0, 0%, 5%;
+  --black-color: hsla(var(--black-hsl), 1);
+
+  --red-hsl: 347, 58%, 46%;
+  --red-color: hsla(var(--red-hsl), 1);
+
+  --green-hsl: 174, 62%, 47%;
+  --green-color: hsla(var(--green-hsl), 1);
+
+  --yellow-hsl: 37, 98%, 53%;
+  --yellow-color: hsla(var(--yellow-hsl), 1);
+
+  /* Aliases */
+  --fail-color: var(--red-color);
+  --error-color: var(--red-color);
+  --warning-color: var(--yellow-color);
+  --success-color: var(--green-color);
+}
+
+/* Shades and Tints */
+:root {
+  --base-color-05: hsla(var(--base-hsl), 0.05);
+  --base-color-10: hsla(var(--base-hsl), 0.1);
+  --base-color-20: hsla(var(--base-hsl), 0.2);
+  --base-color-30: hsla(var(--base-hsl), 0.3);
+  --base-color-70: hsla(var(--base-hsl), 0.7);
+  --base-color-80: hsla(var(--base-hsl), 0.8);
+  --base-color-90: hsla(var(--base-hsl), 0.9);
+
+  --primary-color-05: hsla(var(--primary-hsl), 0.05);
+  --primary-color-10: hsla(var(--primary-hsl), 0.1);
+  --primary-color-20: hsla(var(--primary-hsl), 0.2);
+  --primary-color-30: hsla(var(--primary-hsl), 0.3);
+  --primary-color-70: hsla(var(--primary-hsl), 0.7);
+  --primary-color-80: hsla(var(--primary-hsl), 0.8);
+  --primary-color-90: hsla(var(--primary-hsl), 0.9);
+
+  --secondary-color-05: hsla(var(--secondary-hsl), 0.05);
+  --secondary-color-10: hsla(var(--secondary-hsl), 0.1);
+  --secondary-color-20: hsla(var(--secondary-hsl), 0.2);
+  --secondary-color-30: hsla(var(--secondary-hsl), 0.3);
+  --secondary-color-70: hsla(var(--secondary-hsl), 0.7);
+  --secondary-color-80: hsla(var(--secondary-hsl), 0.8);
+  --secondary-color-90: hsla(var(--secondary-hsl), 0.9);
+
+  --accent-color-05: hsla(var(--accent-hsl), 0.05);
+  --accent-color-10: hsla(var(--accent-hsl), 0.1);
+  --accent-color-20: hsla(var(--accent-hsl), 0.2);
+  --accent-color-30: hsla(var(--accent-hsl), 0.3);
+  --accent-color-70: hsla(var(--accent-hsl), 0.7);
+  --accent-color-80: hsla(var(--accent-hsl), 0.8);
+  --accent-color-90: hsla(var(--accent-hsl), 0.9);
+}
