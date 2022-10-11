@@ -1,13 +1,28 @@
 <template>
   <div>
-    <card-wide class="mei-card-wide"
+    <wide-card class="mei-card-wide"
       horizontal
-      heading="Mei Card Horizontal" />
+      image
+      actionLabel="More"
+      brow=""
+      :heading="heading"
+      :tagline="tagline"
+      :excerpt="excerpt"
+      :url="url"
+      :imageUrl="image"
+      customClass="teste"
+      />
   </div>
 </template>
 
 <script setup>
-import cardWide from '@ccmdesign/ccm-ds/ccm-ds/05-modules/wideCard.vue';
+const props = defineProps({
+  heading: String,
+  tagline: String,
+  excerpt: String,
+  url: String,
+  image: String,
+})
 </script>
 
 <style lang="scss" scoped>

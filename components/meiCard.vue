@@ -1,12 +1,13 @@
 <template>
   <div>
     <base-card 
-      heading="Mei Card" />
+      heading="Mei Card" 
+      clamp=""
+      />
   </div>
 </template>
 
 <script setup>
-import baseCard from '@ccmdesign/ccm-ds/ccm-ds/05-modules/baseCard.vue';
 </script>
 
 <style lang="scss" scoped>
