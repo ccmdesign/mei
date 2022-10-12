@@ -1,8 +1,8 @@
 <template>
   <article>
     <mei-hero
-      background="../assets/images/news-and-events-hero.png"
-      title="News and Events"
+      background="../assets/images/publications-hero.png"
+      title="Publications"
       description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
       nesciunt nostrum deleniti reprehenderit delectus facere quibusdam
       aliquam temporibus numquam, dolore error hic dolorem iste nobis
@@ -10,11 +10,14 @@
     >
     </mei-hero>
 
-    <mei-upcoming-events />
+    <base-section>
+      <center-l>
+        <stack-l space="var(--s2)">
+          <mei-publications-news />
 
-    <mei-past-events />
-
-    <mei-news />
-
+          <base-button>View more updates</base-button>
+        </stack-l>
+      </center-l>
+    </base-section>
   </article>
 </template>

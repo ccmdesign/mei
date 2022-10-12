@@ -1,5 +1,5 @@
 <template>
-  <article class="mei">
+  <article>
     <mei-hero />
     <mei-highlights />
     <mei-opportunities />

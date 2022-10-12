@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <article>
     <mei-hero
       background="../assets/images/about-hero.png"
       title="About"
@@ -102,7 +102,7 @@
         </split-panel>
       </stack-l>
     </base-section>
-  </div>
+  </article>
 </template>
 
 <style scoped lang="scss">
