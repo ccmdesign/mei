@@ -15,9 +15,9 @@
       </reel-l>
       
         <div class="grid">
-          <base-card />
+          <mei-card />
           
-          <base-card />
+          <mei-card />
         </div>
       </stack-l>
     </center-l>

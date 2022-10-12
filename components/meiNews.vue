@@ -3,9 +3,9 @@
     <center-l>
       <stack-l space="var(--s2)">
 
-				<h2>News</h2>
+				<h2 class="base-color-change">News</h2>
 				
-				<mei-publications-news />
+				<mei-news-list />
 
 				<base-button>View more updates</base-button>
 			</stack-l>

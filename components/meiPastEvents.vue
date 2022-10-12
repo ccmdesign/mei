@@ -5,13 +5,15 @@
         <h2>Past Events</h2>
 
         <div class="grid">
-          <base-card />
-          <base-card />
-          <base-card />
-          <base-card />
+          <mei-card />
+          <mei-card />
+          <mei-card />
+          <mei-card />
         </div>
 
-        <base-button>Watch more MEI events</base-button>
+        <div class="center">
+          <mei-button data-style="primary" data-color="primary" label="Watch more MEI events" />
+        </div>
       </stack-l>
     </center-l>
   </base-section>
