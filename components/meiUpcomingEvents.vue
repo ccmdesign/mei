@@ -2,17 +2,16 @@
   <base-section>
     <center-l>
       <stack-l space="var(--s2)">
-
-        <h2>Upcoming Events</h2>
+        <h2 class="base-color-change">Upcoming Events</h2>
         
         <reel-l
         itemWidth="100%"
         scrollbar
         centered
         >
-        <base-card />
-        <base-card />
-        <base-card />
+        <mei-card-wide />
+        <mei-card-wide />
+        <mei-card-wide />
       </reel-l>
       
         <div class="grid">

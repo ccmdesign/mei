@@ -38,6 +38,8 @@ export default defineNuxtConfig({
     '@ccmdesign/ccm-ds/assets/css/04-components/button-structure.css',
     '@ccmdesign/ccm-ds/assets/css/04-components/button-visuals.css',
     '@ccmdesign/ccm-ds/assets/css/04-components/button-icons.css',
+
+    '@/assets/css/global-changes.css',
   ],
   components: {
     "dirs": [

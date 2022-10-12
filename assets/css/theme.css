@@ -3,7 +3,7 @@
   --base-border-width: 2px;
   --base-border-radius: 6px;
 
-  --display-font:"Sentinel", Georgia, serif;
+  --display-font: "Sentinel", Georgia, serif;
   --body-font: sans-serif;
   --line-height: var(--ratio);
   --font-weight: 700;

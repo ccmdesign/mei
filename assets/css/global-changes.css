@@ -1,0 +1,3 @@
+.base-color-change {
+  --base-color: hsl(var(--primary-hsl));
+}
