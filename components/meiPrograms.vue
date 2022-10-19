@@ -1,22 +1,28 @@
 <template>
+  
   <base-section class="mei-programs">
     <center-l size="wide">
       <stack-l>
-        <h2>Programs</h2>
         <div class="grid">
-          <mei-program-card 
-            heading=""
-            excerpt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In suscipit iste soluta nam, quo non corporis inventore similique? Enim dolorum ut nisi optio eveniet quas ipsa incidunt distinctio reprehenderit officiis."
-            imageUrl="../assets/images/emirates-logo.png"
-            customSlug="/program-emirates/"
-          />
-          <mei-program-card 
-            customClass="kwait-card"  
-            heading=""
-            excerpt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In suscipit iste soluta nam, quo non corporis inventore similique? Enim dolorum ut nisi optio eveniet quas ipsa incidunt distinctio reprehenderit officiis."
-            imageUrl="../assets/images/kwait-logo.png"
-            customSlug="/program-kwait/"
-          />
+          <div>
+            <h4 class="color:primary">Emirated Leadership</h4>
+            <mei-program-card 
+              heading=""
+              excerpt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In suscipit iste soluta nam, quo non corporis inventore similique? Enim dolorum ut nisi optio eveniet quas ipsa incidunt distinctio reprehenderit officiis."
+              imageUrl="../assets/images/emirates-logo.png"
+              customSlug="/program-emirates/"
+            />
+          </div>
+          <div>
+            <h4 class="color:primary">Kwait Program</h4>
+            <mei-program-card 
+              customClass="kwait-card"  
+              heading=""
+              excerpt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In suscipit iste soluta nam, quo non corporis inventore similique? Enim dolorum ut nisi optio eveniet quas ipsa incidunt distinctio reprehenderit officiis."
+              imageUrl="../assets/images/kwait-logo.png"
+              customSlug="/program-kwait/"
+            />
+          </div>
         </div>
       </stack-l>
     </center-l>
