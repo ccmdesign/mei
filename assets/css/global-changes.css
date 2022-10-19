@@ -1,3 +1,9 @@
-.base-color-change {
+/* .base-color-change {
   --base-color: hsl(var(--primary-hsl));
+} */
+
+.mei-texture-bg {
+  background-image: url('../images/mei-texture.png');
+  background-size: 12%;
+  background-repeat: repeat-x;
 }
