@@ -7,3 +7,12 @@
     --line-height: var(--ratio);
     --font-weight: 700;
 }
+
+h1, [data-style="h1"] { font-size: 2.488rem; }
+h2, [data-style="h2"] { font-size: 2.074rem; }
+h3, [data-style="h3"] { font-size: 1.728rem; } 
+h4, [data-style="h4"] { font-size: 1.44rem; }
+h5, [data-style="h5"] { font-size: 1.2em; }
+h6, [data-style="h6"] { font-size: 1em; }
+ 
+small, .text_small {font-size: 0.833rem;}
