@@ -11,7 +11,7 @@
     <mei-highlights />
     <mei-opportunities />
     <mei-programs />
-    <mei-people compact />
+    <mei-people-highlight class="mei-texture-bg" />
     <mei-events />
   </article>  
 </template>
