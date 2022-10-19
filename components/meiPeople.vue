@@ -47,7 +47,7 @@ const props = defineProps({
   }
 });
 
-const personData = toRefs(props);
+const compact = toRefs(props);
 
 // ToDo: Não consegui fazer esses dados entrarem na prop
 const peopleData = [
