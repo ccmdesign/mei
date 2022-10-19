@@ -1,36 +1,37 @@
 <template>
-  <base-section size="l" :compact="compact" class="mei-people-section">
-    <center-l size="wide">
-      <stack-l>
-        <div class="grid" >
-          <mei-person-card v-if="compact == 'false'" v-for="i in peopleData"
-            heading="Person Name"
-            excerpt="false"
-          />
+  <div class="mei-people-section"> <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
+    <base-section size="m" color="transparent">
+      <center-l size="wide">
+        <stack-l space="var(--s3)">
+          <h2 class="color:primary">Our People</h2>
+          <div class="grid">
+            <mei-person-card v-if="compact == 'false'" v-for="i in peopleData"
+              heading="Person Name"
+              excerpt="false"
+            />
 
-          <person-card v-for="i in peopleData"
-            class="compact-person-card"
-            heading="Person Name"
-            excerpt=""
-          >
+            <person-card v-else v-for="i in peopleData"
+              class="compact-person-card"
+              heading="Person Name"
+              excerpt=""
+            >
 
-            <template #action>
-              <!-- ToDo: update with new baseButton -->
-              <a href="/" class="button" color="primary" visual="primary">View Profile</a>
-            </template>
+              <template #action>
+                <!-- ToDo: update with new baseButton -->
+                <a href="/" class="button" color="primary" visual="primary">View Profile</a>
+              </template>
 
-          </person-card>
-        </div>
-        
-        <div class="text-align:center margin-top:s3" >
-          <!-- ToDo: update with new baseButton -->
-          <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
-        </div>
-      </stack-l>
-    </center-l>
-    
-
-  </base-section>
+            </person-card>
+          </div>
+          
+          <div class="text-align:center margin-top:s3" >
+            <!-- ToDo: update with new baseButton -->
+            <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
+          </div>
+        </stack-l>
+      </center-l>
+    </base-section>
+  </div>
 </template>
 
 <script setup>
@@ -46,10 +47,20 @@ const props = defineProps({
   }
 });
 
-const personData = toRefs(props)
+const personData = toRefs(props);
 
 // ToDo: Não consegui fazer esses dados entrarem na prop
 const peopleData = [
+  {
+    name: "People Data This is the name",
+    title: "This is the title",
+    bio: "This is the bio"
+  },
+  {
+    name: "People Data This is the name",
+    title: "This is the title",
+    bio: "This is the bio"
+  },
   {
     name: "People Data This is the name",
     title: "This is the title",
@@ -75,10 +86,7 @@ const peopleData = [
 
 <style lang="scss" scoped>
 
-.mei-people-section {
-  background-image: url('../assets/images/bg-people.png');
-  background-size: cover;
-}
+
 .mei-people-section[compact="true"] .grid {
   --itemWidth: 180px; 
   grid-gap: var(--s2);

@@ -31,7 +31,11 @@
 
 <style lang="scss" scoped>
 
-.mei-person-card { background-color: transparent; }
+.mei-person-card { 
+  --card-headings-alignment: left;
+  --card-vertical-space: var(--s1);
+  background-color: transparent; 
+}
 .mei-person-card :deep(.base-card__title) {
   font-size: 1.5rem;
   font-weight: bold;
@@ -44,10 +48,6 @@
 
 .mei-person-card :deep(p:first-of-type) { margin-top: 0; }
 
-.mei-person-card {
-  text-align: left;
-  --card-vertical-space: var(--s1);
-}
 
 @media (min-width: 40rem) {
 .mei-person-card :deep(.circle) { margin-left: 0; }

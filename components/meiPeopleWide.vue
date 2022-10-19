@@ -1,7 +1,7 @@
 <template>
   <div>
     <person-card
-      class="mei-people-wide"
+      class="mei-people-wide | mei-texture-bg"
       horizontal
       highlight
       :shadow="false"
@@ -30,9 +30,8 @@
     --card-hover-shadow: none;
     --card-gap: var(--s2);
     --card-vertical-space: var(--s0);
-    text-align: left;
-    background-image: url('../assets/images/bg-people.png');
-    background-size: cover;
+    --card-headings-alignment: left;
+    --card-action-hsl: var(--primary-hsl);
   }
 
   .mei-people-wide :deep(.circle) {
@@ -42,5 +41,13 @@
     height: 320px;
   }
 
+  .mei-people-wide :deep(h2) {
+    color: var(--primary-color);
+    font-size: 1.75em;
+  }
+  .mei-people-wide :deep(h4) {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
   
 </style>
