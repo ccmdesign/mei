@@ -21,10 +21,9 @@
 </template>
 
 <script setup>
-// import meiPeople from '@/components/meiPeople.vue';
-// import meiPeopleWide from '@/components/meiPeopleWide.vue';
 
 </script>
 
 <style lang="scss" scoped>
+
 </style>

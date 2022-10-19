@@ -2,7 +2,6 @@
   <div>
     <person-card class="mei-person-card"
       hideAction
-
       heading="Person Name"
       tagline="Person Job Title"
       excerpt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores culpa atque et a blanditiis nostrum reprehenderit necessitatibus delectus voluptate iste provident, non tempora consectetur! Ut quam error fuga odit temporibus!"
@@ -32,6 +31,7 @@
 
 <style lang="scss" scoped>
 
+.mei-person-card { background-color: transparent; }
 .mei-person-card :deep(.base-card__title) {
   font-size: 1.5rem;
   font-weight: bold;
@@ -49,10 +49,8 @@
   --card-vertical-space: var(--s1);
 }
 
-
 @media (min-width: 40rem) {
 .mei-person-card :deep(.circle) { margin-left: 0; }
-
 }
 
 </style>

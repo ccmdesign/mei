@@ -1,11 +1,30 @@
 <template>
-  <base-section size="s">
+  <base-section size="l" :compact="compact" class="mei-people-section">
     <center-l size="wide">
       <stack-l>
-        <div class="grid">
-          <mei-person-card v-for="i in peopleData"
-            :personData="i"
+        <div class="grid" >
+          <mei-person-card v-if="compact == 'false'" v-for="i in peopleData"
+            heading="Person Name"
+            excerpt="false"
           />
+
+          <person-card v-for="i in peopleData"
+            class="compact-person-card"
+            heading="Person Name"
+            excerpt=""
+          >
+
+            <template #action>
+              <!-- ToDo: update with new baseButton -->
+              <a href="/" class="button" color="primary" visual="primary">View Profile</a>
+            </template>
+
+          </person-card>
+        </div>
+        
+        <div class="text-align:center margin-top:s3" >
+          <!-- ToDo: update with new baseButton -->
+          <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
         </div>
       </stack-l>
     </center-l>
@@ -17,6 +36,17 @@
 <script setup>
 
 import meiPersonCard from '@/components/meiPersonCard.vue';
+
+import { toRefs } from 'vue'
+
+const props = defineProps({
+  compact: {
+    type: String,
+    default: "false"
+  }
+});
+
+const personData = toRefs(props)
 
 // ToDo: Não consegui fazer esses dados entrarem na prop
 const peopleData = [
@@ -44,10 +74,25 @@ const peopleData = [
 </script>
 
 <style lang="scss" scoped>
-.grid { 
+
+.mei-people-section {
+  background-image: url('../assets/images/bg-people.png');
+  background-size: cover;
+}
+.mei-people-section[compact="true"] .grid {
+  --itemWidth: 180px; 
+  grid-gap: var(--s2);
+}
+
+.mei-people-section[compact="false"] .grid {
   --itemWidth: 320px; 
   grid-gap: var(--s3);
 }
+
+.compact-person-card {
+  background-color: transparent;
+}
+
 
 
 </style>

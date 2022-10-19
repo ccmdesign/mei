@@ -69,7 +69,7 @@
   }
 
   .mei-description {
-    width: 40%;
+    max-width: 65ch;
 
     > * {
       padding: var(--s0);
