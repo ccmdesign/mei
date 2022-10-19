@@ -9,7 +9,7 @@
     voluptates tenetur et consectetur omnis."
     />
     <mei-highlights />
-    <mei-opportunities />
+    <mei-opportunities class="mei-texture-bg"/>
     <mei-programs />
     <mei-people-highlight class="mei-texture-bg" />
     <mei-events />
@@ -21,7 +21,7 @@ import meiHero from '@/components/meiHero.vue';
 import meiHighlights from '@/components/meiHighlights.vue';
 import meiOpportunities from '@/components/meiOpportunities.vue';
 import meiPrograms from '@/components/meiPrograms.vue';
-import meiPeople from '@/components/meiPeople.vue';
+import meiPeopleHighlight from '@/components/meiPeopleHighlight.vue';
 import meiEvents from '@/components/meiEvents.vue';
 
 </script>
