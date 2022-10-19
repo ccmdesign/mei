@@ -6,22 +6,25 @@
       :shadow="false"
       actionLabel="More"
       :fullClick="false"
+      clamp="4"
     >
       <template #headings>
         <stack-l>
-          <h3 class="base-color-change">
+          <h3 class="mei-card-wide__title | color:primary">
             Arab Constitutionalism: The Coming Revolution
           </h3>
-          <div class="mei-card-wide-tagline">
-            <h6>Tue., Apr. 19, 2022 | 1:30pm - 2:45pm</h6>
-            <h6 class="mei-card-wide-tag">Online</h6>
+          <div class="mei-card-wide__tagline">
+            <h6>Tue., Apr. 19, 2022 | 1:30pm - 2:45pm <span class="mei-card-wide__tag | margin-left:s-2">Online</span></h6>
           </div>
         </stack-l>
       </template>
 
-      <template #action>
-        <div>
-          <mei-button  data-color="primary" data-style="primary">More 1</mei-button>
+      <template #image>
+
+        <div class="base-card__img">
+          <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
+
+
         </div>
       </template>
     </base-card>
@@ -30,29 +33,39 @@
 
 <style lang="scss" scoped>
   .mei-card-wide {
-    // --card-horizontal-threshold: 500px;
     --card-hover-border: none;
     --card-border: none;
     --card-hover-shadow: none;
+    --card-padding: 0;
+    --card-gap: var(--s2);
+    --switcher-threshold: 500px !important;
+    --card-horizontal-image-ratio: 4;
+    --card-horizontal-content-ratio: 3;
   }
 
-  .mei-card-wide-tagline {
-    --display-font: var(--body-font);
+  .mei-card-wide[horizontal="true"] .base-card__img {
+    object-fit: cover;
+    flex-grow: var(--card-horizontal-image-ratio);
+    max-width: var(--card-horizontal-image-max-width);
+    flex-basis: calc((var(--card-horizontal-threshold) - 100%) * 999);
+  }
+
+  .mei-card-wide__title {
+    font-size: 1.5rem;
+  }
+
+  .mei-card-wide__tagline {
+    font-family: var(--body-font);
     --font-weight: 400;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    & * + * {
-      margin-left: var(--s0);
-    }
+    font-size: 80%;
+    padding-block: var(--s-2);
   }
 
-  .mei-card-wide-tag {
-    border-radius: 4px;
-    background-color: grey; // FIXME: Use theme color.
+  .mei-card-wide__tag {
+    border-radius: 3px;
+    background-color: var(--tertiary-color); 
     color: var(--white-color);
-    padding: var(--s-1);
+    padding: var(--s-3) var(--s-2);
+    font-size: 90%;
   }
 </style>

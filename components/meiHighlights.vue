@@ -1,8 +1,8 @@
 <template>
   <base-section>
     <center-l size="wide">
-      <stack-l>
-        <h2>Mei Highlights</h2>
+      <stack-l space="var(--s1)">
+        <h2 class="color:primary">Highlights</h2>
         <div class="highlight-grid">
           <div class="highlight-grid__wide">
             <mei-card-wide />
@@ -25,12 +25,20 @@ import meiCardWide from '@/components/meiCardWide.vue';
 <style lang="scss" scoped>
 .highlight-grid { 
   display: flex; 
-  gap: var(--s0);
+  gap: var(--s1);
   --space: var(--s0);
 }
 
+@media (max-width: 40em) {
+  .highlight-grid { flex-direction: column; }
+}
+
 .highlight-grid__wide { flex: 3; }
-.highlight-grid__narrow { flex: 1; }
+
+.highlight-grid__narrow { 
+  border-left: 1px solid var(--primary-color);
+  flex: 1; 
+}
 
 
 
