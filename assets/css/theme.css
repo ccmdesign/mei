@@ -21,11 +21,12 @@
   --base-hsl: 216, 34%, 23%;
   --primary-hsl: 350, 68%, 38%;
   --secondary-hsl: 216, 34%, 23%;
+  --tertiary-hsl: 205, 65%, 42%;
   --accent-hsl: 185, 100%, 24%;
 
   --primary-color: hsla(var(--primary-hsl), 1);
   --secondary-color: hsla(var(--secondary-hsl), 1);
-
+  --tertiary-color: hsla(var(--tertiary-hsl), 1);
   --base-color: hsla(var(--base-hsl), 1);
 
   --accent-color: hsla(var(--accent-hsl), 1);
@@ -52,6 +53,10 @@
   --warning-color: var(--yellow-color);
   --success-color: var(--green-color);
 }
+
+/* ToDo: Remove the next two lines once we update the DS to the next version. Current v0.2.3 */
+body { font-size: 16px; }
+@media screen and (min-width: 80em) { body { font-size: 16px; } }
 
 /* Shades and Tints */
 :root {
