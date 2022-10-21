@@ -37,7 +37,8 @@
     --card-border: none;
     --card-hover-shadow: none;
     --card-padding: 0;
-    --card-gap: var(--s2);
+    --card-gap: var(--s3);
+    // ToDo: Replace the switcher with a grid in the card-wide
     --switcher-threshold: 500px !important;
     --card-horizontal-image-ratio: 4;
     --card-horizontal-content-ratio: 3;

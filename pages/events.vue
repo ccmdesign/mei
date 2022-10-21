@@ -3,16 +3,14 @@
     <mei-hero
       background="../assets/images/news-and-events-hero.png"
       title="News and Events"
-      description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-      nesciunt nostrum deleniti reprehenderit delectus facere quibusdam
-      aliquam temporibus numquam, dolore error hic dolorem iste nobis
-      voluptates tenetur et consectetur omnis."
-    >
-    </mei-hero>
+      description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis."
+    />
 
     <mei-events :eventData="upcomingEvents" hideTabBar showHighlights hideViewMore/>
-    <mei-events :eventData="pastEvents" hideTabBar />
-
+    
+    <div class="mei-texture-bg">
+      <mei-events :eventData="pastEvents" hideTabBar />
+    </div>
   </article>
 </template>
 
