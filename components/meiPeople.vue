@@ -4,13 +4,14 @@
       <center-l size="wide">
         <stack-l space="var(--s3)">
           <h2 class="color:primary">Our People</h2>
+          <tab-bar :options="peopleData.tabs" />
           <div class="grid">
-            <mei-person-card v-if="compact == 'false'" v-for="i in peopleData"
+            <mei-person-card v-if="compact == 'false'" v-for="i in peopleData.list"
               heading="Person Name"
               excerpt="false"
             />
 
-            <person-card v-else v-for="i in peopleData"
+            <person-card v-else v-for="i in peopleData.list"
               class="compact-person-card"
               heading="Person Name"
               excerpt=""
@@ -37,6 +38,7 @@
 <script setup>
 
 import meiPersonCard from '@/components/meiPersonCard.vue';
+import tabBar from '@/components/tabBar.vue';
 
 import { toRefs } from 'vue'
 
@@ -50,8 +52,14 @@ const props = defineProps({
 const compact = toRefs(props);
 
 // ToDo: Não consegui fazer esses dados entrarem na prop
-const peopleData = [
-  {
+const peopleData = {
+  tabs: [
+    { label: 'Leadership', value: 'leadership', defaultOption: 'true'},
+    { label: 'Staff', value: 'staff'},
+    { label: 'Fellows', value: 'fellows'}
+  ],
+  list: [
+    {
     name: "People Data This is the name",
     title: "This is the title",
     bio: "This is the bio"
@@ -82,6 +90,7 @@ const peopleData = [
     bio: "This is the bio"
   }
 ]
+}
 </script>
 
 <style lang="scss" scoped>
