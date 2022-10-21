@@ -10,6 +10,7 @@
   "dependencies": {
     "@ccmdesign/ccm-ds": "^0.2.3",
     "path": "^0.12.7",
-    "sass": "^1.54.4"
+    "sass": "^1.54.4",
+    "uuid": "^9.0.0"
   }
 }
