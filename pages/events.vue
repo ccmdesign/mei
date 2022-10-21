@@ -1,29 +1,22 @@
 <template>
   <article>
-    <mei-hero 
-      background="../assets/images/home-bg.png"
-      title="Middle East Initiative"
+    <mei-hero
+      background="../assets/images/news-and-events-hero.png"
+      title="News and Events"
       description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-    nesciunt nostrum deleniti reprehenderit delectus facere quibusdam
-    aliquam temporibus numquam, dolore error hic dolorem iste nobis
-    voluptates tenetur et consectetur omnis."
-    />
-    <mei-highlights />
-    <mei-opportunities class="mei-texture-bg"/>
-    <mei-programs />
-    <mei-people-highlight class="mei-texture-bg" />
-    <mei-events :eventData="upcomingEvents" />
-  </article>  
+      nesciunt nostrum deleniti reprehenderit delectus facere quibusdam
+      aliquam temporibus numquam, dolore error hic dolorem iste nobis
+      voluptates tenetur et consectetur omnis."
+    >
+    </mei-hero>
+
+    <mei-events :eventData="upcomingEvents" hideTabBar showHighlights hideViewMore/>
+    <mei-events :eventData="pastEvents" hideTabBar />
+
+  </article>
 </template>
 
 <script setup>
-import meiHero from '@/components/meiHero.vue';
-import meiHighlights from '@/components/meiHighlights.vue';
-import meiOpportunities from '@/components/meiOpportunities.vue';
-import meiPrograms from '@/components/meiPrograms.vue';
-import meiPeopleHighlight from '@/components/meiPeopleHighlight.vue';
-import meiEvents from '@/components/meiEvents.vue';
-
 const upcomingEvents = {
   heading: 'Upcoming Events',
   list: [
@@ -64,16 +57,8 @@ const pastEvents = {
     }
   ]
 }
-
-
-
-
 </script>
 
-<style scoped>
-.cover { --height: 30;}
+<style lang="scss" scoped>
 
-.people-index { 
-  --itemWidth: 100px; 
-}
 </style>
