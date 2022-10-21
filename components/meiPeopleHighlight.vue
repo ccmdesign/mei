@@ -4,6 +4,7 @@
       <center-l size="wide">
         <stack-l space="var(--s3)">
           <h2 class="color:primary">Our People</h2>
+          <tab-bar :options="peopleData.tabs" />
           <div class="grid">
             <person-card v-for="i in peopleData"
               class="compact-person-card"
@@ -32,9 +33,14 @@
 
 <script setup>
 
-// This array shouldn't accept more than 4 items.
-const peopleData = [
-  {
+const peopleData = {
+  tabs: [
+    { label: 'Leadership', value: 'leadership', defaultOption: 'true'},
+    { label: 'Staff', value: 'staff'},
+    { label: 'Fellows', value: 'fellows'}
+  ],
+  list: [
+    {
     name: "People Data This is the name",
     title: "This is the title",
     bio: "This is the bio"
@@ -55,6 +61,7 @@ const peopleData = [
     bio: "This is the bio"
   }
 ]
+}
 </script>
 
 <style lang="scss" scoped>

@@ -51,7 +51,6 @@ const props = defineProps({
 
 const compact = toRefs(props);
 
-// ToDo: Não consegui fazer esses dados entrarem na prop
 const peopleData = {
   tabs: [
     { label: 'Leadership', value: 'leadership', defaultOption: 'true'},
