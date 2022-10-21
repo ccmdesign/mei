@@ -14,8 +14,8 @@
             <NuxtLink
               class="menu-item"
               data-visual="unstyled"
-              to="/news-and-events"
-              >News and Events</NuxtLink
+              to="/events"
+              >Events</NuxtLink
             >
             <NuxtLink
               class="menu-item"
@@ -23,15 +23,8 @@
               to="/publications"
               >Publications</NuxtLink
             >
-            <NuxtLink
-              class="menu-item"
-              data-visual="unstyled"
-              to="/opportunities"
-              >Opportunities</NuxtLink
-            >
-            <NuxtLink class="menu-item" data-visual="unstyled" to="/programs"
-              >Programs</NuxtLink
-            >
+            <NuxtLink class="menu-item" data-visual="unstyled" to="/opportunities">Opportunities</NuxtLink>
+            <NuxtLink class="menu-item" data-visual="unstyled" to="/programs">Programs</NuxtLink>
           </nav>
         </div>
       </center-l>

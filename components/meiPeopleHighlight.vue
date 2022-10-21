@@ -6,7 +6,7 @@
           <h2 class="color:primary">Our People</h2>
           <tab-bar :options="peopleData.tabs" />
           <div class="grid">
-            <person-card v-for="i in peopleData"
+            <person-card v-for="i in peopleData.list"
               class="compact-person-card"
               :heading="i.name"
               :tagline="i.title"

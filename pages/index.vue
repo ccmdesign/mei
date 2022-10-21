@@ -9,18 +9,21 @@
     voluptates tenetur et consectetur omnis."
     />
     <mei-highlights />
-    <mei-opportunities class="mei-texture-bg"/>
-    <mei-programs />
-    <mei-people-highlight class="mei-texture-bg" />
-    <mei-events :eventData="upcomingEvents" />
+    <mei-about-highlight class="mei-texture-bg"/>
+    <mei-events :eventData="upcomingEvents" showHighlights/>
+    <mei-programs-highlight class="mei-texture-bg" />
+    <mei-opportunities-highlight />
+    <mei-people-highlight class="mei-texture-bg" :options="peopleData" />
+    <mei-publications-highlight />
   </article>  
 </template>
 
 <script setup>
 import meiHero from '@/components/meiHero.vue';
 import meiHighlights from '@/components/meiHighlights.vue';
-import meiOpportunities from '@/components/meiOpportunities.vue';
-import meiPrograms from '@/components/meiPrograms.vue';
+import meiAboutHighlight from '@/components/meiAboutHighlight.vue';
+import meiOpportunitiesHighlight from '@/components/meiOpportunitiesHighlight.vue';
+import meiProgramsHighlight from '@/components/meiProgramsHighlight.vue';
 import meiPeopleHighlight from '@/components/meiPeopleHighlight.vue';
 import meiEvents from '@/components/meiEvents.vue';
 
@@ -39,6 +42,37 @@ const upcomingEvents = {
   ]
 }
 
+// not working because mei-people-highlight props are not set up
+const peopleData = {
+  tabs: [
+    { label: 'Staff', value: 'staff', defaultOption: 'true'},
+    { label: 'Faculty Affiliates', value: 'faculty-affiliates'},
+    { label: 'Senior Fellows', value: 'senior-fellows'},
+    { label: 'Fellows', value: 'fellows'}
+  ],
+  list: [
+    {
+    name: "People Data This is the name",
+    title: "This is the title",
+    bio: "This is the bio"
+  },
+  {
+    name: "People Data This is the name",
+    title: "This is the title",
+    bio: "This is the bio"
+  },
+  {
+    name: "People Data This is the name",
+    title: "This is the title",
+    bio: "This is the bio"
+  },
+  {
+    name: "People Data This is the name",
+    title: "This is the title",
+    bio: "This is the bio"
+  }
+]
+}
 const pastEvents = {
   heading: 'Past Events',
   list: [
