@@ -23,8 +23,12 @@
 
         <div class="base-card__img">
           <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
+        </div>
+      </template>
 
-
+      <template #action>
+        <div>
+          <base-button color="primary" visual="primary">More</base-button>
         </div>
       </template>
     </base-card>
