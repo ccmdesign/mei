@@ -1,5 +1,5 @@
 <template>
-  <base-section>
+  <base-section color="transparent">
     <center-l size="wide">
       <stack-l space="var(--s2)">
         <h2 class="color:primary">{{eventData.heading}}</h2>
@@ -93,7 +93,7 @@ const { hideTabBar } = toRefs(props)
 
 <style lang="scss" scoped>
 .grid { 
-  grid-gap: var(--s2); 
+  grid-gap: var(--s3); 
   --itemWidth: 350px;
 }
 </style>
