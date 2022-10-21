@@ -32,7 +32,8 @@ import tabBar from '@/components/tabBar.vue';
 const tabOptions = [
   {
     'label': 'Upcoming Events',
-    'value': 'upcoming'
+    'value': 'upcoming',
+    'defaultOption': 'true'
   },
   {
     'label': 'Past Events',
