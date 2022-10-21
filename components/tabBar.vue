@@ -1,9 +1,9 @@
 <!-- This is a DS Candidate -->
 
 <template>
-  <section class="tab-bar">
+  <section class="tab-bar" :id="id">
     <label :for="i.value" v-for="i in options" class="tab-bar__item">
-      <input :id="i.value" type="radio" name="tabs" :value="i.value" :checked="i.defaultOption">
+      <input :id="i.value" type="radio" :name="id" :value="i.value" :checked="i.defaultOption">
       <span class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</span>
     </label>
     
@@ -12,9 +12,9 @@
 
 <script setup>
 import { toRefs } from 'vue'
+import { v4 as uuidv4 } from 'uuid';
 
-// ToDo: Implement tab selection method
-
+const id = uuidv4();
 
 const props = defineProps({
   options: {
@@ -26,6 +26,7 @@ const props = defineProps({
     ]
   },
 });
+
 const { options } = toRefs(props)
 </script>
 
