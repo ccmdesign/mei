@@ -35,8 +35,9 @@
 
 const peopleData = {
   tabs: [
-    { label: 'Leadership', value: 'leadership', defaultOption: 'true'},
-    { label: 'Staff', value: 'staff'},
+    { label: 'Staff', value: 'staff', defaultOption: 'true'},
+    { label: 'Faculty Affiliates', value: 'faculty-affiliates'},
+    { label: 'Senior Fellows', value: 'senior-fellows'},
     { label: 'Fellows', value: 'fellows'}
   ],
   list: [

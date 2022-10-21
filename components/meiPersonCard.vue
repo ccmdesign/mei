@@ -2,9 +2,6 @@
   <div>
     <person-card class="mei-person-card"
       hideAction
-      heading="Person Name"
-      tagline="Person Job Title"
-      excerpt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores culpa atque et a blanditiis nostrum reprehenderit necessitatibus delectus voluptate iste provident, non tempora consectetur! Ut quam error fuga odit temporibus!"
     >
     
     </person-card>
@@ -12,6 +9,7 @@
 </template>
 
 <script setup>
+// ToDo: Set Props with object for peronData
 // import { toRefs } from 'vue'
 
 // const props = defineProps({

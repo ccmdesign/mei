@@ -5,24 +5,18 @@
         <stack-l space="var(--s3)">
           <h2 class="color:primary">Our People</h2>
           <tab-bar :options="peopleData.tabs" />
+          
           <div class="grid">
-            <mei-person-card v-if="compact == 'false'" v-for="i in peopleData.list"
-              heading="Person Name"
-              excerpt="false"
-            />
+            <mei-person-card v-if="compact == 'false'" v-for="i in peopleData.list" excerpt=false />
 
-            <person-card v-else v-for="i in peopleData.list"
-              class="compact-person-card"
-              heading="Person Name"
-              excerpt=""
-            >
+            <mei-person-card v-else v-for="i in peopleData.list" class="compact-person-card">
 
               <template #action>
                 <!-- ToDo: update with new baseButton -->
                 <a href="/" class="button" color="primary" visual="primary">View Profile</a>
               </template>
 
-            </person-card>
+            </mei-person-card>
           </div>
           
           <div class="text-align:center margin-top:s3" >
@@ -53,8 +47,9 @@ const compact = toRefs(props);
 
 const peopleData = {
   tabs: [
-    { label: 'Leadership', value: 'leadership', defaultOption: 'true'},
-    { label: 'Staff', value: 'staff'},
+    { label: 'Staff', value: 'staff', defaultOption: 'true'},
+    { label: 'Faculty Affiliates', value: 'faculty-affiliates'},
+    { label: 'Senior Fellows', value: 'senior-fellows'},
     { label: 'Fellows', value: 'fellows'}
   ],
   list: [
