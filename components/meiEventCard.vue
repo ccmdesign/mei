@@ -1,13 +1,14 @@
 <template>
   <base-card class="mei-event-card"
-    tagline="Tue., Apr. 19, 2022 | Duration: 1h30"
-    :videoUrl="videoUrl"
+    tagline=""
+    :url="url"
     hideAction
   >
   <template #image>
-    <div class="frame">
-      <iframe width="560" height="315" :src="videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <figure class="frame">
+      <iframe v-if="figType == 'video'" width="560" height="315" :src="url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <img :src="url" alt="">
+    </figure>
   </template>
   </base-card>
 </template>
@@ -16,12 +17,20 @@
 import { toRefs } from 'vue'
 
 const props = defineProps({
-  videoUrl: {
+  url: {
     type: String,
     default: "#"
   },
+
+  figType: { // Ideally this prop would be a computed property
+    type: String,
+    default: 'image'
+  }
 });
-const { videoUrl } = toRefs(props)
+
+
+const { url } = toRefs(props)
+
 </script>
 
 <style lang="scss" scoped>
