@@ -4,9 +4,13 @@
 
 .mei-texture-bg {
   background-image: url('../images/mei-texture.png');
+  --base-section-background: url('../images/mei-texture.png');
   background-size: 12%;
   background-repeat: repeat-x;
 }
+
+/* Extending the Utils set with the 3% for primary background color */
+.background-color\:primary-03 { background-color: hsla(var(--primary-hsl), .03); }
 
 a {
   text-decoration: underline;
