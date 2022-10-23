@@ -2,31 +2,7 @@
   <ccm-hero :background="background">
     <template #top-bar>
       <center-l size="wide">
-        <div class="mei-top-bar">
-          <NuxtLink class="menu-item" to="/">Middle East Initiative</NuxtLink>
-          <nav>
-            <NuxtLink class="menu-item" data-visual="unstyled" to="/about"
-              >About</NuxtLink
-            >
-            <NuxtLink class="menu-item" data-visual="unstyled" to="/people"
-              >People</NuxtLink
-            >
-            <NuxtLink
-              class="menu-item"
-              data-visual="unstyled"
-              to="/events"
-              >Events</NuxtLink
-            >
-            <NuxtLink
-              class="menu-item"
-              data-visual="unstyled"
-              to="/publications"
-              >Publications</NuxtLink
-            >
-            <NuxtLink class="menu-item" data-visual="unstyled" to="/opportunities">Opportunities</NuxtLink>
-            <NuxtLink class="menu-item" data-visual="unstyled" to="/programs">Programs</NuxtLink>
-          </nav>
-        </div>
+        <top-bar />
       </center-l>
     </template>
 
@@ -42,24 +18,24 @@
 </template>
 
 <script setup>
+  import { toRefs } from 'vue'
+
   const props = defineProps({
     title: String,
     description: String,
     background: String,
+
+    menu: {
+      type: Object,
+      default: {}
+    }
   });
+
+  const { title, description, background, menu } = toRefs(props)
 </script>
 
 <style lang="scss" scoped>
-  .mei-top-bar {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .menu-item {
-    padding-inline: var(--s0);
-    color: var(--white-color);
-    text-decoration: none;
-  }
+  
 
   .mei-description {
     max-width: 65ch;
