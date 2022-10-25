@@ -6,15 +6,22 @@
       :shadow="false"
       actionLabel="More"
       :fullClick="false"
+      :excerpt="data.summary"
       clamp="4"
     >
       <template #headings>
         <stack-l>
           <h3 class="mei-card-wide__title | color:primary">
-            Arab Constitutionalism: The Coming Revolution
+            {{ data.title }}
           </h3>
           <div class="mei-card-wide__tagline">
-            <h6>Tue., Apr. 19, 2022 | 1:30pm - 2:45pm <span class="mei-card-wide__tag | margin-left:s-2">Online</span></h6>
+            <!-- <h6>
+              Tue., Apr. 19, 2022 | 1:30pm - 2:45pm
+              <span class="mei-card-wide__tag | margin-left:s-2">Online</span>
+            </h6> -->
+            <h6>
+              {{ data.type }}
+            </h6>
           </div>
         </stack-l>
       </template>
@@ -28,12 +35,27 @@
 
       <template #action>
         <div>
-          <base-button color="primary" visual="primary">More</base-button>
+          <base-button color="primary" visual="primary" el="<a href='data.url'/>">
+          More
+        </base-button>
         </div>
       </template>
     </base-card>
   </div>
 </template>
+
+<script setup>
+  import { toRefs } from 'vue';
+
+const props = defineProps({
+  data: {
+    type: Object,
+  }
+});
+
+const { data } = toRefs(props)
+
+</script>
 
 <style lang="scss" scoped>
   .mei-card-wide {

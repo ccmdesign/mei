@@ -7,16 +7,9 @@
           <tab-bar :options="peopleData.tabs" />
           
           <div class="grid">
-            <mei-person-card v-if="compact == 'false'" v-for="i in peopleData.list" excerpt=false />
+            <mei-person-card v-for="i in people" :data="i" :key="i" excerpt=false />
 
-            <mei-person-card v-else v-for="i in peopleData.list" class="compact-person-card">
 
-              <template #action>
-                <!-- ToDo: update with new baseButton -->
-                <a href="/" class="button" color="primary" visual="primary">View Profile</a>
-              </template>
-
-            </mei-person-card>
           </div>
           
           <div class="text-align:center margin-top:s3" >
@@ -85,6 +78,9 @@ const peopleData = {
   }
 ]
 }
+
+const people = await queryContent('person').limit(5).find();
+
 </script>
 
 <style lang="scss" scoped>

@@ -3,7 +3,7 @@
     <center-l size="wide">
       <stack-l space="var(--s2)">
         <h2 class="color:primary">{{eventData.heading}}</h2>
-        
+
         <tab-bar :options="tabOptions" v-if="!hideTabBar" />
 
         <reel-l

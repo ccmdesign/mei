@@ -15,46 +15,53 @@
 </template>
 
 <script setup>
+const { data: upcomingEventsList } = await useAsyncData('events', () => {
+    const query = {type: {$in: ["Book", "Report", "Paper"]}};
+    const fields = ['type', 'title', 'summary']
+
+    return queryContent("event").limit(3).find();
+  }
+);
+
+const { data: pastEvents } = await useAsyncData('events', () => {
+    const query = {type: {$in: ["Book", "Report", "Paper"]}};
+    const fields = ['type', 'title', 'summary']
+
+    return queryContent("event").skip(10).limit(3).find();
+  }
+);
+
+
 const upcomingEvents = {
   heading: 'Upcoming Events',
-  list: [
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: "Networked Refugees: Palestinian Reciprocity and Remittances in the Digital Age",
-      url: "https://images.unsplash.com/photo-1666331872781-fd781dc61896?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
-    }
-  ]
+  list: upcomingEventsList
 }
 
-const pastEvents = {
-  heading: 'Past Events',
-  list: [
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
+// const pastEvents = {
+//   heading: 'Past Events',
+//   list: [
+//     {
+//       heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
+//       url: 'https://www.youtube.com/embed/_Us_QodyTio',
+//       figType: 'video'
 
-    },
-    {
-      heading: '2Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: "Networked Refugees: Palestinian Reciprocity and Remittances in the Digital Age",
-      url: "https://images.unsplash.com/photo-1666331872781-fd781dc61896?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
-    }
-  ]
-}
+//     },
+//     {
+//       heading: '2Vision or Mirage: Saudi Arabia at the Crossroads',
+//       url: 'https://www.youtube.com/embed/_Us_QodyTio',
+//       figType: 'video'
+//     },
+//     {
+//       heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
+//       url: 'https://www.youtube.com/embed/_Us_QodyTio',
+//       figType: 'video'
+//     },
+//     {
+//       heading: "Networked Refugees: Palestinian Reciprocity and Remittances in the Digital Age",
+//       url: "https://images.unsplash.com/photo-1666331872781-fd781dc61896?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
+//     }
+//   ]
+// }
 </script>
 
 <style lang="scss" scoped>

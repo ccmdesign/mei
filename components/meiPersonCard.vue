@@ -2,6 +2,9 @@
   <div>
     <person-card class="mei-person-card"
       hideAction
+      :personName="data.name"
+      :jobTitle="data.official_titles.join(' | ')"
+      :url="data.url"
     >
     
     </person-card>
@@ -9,22 +12,20 @@
 </template>
 
 <script setup>
-// ToDo: Set Props with object for peronData
-// import { toRefs } from 'vue'
+  import { toRefs } from 'vue';
 
-// const props = defineProps({
-//   personData: {
-//     type: Object,
-//     default: {
-//       name: "This is the name",
-//       title: "This is the title",
-//       bio: "This is the bio"
-//     }
-//   }
-// });
+  const props = defineProps({
+    data: {
+      type: Object,
+      default: {
+        name: 'Person Name',
+        url: '/person-name',
+        job: 'Job Title' // FIXME: Belfer-role or official_titles? Both are arrays.
+      }
+    }
+  });
 
-// const personData = toRefs(props)
-
+  const { data } = toRefs(props)
 </script>
 
 <style lang="scss" scoped>
