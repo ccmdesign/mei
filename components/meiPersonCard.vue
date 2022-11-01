@@ -3,8 +3,9 @@
     <person-card class="mei-person-card"
       hideAction
       :personName="data.name"
-      :jobTitle="data.official_titles.join(' | ')"
+      :jobTitle="data.belfer_role[0]"
       :url="data.url"
+      :excerpt="data.biography"
     >
     
     </person-card>
@@ -20,7 +21,8 @@
       default: {
         name: 'Person Name',
         url: '/person-name',
-        job: 'Job Title' // FIXME: Belfer-role or official_titles? Both are arrays.
+        email: 'example@email.com',
+        job: 'Job Title', // FIXME: Belfer-role or official_titles? Both are arrays.
       }
     }
   });
@@ -29,7 +31,6 @@
 </script>
 
 <style lang="scss" scoped>
-
 .mei-person-card { 
   --card-headings-alignment: left;
   --card-vertical-space: var(--s1);

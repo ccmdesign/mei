@@ -1,20 +1,13 @@
 <template>
-  <div class="mei-people-section"> <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
+  <div class="mei-people-section">
+    <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
     <base-section size="m" color="transparent">
       <center-l size="wide">
         <stack-l space="var(--s3)">
-          <h2 class="color:primary">Our People</h2>
-          <tab-bar :options="peopleData.tabs" />
-          
+          <tab-bar :options="tabs" :onClick="selectTab" />
+
           <div class="grid">
-            <mei-person-card v-for="i in people" :data="i" :key="i" excerpt=false />
-
-
-          </div>
-          
-          <div class="text-align:center margin-top:s3" >
-            <!-- ToDo: update with new baseButton -->
-            <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
+            <mei-person-card v-for="i in state.peopleList" :data="i" :key="i" excerpt="false" />
           </div>
         </stack-l>
       </center-l>
@@ -23,11 +16,7 @@
 </template>
 
 <script setup>
-
-import meiPersonCard from '@/components/meiPersonCard.vue';
-import tabBar from '@/components/tabBar.vue';
-
-import { toRefs } from 'vue'
+import { toRefs } from 'vue';
 
 const props = defineProps({
   compact: {
@@ -36,70 +25,58 @@ const props = defineProps({
   }
 });
 
-const compact = toRefs(props);
+const { compact } = toRefs(props);
 
-const peopleData = {
-  tabs: [
-    { label: 'Staff', value: 'staff', defaultOption: 'true'},
-    { label: 'Faculty Affiliates', value: 'faculty-affiliates'},
-    { label: 'Senior Fellows', value: 'senior-fellows'},
-    { label: 'Fellows', value: 'fellows'}
-  ],
-  list: [
-    {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  }
+const tabs = [
+  { label: 'Program Staff', value: 'staff', defaultOption: 'true' },
+  { label: 'Faculty', value: 'faculty' },
+  { label: 'Senior Fellows', value: 'senior-fellows' },
+  { label: 'Fellows', value: 'fellows' },
+  { label: 'Research Fellows', value: 'research-fellows' }
 ]
+
+// FIXME: O campo belfer_role é um array. O "queryContent" não suporta consultas
+// de valores dentro do array. Como garantir que a pesquisa vá retornar os valores esperados?
+// Atualmente só considera os items com um único valor correspondendo ao papel(role) pesquisado.
+// exemplo: lewis-m-branscomb.json
+const _getPeople = async (role) => {
+  const query = {'belfer_role': [role]};
+
+  return await queryContent('person').where(query).find();
 }
 
-const people = await queryContent('person').limit(5).find();
+const peopleData = {
+  staff: await _getPeople('Staff'),
+  faculty: await _getPeople('Faculty'),
+  'senior-fellows': await _getPeople('Senior Fellow'),
+  fellows: await _getPeople('Fellow'),
+  'research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
+};
 
+// FIXME: Como "salvar" a aba selecionada?
+// FIXME: Opção que tem o defaultOption igual a true ou a primeira opção.
+const state = reactive({
+  'selectedTab': tabs[0].value,
+  'peopleList': peopleData[tabs[0].value] 
+});
+const selectTab = (tab) => {
+  state.selectedTab = tab;
+  state.peopleList = peopleData[tab]
+}
 </script>
 
 <style lang="scss" scoped>
-
-
 .mei-people-section[compact="true"] .grid {
-  --itemWidth: 180px; 
+  --itemWidth: 180px;
   grid-gap: var(--s2);
 }
 
 .mei-people-section[compact="false"] .grid {
-  --itemWidth: 320px; 
+  --itemWidth: 320px;
   grid-gap: var(--s3);
 }
 
 .compact-person-card {
   background-color: transparent;
 }
-
-
-
 </style>

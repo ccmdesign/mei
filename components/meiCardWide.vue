@@ -35,7 +35,7 @@
 
       <template #action>
         <div>
-          <base-button color="primary" visual="primary" el="<a href='data.url'/>">
+          <base-button color="primary" visual="primary" el="a" :href="data.url" target="_blank">
           More
         </base-button>
         </div>
