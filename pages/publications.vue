@@ -12,7 +12,7 @@
     <base-section>
       <center-l size="wide">
         <stack-l space="var(--s0)">
-          <sorting-header />
+          <sorting-header :itemsCount="12" :sortByOptions="sortByOptions" :typeOptions="typeOptions" />
           <hr />
           <stack-l v-for="i in data" :key="i.title" space="var(--s2)">
             <mei-card-wide :data="i" />
@@ -33,12 +33,44 @@
 
 const { data } = await useAsyncData('publications', () => {
     const query = {type: {$in: ["Book", "Report", "Paper"]}};
-    const fields = ['type', 'title', 'summary'];
+    const fields = ['type', 'title', 'summary', 'url'];
 
     return queryContent("publication").where(query).only(fields).limit(3).find();
   }
 );
 
+const typeOptions = [
+  {
+    label: 'Reports & Papers',
+    value: 'reports-and-papers'
+  },
+  {
+    label: 'Articles (media)',
+    value: 'articles-media'
+  },
+  {
+    label: 'Books',
+    value: 'books'
+  }
+]
 
+const sortByOptions = [
+  {
+    label: 'Date',
+    value: 'date'
+  },
+  {
+    label: 'Reports & Papers',
+    value: 'reports-and-papers'
+  },
+  {
+    label: 'Articles (media)',
+    value: 'articles-media'
+  },
+  {
+    label: 'Books',
+    value: 'books'
+  }
+]
 </script>
 

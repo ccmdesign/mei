@@ -16,6 +16,7 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router';
 import { toRefs } from 'vue';
 
 const props = defineProps({
@@ -26,6 +27,7 @@ const props = defineProps({
 });
 
 const { compact } = toRefs(props);
+const route = useRoute();
 
 const tabs = [
   { label: 'Program Staff', value: 'staff', defaultOption: 'true' },
@@ -55,9 +57,11 @@ const peopleData = {
 
 // FIXME: Como "salvar" a aba selecionada?
 // FIXME: Opção que tem o defaultOption igual a true ou a primeira opção.
+// Caso a rota venha com a aba selecionada, ex: "/people#faculty", selecionar essa aba.
+const tab = route.hash ? route.hash.slice(1) : tabs[0].value;
 const state = reactive({
-  'selectedTab': tabs[0].value,
-  'peopleList': peopleData[tabs[0].value] 
+  'selectedTab': tab,
+  'peopleList': peopleData[tab] 
 });
 const selectTab = (tab) => {
   state.selectedTab = tab;

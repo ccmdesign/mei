@@ -15,19 +15,21 @@
             {{ data.title }}
           </h3>
           <div class="mei-card-wide__tagline">
-            <!-- <h6>
-              Tue., Apr. 19, 2022 | 1:30pm - 2:45pm
+            <h6 v-if="data.location.name == 'Online'" >
+              {{ formatDate(data) }}
               <span class="mei-card-wide__tag | margin-left:s-2">Online</span>
-            </h6> -->
-            <h6>
-              {{ data.type }}
+              <!-- FIXME: Location -->
+            </h6>
+
+            <h6 v-else>
+              {{ formatDate(data) }}
+              <a :href="data.location.directions" class="color-primary">{{ data.location.name }}</a>
             </h6>
           </div>
         </stack-l>
       </template>
 
       <template #image>
-
         <div class="base-card__img">
           <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
         </div>
@@ -50,10 +52,35 @@
 const props = defineProps({
   data: {
     type: Object,
+    default: {
+      summary: '',
+      title: 'Title',
+      url: '',
+      location: {
+        name: '',
+        directions: 's'
+      }
+    }
   }
 });
 
 const { data } = toRefs(props)
+
+const formatDate = (event) => {
+  const getDate = () => {
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    return start.toLocaleDateString("en-US", options)
+  }
+  const getTime = () => {
+    const options = {hour: 'numeric', minute: 'numeric' };
+
+    return `${start.toLocaleTimeString('en-US', options)} - ${end.toLocaleTimeString('en-US', options)}`
+  }
+  const start = new Date(event.start_date);
+  const end = new Date(event.end_date)
+
+  return `${getDate()} | ${getTime()}`
+}
 
 </script>
 
