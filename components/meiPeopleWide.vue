@@ -8,19 +8,18 @@
       actionLabel="More"
       :fullClick="false"
       :heading="data.name"
-      :tagline="data.belfer_role"
       :excerpt="data.biography"
     >
-      <template #headings>
-        <h2 class="base-card__title">
-          <a :href="data.url" target="_blank" class="base-card__title-link">
+
+    <template #headings>
+        <h2 class="mei-people-wide__title">
+          <a class="color-primary" :href="data.url" target="_blank">
             {{ data.name }}
           </a>
+          <a class="mei-people-wide__title-email icon" :href="`mailto:${data.email}`">email</a>
         </h2>
-        <!-- FIXME: Colocar ícone para o email. -->
-        <a :href="`mailto:${data.email}`">{{data.email}}</a>
 
-        <h4 class="base-card__tagline">{{ data.belfer_role }}</h4>
+        <h4 class="mei-people-wide__tagline">{{ data.belfer_role[0] }}</h4>
 
         <p>Biography</p>
       </template>
@@ -105,5 +104,14 @@
   .mei-people-wide :deep(h4) {
     font-size: 1.25em;
     font-weight: bold;
+  }
+
+  .mei-people-wide__title :deep(a) {
+    text-decoration: none;
+  }
+
+  .mei-people-wide__title-email {
+    margin-left: var(--s0);
+    vertical-align: middle;
   }
 </style>

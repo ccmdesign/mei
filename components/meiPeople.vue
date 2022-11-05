@@ -1,13 +1,13 @@
 <template>
-  <div class="mei-people-section">
+  <div class="mei-people-section" :compact="compact">
     <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
     <base-section size="m" color="transparent">
       <center-l size="wide">
         <stack-l space="var(--s3)">
-          <tab-bar :options="tabs" :onClick="selectTab" />
+          <tab-bar :options="tabs" :onClick="selectTab" :selectedTab="state.selectedTab" />
 
           <div class="grid">
-            <mei-person-card v-for="i in state.peopleList" :data="i" :key="i" excerpt="false" />
+            <mei-person-card v-for="i in state.peopleList" :data="i" :key="i.name" excerpt="false" />
           </div>
         </stack-l>
       </center-l>
@@ -27,6 +27,7 @@ const props = defineProps({
 });
 
 const { compact } = toRefs(props);
+
 const route = useRoute();
 
 const tabs = [
@@ -58,10 +59,10 @@ const peopleData = {
 // FIXME: Como "salvar" a aba selecionada?
 // FIXME: Opção que tem o defaultOption igual a true ou a primeira opção.
 // Caso a rota venha com a aba selecionada, ex: "/people#faculty", selecionar essa aba.
-const tab = route.hash ? route.hash.slice(1) : tabs[0].value;
+const defaultTab = route.hash ? route.hash.slice(1) : tabs[0].value;
 const state = reactive({
-  'selectedTab': tab,
-  'peopleList': peopleData[tab] 
+  'selectedTab': defaultTab,
+  'peopleList': peopleData[defaultTab] 
 });
 const selectTab = (tab) => {
   state.selectedTab = tab;

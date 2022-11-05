@@ -26,10 +26,15 @@ const props = defineProps({
   },
   onClick: {
     type: Function,
+  },
+  selectedTab: {
+    type: String,
+    default: ''
   }
 });
 
-const { options, onClick } = toRefs(props);
+const { options, onClick, selectedTab } = toRefs(props);
+
 </script>
 
 <style lang="scss" scoped>
