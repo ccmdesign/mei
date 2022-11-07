@@ -1,4 +1,4 @@
-:root {
+:root, :before, :after {
   /* These are the base visual configurations for a spefic project */
   --base-border-width: 2px;
   --base-border-radius: 6px;
@@ -44,8 +44,11 @@
   --green-hsl: 174, 62%, 47%;
   --green-color: hsla(var(--green-hsl), 1);
 
-  --yellow-hsl: 37, 98%, 53%;
+  --yellow-hsl: 29, 51%, 84%;
   --yellow-color: hsla(var(--yellow-hsl), 1);
+
+  --gray-hsl: 0, 0%, 92%;
+  --gray-color: hsla(var(--yellow-hsl), 1);
 
   /* Aliases */
   --fail-color: var(--red-color);
@@ -59,7 +62,7 @@ body { font-size: 16px; }
 @media screen and (min-width: 80em) { body { font-size: 16px; } }
 
 /* Shades and Tints */
-:root {
+:root, :before, :after {
   --base-color-05: hsla(var(--base-hsl), 0.05);
   --base-color-10: hsla(var(--base-hsl), 0.1);
   --base-color-20: hsla(var(--base-hsl), 0.2);
@@ -91,4 +94,12 @@ body { font-size: 16px; }
   --accent-color-70: hsla(var(--accent-hsl), 0.7);
   --accent-color-80: hsla(var(--accent-hsl), 0.8);
   --accent-color-90: hsla(var(--accent-hsl), 0.9);
+
+  --yellow-color-05: hsla(var(--yellow-hsl), 0.05);
+  --yellow-color-10: hsla(var(--yellow-hsl), 0.1);
+  --yellow-color-20: hsla(var(--yellow-hsl), 0.2);
+  --yellow-color-30: hsla(var(--yellow-hsl), 0.3);
+  --yellow-color-70: hsla(var(--yellow-hsl), 0.7);
+  --yellow-color-80: hsla(var(--yellow-hsl), 0.8);
+  --yellow-color-90: hsla(var(--yellow-hsl), 0.9);
 }
