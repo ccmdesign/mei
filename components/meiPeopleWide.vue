@@ -8,7 +8,7 @@
       actionLabel="More"
       :fullClick="false"
       :heading="data.name"
-      :excerpt="data.biography"
+      :htmlExcerpt="data.biography"
     >
 
     <template #headings>

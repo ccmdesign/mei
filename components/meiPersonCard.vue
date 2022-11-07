@@ -4,7 +4,7 @@
       class="mei-person-card"
       :fullClick="false"
       :url="data.url"
-      :excerpt="data.biography"
+      :htmlExcerpt="data.biography"
       actionLabel="More"
     >
       <template #headings>
