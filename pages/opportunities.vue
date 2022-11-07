@@ -12,9 +12,9 @@
     <base-section color="transparent">
       <stack-l>
         <tab-bar :options="tabs" />
-        <mei-opportunity-group :content="opportunities[0]" ellipsisClass="bottom-right"/>
-        <mei-opportunity-group :content="opportunities[1]" ellipsisClass="top-left" inverted :gradient="true" :pattern="true" />
-        <mei-opportunity-group :content="opportunities[2]" ellipsisClass="top-right"/>
+        <mei-opportunity-group id="students" :content="opportunities[0]" ellipsisClass="bottom-right"/>
+        <mei-opportunity-group id="faculty" :content="opportunities[1]" ellipsisClass="top-left" inverted :gradient="true" :pattern="true" />
+        <mei-opportunity-group id="outside-scholars" :content="opportunities[2]" ellipsisClass="top-right"/>
       </stack-l>0
     </base-section>
     
@@ -24,9 +24,9 @@
 <script setup>
 import tabBar from '@/components/tabBar.vue';
 const tabs = [
-  { label: 'Students', value: '#students', defaultOption: 'true'},
-  { label: 'Faculty', value: '#faculty'},
-  { label: 'Outside Scholars', value: '#outside-scholars'}
+  { label: 'Students', value: '#students', url: '#students'},
+  { label: 'Faculty', value: '#faculty', url: '#faculty'},
+  { label: 'Outside Scholars', value: '#outside-scholars', url: '#outside-scholars'}
 ]
 
 const opportunities = [

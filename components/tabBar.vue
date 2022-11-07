@@ -4,7 +4,8 @@
   <section class="tab-bar" :id="id">
     <label :for="i.value" v-for="i in options" class="tab-bar__item">
       <input :id="i.value" type="radio" :name="id" :value="i.value" :checked="i.defaultOption">
-      <span class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</span>
+      <a v-if="i.url" :href="i.url" class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</a>
+      <span v-else class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</span>
     </label>
     
   </section>
