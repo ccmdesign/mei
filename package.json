@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "nuxt dev",
-    "generate": "nuxt generate && cp -r assets/ .output/public/"
+    "generate": "nuxt generate && cp -r assets/ .output/public/ && cp -r assets/ dist/"
   },
   "devDependencies": {
     "node-sass": "^7.0.1",
