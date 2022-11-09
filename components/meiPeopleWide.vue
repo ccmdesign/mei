@@ -50,8 +50,6 @@
     .where({ belfer_role: ["Staff"] })
     .findOne();
 
-  // FIXME: O campo de email está vindo em maiúsculo. Tratar na obtenção dos dados.
-  // FIXME: O campo de biografia vem como HTML. Tratar!
   // FIXME: Trazer a foto.
 
   // FIXME: A "tagline" no exemplo aparece como "Faculty Director". Esse não é um papel no

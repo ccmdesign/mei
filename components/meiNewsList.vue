@@ -7,7 +7,6 @@
       <mei-select />
     </div>
 
-    
     <hr />
     <mei-card-wide />
     <hr />
@@ -25,5 +24,4 @@ const props = defineProps({
     type: String
   }
 });
-
 </script>

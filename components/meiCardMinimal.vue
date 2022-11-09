@@ -10,17 +10,10 @@
       </stack-l>
     </slot>
   </base-card>
-
-
-  
 </template>
 
-<script setup>
-
-</script>
 
 <style lang="scss" scoped>
-
 .mei-card-minimal {
   --card-border: 0;
   --card-padding: 0 var(--s1) ;

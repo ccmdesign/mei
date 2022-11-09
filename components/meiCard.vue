@@ -21,7 +21,6 @@
 <style lang="scss" scoped>
   .mei-card {
     --card-bg-hsl: transparent;
-    // --card-horizontal-threshold: 500px;
     --card-hover-border: none;
     --card-border: none;
     --card-hover-shadow: none;
@@ -36,7 +35,7 @@
     align-items: center;
 
     h6 {
-      color: inherit;  // FIXME?
+      color: inherit;
     }
   }
 </style>
