@@ -1,26 +1,28 @@
 <template>
-  <div class="mei-opportunity-group grid">
-    <div class="mei-opportunity-group__image">
-      <figure class="circle | frame">
-        <img :src="content.imageUrl" :alt="content.imageLabel">
-      </figure>
-    </div>
-    <div class="mei-opportunity-group__content">
-      <h3 data-style="h2" class="color:primary">{{content.heading}}</h3>
-      <p>{{content.excerpt}}</p>
-      <stack-l>
-        <!-- ToDo: Abstract this? -->
-        <stack-l v-for="j in content.groups" class="mei-opportunity | margin-top:s2">
-          <h4 class="color:primary">{{j.heading}}</h4>
-          <p>{{j.excerpt}}</p>
-          <stack-l class="mei-opportunity__list">
-            <li>Current Syllabus <base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward"></base-button></li>
-            <hr>
-            <li>Photos from past course <base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward"></base-button></li>
+  <div class="mei-opportunity-group" :class="{'mei-opportunity-group--gradient': gradient, 'mei-opportunity-group--pattern': pattern}">
+    <center-l size="wide" class="grid">
+      <div class="mei-opportunity-group__image" :class="ellipsisClass">
+        <figure class="circle | frame">
+          <img :src="content.imageUrl" :alt="content.imageLabel">
+        </figure>
+      </div>
+      <div class="mei-opportunity-group__content">
+        <h3 data-style="h2" class="color:primary">{{content.heading}}</h3>
+        <p>{{content.excerpt}}</p>
+        <stack-l>
+          <!-- ToDo: Abstract this? -->
+          <stack-l v-for="j in content.groups" class="mei-opportunity | margin-top:s2">
+            <h4 class="color:primary | mei-opportunity__title">{{j.heading}}</h4>
+            <p class="color:primary">{{j.excerpt}}</p>
+            <stack-l class="mei-opportunity__list">
+              <li>Current Syllabus <base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward"></base-button></li>
+              <hr>
+              <li>Photos from past course <base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward"></base-button></li>
+            </stack-l>
           </stack-l>
-        </stack-l>
-      </stack-l>        
-    </div>
+        </stack-l>        
+      </div>
+    </center-l>
   </div>
 </template>
 
@@ -52,6 +54,18 @@ const props = defineProps({
         }
       ]
     }
+  },
+  ellipsisClass: {
+    type: String,
+    default: 'bottom-right'
+  },
+  gradient: {
+    type: Boolean,
+    default: false
+  },
+  pattern: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -61,7 +75,33 @@ const { content } = toRefs(props)
 
 <style lang="scss" scoped>
 
-.mei-opportunity-group[inverted] .mei-opportunity-group__content { order: -1; }
+.mei-opportunity-group {
+  padding-block: var(--s4);
+  position: relative;
+  * {
+    z-index: 1;
+  }
+}
+
+  .mei-opportunity-group[inverted] .mei-opportunity-group__content { order: -1; }
+
+  .mei-opportunity-group--gradient {
+    background: linear-gradient(180deg, var(--yellow-color-30) 0%, var(--primary-color-30) 350%);
+  }
+
+  .mei-opportunity-group--pattern {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('../assets/images/honey-comb.png');
+      background-repeat: repeat-x;
+      z-index: 0;
+    }
+  }
 
 .circle {
   --d: 1;
@@ -71,7 +111,10 @@ const { content } = toRefs(props)
   position: relative;
 }
 
-.pill { border-radius: 16px; }
+.pill {
+  border-radius: 16px; 
+  color: var(--primary-color);
+}
 
 // ToDo: Implement this decoration line
 // .circle:after {
@@ -84,14 +127,52 @@ const { content } = toRefs(props)
 //   transform: translate(1rem, 1rem);
 // }
 
-.grid { grid-gap: var(--s3); }
-.mei-opportunity-group__image > .circle {
+.grid {
+  grid-gap: var(--s3); 
+  align-items: flex-start;
+}
+
+.mei-opportunity-group__image {
   transform: translateX(-16rem) scale(110%);
   transform-origin: 0 0;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+  }
 }
-.mei-opportunity-group[inverted] .mei-opportunity-group__image > .circle {
+
+.mei-opportunity-group__image.bottom-right {
+  &::before {
+    transform: translate(0.5rem, 1.5rem);
+  }
+}
+
+.mei-opportunity-group__image.top-right {
+  &::before {
+    transform: translate(1rem, -1rem);
+  }
+}
+
+.mei-opportunity-group__image.top-left {
+  &::before {
+    transform: translate(-1rem, -1rem);
+  }
+}
+
+.mei-opportunity-group[inverted] .mei-opportunity-group__image {
   transform: translateX(16rem) scale(110%);
   transform-origin: 0 0;
+}
+
+.mei-opportunity__title {
+  font-weight: 700;
 }
 
 .mei-opportunity__list li {
