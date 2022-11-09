@@ -1,7 +1,9 @@
 {
   "scripts": {
     "dev": "nuxt dev",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "prebuild": "cd mei-fetch-data && npm run start",
+    "build": "npm run prebuild && npm run generate"
   },
   "devDependencies": {
     "@nuxt/content": "^2.2.0",
