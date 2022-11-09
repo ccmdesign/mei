@@ -1,0 +1,3 @@
+[submodule "mei-fetch-data"]
+	path = mei-fetch-data
+	url = https://github.com/ccmdesign/mei-fetch-data.git
