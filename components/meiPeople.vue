@@ -4,11 +4,13 @@
     <base-section size="m" color="transparent">
       <center-l size="wide">
         <stack-l space="var(--s3)">
-          <tab-bar :options="tabs" :onClick="selectTab" :selectedTab="state.selectedTab" />
+          <tab-bar :options="tabs" />
 
-          <div class="grid">
-            <mei-person-card v-for="i in state.peopleList" :data="i" :key="i.name" excerpt="false" />
-          </div>
+          <section v-for="tab in tabs" :key="tab" :id="tab.value">
+            <div class="grid">
+              <mei-person-card v-for="i in peopleData[tab.value]" :data="i" :key="i.name" excerpt="false" />
+            </div>
+          </section>
         </stack-l>
       </center-l>
     </base-section>
@@ -31,11 +33,11 @@ const { compact } = toRefs(props);
 const route = useRoute();
 
 const tabs = [
-  { label: 'Program Staff', value: 'staff', defaultOption: 'true' },
-  { label: 'Faculty', value: 'faculty' },
-  { label: 'Senior Fellows', value: 'senior-fellows' },
-  { label: 'Fellows', value: 'fellows' },
-  { label: 'Research Fellows', value: 'research-fellows' }
+  { label: 'Program Staff', value: 'staff', url: '#staff', defaultOption: 'true' },
+  { label: 'Faculty', value: 'faculty', url: '#faculty' },
+  { label: 'Senior Fellows', value: 'senior-fellows', url: '#senior-fellows' },
+  { label: 'Fellows', value: 'fellows', url: '#fellows' },
+  { label: 'Research Fellows', value: 'research-fellows', url: '#research-fellows' }
 ]
 
 // FIXME: O campo belfer_role é um array. O "queryContent" não suporta consultas
@@ -55,19 +57,6 @@ const peopleData = {
   fellows: await _getPeople('Fellow'),
   'research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
 };
-
-// FIXME: Como "salvar" a aba selecionada?
-// FIXME: Opção que tem o defaultOption igual a true ou a primeira opção.
-// Caso a rota venha com a aba selecionada, ex: "/people#faculty", selecionar essa aba.
-const defaultTab = route.hash ? route.hash.slice(1) : tabs[0].value;
-const state = reactive({
-  'selectedTab': defaultTab,
-  'peopleList': peopleData[defaultTab] 
-});
-const selectTab = (tab) => {
-  state.selectedTab = tab;
-  state.peopleList = peopleData[tab]
-}
 </script>
 
 <style lang="scss" scoped>
