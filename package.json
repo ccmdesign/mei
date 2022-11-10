@@ -3,8 +3,7 @@
     "dev": "nuxt dev",
     "prebuild": "cd mei-fetch-data && npm run start",
     "postbuild": "cp -r assets/ .output/public/ && cp -r assets/ dist/",
-    "generate": "nuxt generate",
-    "build": "npm run prebuild && npm run generate && npm run postbuild"
+    "generate": "npm run prebuild && nuxt generate && npm run postbuild"
   },
   "devDependencies": {
     "@nuxt/content": "^2.2.0",
