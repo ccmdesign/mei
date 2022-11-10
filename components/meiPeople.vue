@@ -1,28 +1,16 @@
 <template>
-  <div class="mei-people-section"> <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
+  <div class="mei-people-section" :compact="compact">
+    <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
     <base-section size="m" color="transparent">
       <center-l size="wide">
         <stack-l space="var(--s3)">
-          <h2 class="color:primary">Our People</h2>
-          <tab-bar :options="peopleData.tabs" />
-          
-          <div class="grid">
-            <mei-person-card v-if="compact == 'false'" v-for="i in peopleData.list" excerpt=false />
+          <tab-bar :options="tabs" />
 
-            <mei-person-card v-else v-for="i in peopleData.list" class="compact-person-card">
-
-              <template #action>
-                <!-- ToDo: update with new baseButton -->
-                <a href="/" class="button" color="primary" visual="primary">View Profile</a>
-              </template>
-
-            </mei-person-card>
-          </div>
-          
-          <div class="text-align:center margin-top:s3" >
-            <!-- ToDo: update with new baseButton -->
-            <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
-          </div>
+          <section v-for="tab in tabs" :key="tab" :id="tab.value">
+            <div class="grid">
+              <mei-person-card v-for="i in peopleData[tab.value]" :data="i" :key="i.name" excerpt="false" />
+            </div>
+          </section>
         </stack-l>
       </center-l>
     </base-section>
@@ -30,11 +18,8 @@
 </template>
 
 <script setup>
-
-import meiPersonCard from '@/components/meiPersonCard.vue';
-import tabBar from '@/components/tabBar.vue';
-
-import { toRefs } from 'vue'
+import { useRoute } from 'vue-router';
+import { toRefs } from 'vue';
 
 const props = defineProps({
   compact: {
@@ -43,67 +28,49 @@ const props = defineProps({
   }
 });
 
-const compact = toRefs(props);
+const { compact } = toRefs(props);
+
+const route = useRoute();
+
+const tabs = [
+  { label: 'Program Staff', value: 'staff', url: '#staff', defaultOption: 'true' },
+  { label: 'Faculty', value: 'faculty', url: '#faculty' },
+  { label: 'Senior Fellows', value: 'senior-fellows', url: '#senior-fellows' },
+  { label: 'Fellows', value: 'fellows', url: '#fellows' },
+  { label: 'Research Fellows', value: 'research-fellows', url: '#research-fellows' }
+]
+
+// FIXME: O campo belfer_role é um array. O "queryContent" não suporta consultas
+// de valores dentro do array. Como garantir que a pesquisa vá retornar os valores esperados?
+// Atualmente só considera os items com um único valor correspondendo ao papel(role) pesquisado.
+// exemplo: lewis-m-branscomb.json
+const _getPeople = async (role) => {
+  const query = {'belfer_role': [role]};
+
+  return await queryContent('person').where(query).find();
+}
 
 const peopleData = {
-  tabs: [
-    { label: 'Staff', value: 'staff', defaultOption: 'true'},
-    { label: 'Faculty Affiliates', value: 'faculty-affiliates'},
-    { label: 'Senior Fellows', value: 'senior-fellows'},
-    { label: 'Fellows', value: 'fellows'}
-  ],
-  list: [
-    {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  }
-]
-}
+  staff: await _getPeople('Staff'),
+  faculty: await _getPeople('Faculty'),
+  'senior-fellows': await _getPeople('Senior Fellow'),
+  fellows: await _getPeople('Fellow'),
+  'research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
+};
 </script>
 
 <style lang="scss" scoped>
-
-
 .mei-people-section[compact="true"] .grid {
-  --itemWidth: 180px; 
+  --itemWidth: 180px;
   grid-gap: var(--s2);
 }
 
 .mei-people-section[compact="false"] .grid {
-  --itemWidth: 320px; 
+  --itemWidth: 320px;
   grid-gap: var(--s3);
 }
 
 .compact-person-card {
   background-color: transparent;
 }
-
-
-
 </style>

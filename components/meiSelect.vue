@@ -1,7 +1,13 @@
 <template>
-  <select name="select-name" id="select-id" class="select">
-    <option value="1">Presentations & Speeches</option>
-    <option value="2">Blogs</option>
-    <option value="3">Policy Briefs</option>
-  </select>
+  <ccm-select class="mei-select" />
 </template>
+
+
+<style scoped>
+  .mei-select {
+    --select-shadow: none;
+
+    --select-border-color: transparent;
+    --select-text-color: var(--primary-color);
+  }
+</style>

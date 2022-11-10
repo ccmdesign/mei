@@ -1,14 +1,18 @@
 {
   "scripts": {
     "dev": "nuxt dev",
-    "generate": "nuxt generate && cp -r assets/ .output/public/ && cp -r assets/ dist/"
+    "prebuild": "cd mei-fetch-data && npm run start",
+    "postbuild": "cp -r assets/ .output/public/ && cp -r assets/ dist/",
+    "generate": "nuxt generate",
+    "build": "npm run prebuild && npm run generate && npm run postbuild"
   },
   "devDependencies": {
+    "@nuxt/content": "^2.2.0",
     "node-sass": "^7.0.1",
     "nuxt": "^3.0.0-rc.5"
   },
   "dependencies": {
-    "@ccmdesign/ccm-ds": "^0.2.3",
+    "@ccmdesign/ccm-ds": "^0.4.0-alpha",
     "path": "^0.12.7",
     "sass": "^1.54.4",
     "uuid": "^9.0.0"

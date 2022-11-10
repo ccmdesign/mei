@@ -55,4 +55,7 @@ export default defineNuxtConfig({
       "~/components"
     ]
   },
+  modules: [
+    '@nuxt/content'
+  ]
 });

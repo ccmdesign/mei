@@ -6,57 +6,28 @@
       description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis."
     />
 
-    <mei-events :eventData="upcomingEvents" hideTabBar showHighlights hideViewMore/>
+    <mei-events :data="upcomingEvents" heading="Upcoming Events" hideTabBar showHighlights hideViewMore/>
     
     <div class="mei-texture-bg">
-      <mei-events :eventData="pastEvents" hideTabBar />
+      <mei-events :data="pastEvents" heading="Past Events" hideTabBar />
     </div>
   </article>
 </template>
 
 <script setup>
-const upcomingEvents = {
-  heading: 'Upcoming Events',
-  list: [
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: "Networked Refugees: Palestinian Reciprocity and Remittances in the Digital Age",
-      url: "https://images.unsplash.com/photo-1666331872781-fd781dc61896?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
-    }
-  ]
-}
+const { data: upcomingEvents } = await useAsyncData('events', () => {
+    const query = {type: {$in: ["Book", "Report", "Paper"]}};
+    const fields = ['type', 'title', 'summary']
 
-const pastEvents = {
-  heading: 'Past Events',
-  list: [
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
+    return queryContent("event").limit(3).find();
+  }
+);
 
-    },
-    {
-      heading: '2Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: "Networked Refugees: Palestinian Reciprocity and Remittances in the Digital Age",
-      url: "https://images.unsplash.com/photo-1666331872781-fd781dc61896?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
-    }
-  ]
-}
+const { data: pastEvents } = await useAsyncData('events', () => {
+    const query = {type: {$in: ["Book", "Report", "Paper"]}};
+    const fields = ['type', 'title', 'summary']
+
+    return queryContent("event").find();
+  }
+);
 </script>
-
-<style lang="scss" scoped>
-
-</style>

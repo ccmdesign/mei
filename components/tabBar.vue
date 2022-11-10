@@ -2,12 +2,15 @@
 
 <template>
   <section class="tab-bar" :id="id">
-    <label :for="i.value" v-for="i in options" class="tab-bar__item">
-      <input :id="i.value" type="radio" :name="id" :value="i.value" :checked="i.defaultOption">
+    <a v-for="i in options" :key="i.value" :href="i.url" class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</a>
+
+
+<!-- 
+    <label :for="i.value" v-for="i in options" :key="i.value" class="tab-bar__item">
+      <input :id="i.value" type="radio" :name="id" :value="i.value" @click="() => onClick(i.value)" :checked="i.value == selectedTab">
       <a v-if="i.url" :href="i.url" class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</a>
       <span v-else class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</span>
-    </label>
-    
+    </label> -->
   </section>
 </template>
 
@@ -15,7 +18,7 @@
 import { toRefs } from 'vue'
 import { v4 as uuidv4 } from 'uuid';
 
-const id = uuidv4();
+const id = uuidv4(); // FIXME: Qual o uso?
 
 const props = defineProps({
   options: {
@@ -28,7 +31,8 @@ const props = defineProps({
   },
 });
 
-const { options } = toRefs(props)
+const { options } = toRefs(props);
+
 </script>
 
 <style lang="scss" scoped>
