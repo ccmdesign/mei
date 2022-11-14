@@ -9,6 +9,7 @@
       :fullClick="false"
       :heading="data.name"
       :htmlExcerpt="data.biography"
+      :imageUrl="data.avatar.url"
     >
 
     <template #headings>

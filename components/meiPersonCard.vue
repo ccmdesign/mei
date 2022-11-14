@@ -6,6 +6,7 @@
       :url="data.url"
       :htmlExcerpt="data.biography"
       actionLabel="More"
+      :imageUrl="data.avatar.url"
     >
       <template #headings>
         <h2 class="mei-person-card__title">
