@@ -3,36 +3,41 @@
     :shadow="false"
     actionLabel="More"
     :fullClick="false"
-    :excerpt="data.summary"
+    :htmlExcerpt="data.summary"
+    :image="!!data.image.url"
+    :imageUrl="data.image.url"
     clamp="4"
   >
-
     <template #headings>
       <stack-l>
-        <h3 class="mei-card-wide__title | color:primary">
+        <h3 class="mei-event-card__title | color:primary">
           {{ data.title }}
         </h3>
-        <div class="mei-card-wide__tagline">
+        <div class="mei-event-card__tagline">
           <h6 v-if="data.location.name == 'Online'" >
-            {{ formatDate(data) }}
-            <span class="mei-card-wide__tag | margin-left:s-2">Online</span>
+            {{ data.formatedDate }}
+            <span class="mei-event-card__tag | margin-left:s-2">Online</span>
             <!-- FIXME: Location -->
           </h6>
 
           <h6 v-else>
-            {{ formatDate(data) }}
+            {{ data.formatedDate }}<br />
             <a :href="data.location.directions" class="color-primary">{{ data.location.name }}</a>
           </h6>
         </div>
       </stack-l>
     </template>
 
-    <template #image>
-      <figure class="frame">
-        <iframe v-if="figType == 'video'" width="560" height="315" :src="url" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <img :src="url" alt="">
-      </figure>
+    <template #image v-if="data.embed_code">
+      <figure class="frame" v-html="data.embed_code"></figure>
     </template>
+
+    <slot name="image">
+      <div v-if="image || imageUrl" class="base-card__img" :class="horizontal ? '' : '| frame'">
+        <img v-if="imageUrl" :src=imageUrl :alt=imageDescription>
+        <!-- <img v-else src="images/ds-card-default.svg" alt="Website Default Image" aria-hidden="true"> -->
+      </div>
+    </slot>
 
     <template #action>
       <div>
@@ -61,29 +66,13 @@ const props = defineProps({
         name: '',
         directions: ''
       },
-      summary: ''
+      summary: '',
+      formatedDate: ''
     }
   }
 });
 
-
 const { url, data } = toRefs(props)
-
-const formatDate = (event) => {
-  const getDate = () => {
-    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-    return start.toLocaleDateString("en-US", options)
-  }
-  const getTime = () => {
-    const options = {hour: 'numeric', minute: 'numeric' };
-
-    return `${start.toLocaleTimeString('en-US', options)} - ${end.toLocaleTimeString('en-US', options)}`
-  }
-  const start = new Date(event.start_date);
-  const end = new Date(event.end_date)
-
-  return `${getDate()} | ${getTime()}`
-}
 
 </script>
 
@@ -94,9 +83,30 @@ const formatDate = (event) => {
   --card-frame-d: 16; 
   --card-frame-n: 9;
   --card-padding: 0;
+  background-color: transparent;
 }
 
 .mei-event-card :deep(.base-card__title) { line-height: 1.5; }
 .mei-event-card :deep(.base-card__title-link) { color: var(--primary-color); }
+
+
+.mei-event-card__title {
+  font-size: 1.5rem;
+}
+
+.mei-event-card__tagline {
+  font-family: var(--body-font);
+  --font-weight: 400;
+  font-size: 80%;
+  padding-block: var(--s-2);
+}
+
+.mei-event-card__tag {
+  border-radius: 3px;
+  background-color: var(--tertiary-color); 
+  color: var(--white-color);
+  padding: var(--s-3) var(--s-2);
+  font-size: 90%;
+}
 
 </style>

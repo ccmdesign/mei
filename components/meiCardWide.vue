@@ -14,15 +14,16 @@
           <h3 class="mei-card-wide__title | color:primary">
             {{ data.title }}
           </h3>
+
           <div class="mei-card-wide__tagline">
             <h6 v-if="data.location.name == 'Online'" >
-              {{ formatDate(data) }}
+              {{ data.formatedDate }}
               <span class="mei-card-wide__tag | margin-left:s-2">Online</span>
               <!-- FIXME: Location -->
             </h6>
 
             <h6 v-else>
-              {{ formatDate(data) }}
+              {{ data.formatedDate }}<br />
               <a :href="data.location.directions" class="color-primary">{{ data.location.name }}</a>
             </h6>
           </div>
@@ -58,29 +59,14 @@ const props = defineProps({
       url: '',
       location: {
         name: '',
-        directions: 's'
-      }
+        directions: ''
+      },
+      formatedDate: ''
     }
   }
 });
 
 const { data } = toRefs(props)
-
-const formatDate = (event) => {
-  const getDate = () => {
-    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-    return start.toLocaleDateString("en-US", options)
-  }
-  const getTime = () => {
-    const options = {hour: 'numeric', minute: 'numeric' };
-
-    return `${start.toLocaleTimeString('en-US', options)} - ${end.toLocaleTimeString('en-US', options)}`
-  }
-  const start = new Date(event.start_date);
-  const end = new Date(event.end_date)
-
-  return `${getDate()} | ${getTime()}`
-}
 
 </script>
 

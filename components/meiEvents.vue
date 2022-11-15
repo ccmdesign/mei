@@ -10,13 +10,14 @@
         <mei-card-wide v-if="showHighlights" :data="data[0]" />
 
         <div class="grid">
-          <mei-event-card v-for="i in data.slice(1)"
+          <mei-event-card v-for="i in data"
             :key="i.title"
             :figType="i.figType"
             :data="i"
           />
         </div>
         <div v-if="!hideViewMore" class="text-align:center">
+          <!-- FIXME: Colocar link da página do Belfer -->
           <nuxt-link to="/events/" class="button" data-color="primary" data-visual="primary">View all MEI events</nuxt-link>
         </div>
       </stack-l>

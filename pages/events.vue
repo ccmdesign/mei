@@ -6,7 +6,7 @@
       description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis."
     />
 
-    <mei-events :data="upcomingEvents" heading="Upcoming Events" hideTabBar showHighlights hideViewMore/>
+    <mei-events :data="upcomingEvents.slice(UPCOMING_MAX_EVENTS)" heading="Upcoming Events" hideTabBar showHighlights hideViewMore />
     
     <div class="mei-texture-bg">
       <mei-events :data="pastEvents" heading="Past Events" hideTabBar />
@@ -15,19 +15,34 @@
 </template>
 
 <script setup>
-const { data: upcomingEvents } = await useAsyncData('events', () => {
-    const query = {type: {$in: ["Book", "Report", "Paper"]}};
-    const fields = ['type', 'title', 'summary']
+const UPCOMING_MAX_EVENTS = 3; // FIXME: Máximo de eventos futuros sendo mostrados na tela.
+const PAST_MAX_EVENTS = 4; // FIXME: Máximo de eventos passados sendo mostrados na tela.
 
-    return queryContent("event").limit(3).find();
+const events = await queryContent("event").find();
+const today = new Date();
+let upcomingEvents = reactive([]);
+let pastEvents = reactive([]);
+
+let pos = 0;
+
+// Toda a lógica abaixo pressupõe que os eventos virão ordenados do content
+// pela data de início (start_date) do mais recente para o mais antigo.
+//
+do {
+  if (events.length <= pos) break; // Se chegar no fim da lista de eventos.
+
+  const event = events[pos];
+  const eventDate = new Date(event.start_date);
+
+  if (eventDate >= today) {
+    upcomingEvents.push(event);
+
+  } else {
+    pastEvents = events.slice(pos, PAST_MAX_EVENTS);
   }
-);
 
-const { data: pastEvents } = await useAsyncData('events', () => {
-    const query = {type: {$in: ["Book", "Report", "Paper"]}};
-    const fields = ['type', 'title', 'summary']
+  pos += 1;
 
-    return queryContent("event").find();
-  }
-);
+} while (pastEvents.length < PAST_MAX_EVENTS)
+
 </script>
