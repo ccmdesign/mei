@@ -32,11 +32,11 @@
       <figure class="frame" v-html="data.embed_code"></figure>
     </template>
 
-    <!-- <slot name="image">
+    <slot name="image">
       <div v-if="image || imageUrl" class="base-card__img" :class="horizontal ? '' : '| frame'">
         <img v-if="imageUrl" :src=imageUrl :alt=imageDescription>
       </div>
-    </slot> -->
+    </slot>
 
     <template #action>
       <div>

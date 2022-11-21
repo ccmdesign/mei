@@ -10,37 +10,58 @@
     />
     <mei-highlights />
     <mei-about-highlight class="mei-texture-bg"/>
-    <mei-events :eventData="upcomingEvents" showHighlights/>
-    <mei-programs-highlight class="mei-texture-bg" />
-    <mei-opportunities-highlight />
+
+    <mei-events :data="{upcoming: upcomingEvents, past: pastEvents}" showHighlights />
+
     <mei-people-highlight class="mei-texture-bg" :options="peopleData" />
+    
+    <mei-opportunities-highlight />
+
+    <mei-programs-highlight />
+
     <mei-publications-highlight />
   </article>  
 </template>
 
 <script setup>
-import meiHero from '@/components/meiHero.vue';
-import meiHighlights from '@/components/meiHighlights.vue';
-import meiAboutHighlight from '@/components/meiAboutHighlight.vue';
-import meiOpportunitiesHighlight from '@/components/meiOpportunitiesHighlight.vue';
-import meiProgramsHighlight from '@/components/meiProgramsHighlight.vue';
-import meiPeopleHighlight from '@/components/meiPeopleHighlight.vue';
-import meiEvents from '@/components/meiEvents.vue';
+const UPCOMING_MAX_EVENTS = 3; // FIXME: Máximo de eventos futuros sendo mostrados na tela.
+const PAST_MAX_EVENTS = 4; // FIXME: Máximo de eventos passados sendo mostrados na tela.
+
+const events = await queryContent("event").find();
+const today = new Date();
 
 const upcomingEvents = {
   heading: 'Upcoming Events',
-  list: [
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: "Networked Refugees: Palestinian Reciprocity and Remittances in the Digital Age",
-      url: "https://images.unsplash.com/photo-1666331872781-fd781dc61896?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
-    }
-  ]
-}
+  list: reactive([])
+};
+
+const pastEvents = {
+  heading: 'Past Events',
+  list: reactive([])
+};
+
+let pos = 0;
+
+// Toda a lógica abaixo pressupõe que os eventos virão ordenados do content
+// pela data de início (start_date) do mais recente para o mais antigo.
+//
+do {
+  if (events.length <= pos) break; // Se chegar no fim da lista de eventos.
+
+  const event = events[pos];
+  const eventDate = new Date(event.start_date);
+
+  if (eventDate >= today) {
+    upcomingEvents.list.push(event);
+
+  } else {
+    pastEvents.list = events.slice(pos, PAST_MAX_EVENTS);
+  }
+
+  pos += 1;
+
+} while (pastEvents.list.length < PAST_MAX_EVENTS);
+
 
 // not working because mei-people-highlight props are not set up
 const peopleData = {
@@ -73,31 +94,7 @@ const peopleData = {
   }
 ]
 }
-const pastEvents = {
-  heading: 'Past Events',
-  list: [
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
 
-    },
-    {
-      heading: '2Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: 'Vision or Mirage: Saudi Arabia at the Crossroads',
-      url: 'https://www.youtube.com/embed/_Us_QodyTio',
-      figType: 'video'
-    },
-    {
-      heading: "Networked Refugees: Palestinian Reciprocity and Remittances in the Digital Age",
-      url: "https://images.unsplash.com/photo-1666331872781-fd781dc61896?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2942&q=80"
-    }
-  ]
-}
 
 
 
