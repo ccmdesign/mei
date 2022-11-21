@@ -1,11 +1,11 @@
 <template>
   <div class="sorting-header">
     <span>{{ itemsCount }} items</span>
-    <mei-select :options="typeOptions" />
-    <div>
-      Sort by
-      <mei-select :options="sortByOptions" />
-    </div>
+    <mei-select :options="typeOptions" 
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    v-model="modelValue"
+    />
   </div>
 </template>
 
@@ -34,30 +34,16 @@ const props = defineProps({
       }
     ]
   },
-  sortByOptions: {
-    type: Array,
-    default: [
-      {
-        label: 'Date',
-        value: 'date'
-      },
-      {
-        label: 'Reports & Papers',
-        value: 'reports-and-papers'
-      },
-      {
-        label: 'Articles (media)',
-        value: 'articles-media'
-      },
-      {
-        label: 'Books',
-        value: 'books'
-      }
-    ]
+  modelValue: {
+    type: String,
+    default: ''
   }
 })
 
 const { sortByOptions, typeOptions, itemsCount } = toRefs(props)
+
+defineEmits(['update:modelValue'])
+
 </script>
 
 <style lang="scss" scoped>

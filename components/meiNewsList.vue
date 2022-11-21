@@ -1,27 +1,37 @@
 <template>
-  <stack-l space="var(--s2)">
+  <center-l size="wide">
+    <stack-l space="var(--s0)">
+      <h2 class="color:primary">News</h2>
 
-    <div class="flex">
-      <h4 class="base-color-change">{{count}} itens</h4>
-      <mei-select />
-      <mei-select />
-    </div>
+      <sorting-header :itemsCount="list[selectedValue]?.length" :typeOptions="options" v-model="selectedValue" />
 
-    <hr />
-    <mei-card-wide />
-    <hr />
-    <mei-card-wide />
-    <hr />
-    <mei-card-wide />
-    <hr />
-  </stack-l>
+      <hr />
+      <stack-l v-for="i in list[selectedValue]" :key="i.title" space="var(--s2)">
+        <mei-card-wide-publication :data="i" />
+        <hr />
+      </stack-l>
+
+      <div class="text-align:center">
+        <base-button color="primary" visual="primary">
+          View more updates
+        </base-button>
+      </div>
+    </stack-l>
+  </center-l>
 </template>
 
 <script setup>
 const props = defineProps({
-  count: {
-    default: 0,
-    type: String
+  list: {
+    type: Object
+  },
+  options: {
+    type: Array
   }
 });
+
+
+const { list, options } = toRefs(props);
+const selectedValue = ref(options[0]?.value);
+
 </script>

@@ -11,6 +11,8 @@
     <div class="mei-texture-bg">
       <mei-events :data="pastEvents" heading="Past Events" hideTabBar />
     </div>
+
+    <mei-news-list :list="news" :options="typeOptions" />
   </article>
 </template>
 
@@ -43,6 +45,41 @@ do {
 
   pos += 1;
 
-} while (pastEvents.length < PAST_MAX_EVENTS)
+} while (pastEvents.length < PAST_MAX_EVENTS);
 
+
+// News.
+const _getNews = async (value) => (await queryContent("publication").where({type: value}).find());
+const news = {};
+const typeOptions = [];
+
+const newsTypes = [
+  // Presentations & Speeches.
+  'Presentation',
+  'Speech',
+  // Blogs.
+  'Blog',
+  'Blog Post',
+  // Policy Briefs.
+  'Policy Brief',
+  'Testimony',
+  // Analysis & Opinions.
+  'Analysis & Opinions',
+  // News & Announcement.
+  'Press Release',
+  'Announcement',
+  'News',
+  // Newsletter.
+  'Newsletter',
+  'Newsletter Article'
+];
+
+for (let t of newsTypes) {
+  news[t] = await _getNews(t);
+
+  typeOptions.push({
+    label: t,
+    value: t,
+  });
+}
 </script>
