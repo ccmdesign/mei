@@ -9,68 +9,39 @@
       voluptates tenetur et consectetur omnis."
     />
 
-    <base-section>
-      <center-l size="wide">
-        <stack-l space="var(--s0)">
-          <sorting-header :itemsCount="12" :sortByOptions="sortByOptions" :typeOptions="typeOptions" />
-          <hr />
-          <stack-l v-for="i in data" :key="i.title" space="var(--s2)">
-            <mei-card-wide :data="i" />
-            <hr />
-          </stack-l>
-          <div class="text-align:center">
-            <base-button color="primary" visual="primary">
-              View more updates
-            </base-button>
-          </div>
-        </stack-l>
-      </center-l>
-    </base-section>
+    <mei-publications :list="publications" :options="typeOptions" />
+
   </article>
 </template>
 
 <script setup>
+// Publications
+const _getPublications = async (value) => (await queryContent("publication").where({type: value}).find());
+const publications = {};
+const typeOptions = [];
 
-const { data } = await useAsyncData('publications', () => {
-    const query = {type: {$in: ["Book", "Report", "Paper"]}};
-    const fields = ['type', 'title', 'summary', 'url'];
+const publicationsTypes = [
+// Reports & Papers
+'Report',
+'Paper',
+'Report Chapter',
+// Articles
+'Magazine Article',
+'Journal Article',
+'Newspaper Article',
+// Books
+'Book',
+'Book Chapter',
+];
 
-    return queryContent("publication").where(query).only(fields).limit(3).find();
-  }
-);
+for (let t of publicationsTypes) {
+  publications[t] = await _getPublications(t);
 
-const typeOptions = [
-  {
-    label: 'Reports & Papers',
-    value: 'reports-and-papers'
-  },
-  {
-    label: 'Articles (media)',
-    value: 'articles-media'
-  },
-  {
-    label: 'Books',
-    value: 'books'
-  }
-]
+  typeOptions.push({
+    label: t,
+    value: t,
+  });
+}
 
-const sortByOptions = [
-  {
-    label: 'Date',
-    value: 'date'
-  },
-  {
-    label: 'Reports & Papers',
-    value: 'reports-and-papers'
-  },
-  {
-    label: 'Articles (media)',
-    value: 'articles-media'
-  },
-  {
-    label: 'Books',
-    value: 'books'
-  }
-]
 </script>
 

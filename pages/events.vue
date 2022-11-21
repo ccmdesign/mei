@@ -12,7 +12,7 @@
       <mei-events :data="pastEvents" heading="Past Events" hideTabBar />
     </div>
 
-    <mei-news-list :list="news" :options="typeOptions" />
+    <mei-publications heading="News" :list="news" :options="typeOptions" />
   </article>
 </template>
 
