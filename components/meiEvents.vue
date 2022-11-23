@@ -2,25 +2,24 @@
   <base-section color="transparent">
     <center-l size="wide">
       <stack-l space="var(--s2)">
-        <!-- HEADING da seção inteira -->
-        <h2 class="color:primary">{{heading}}</h2> 
+        <tab-bar v-if="!hideTabBar" :options="tabOptions" @tab-click="selectTab" />
 
-        <!-- FIXME: O que é essa tab? -->
-        <tab-bar :options="tabOptions" v-if="!hideTabBar" @tab-click="selectTab" />
+        <template v-for="eventData in data" :key="eventData.heading">
+          <h2 class="color:primary" v-if="hideTabBar">{{eventData.heading}}</h2>         
 
-        <mei-card-wide v-if="showHighlights" :data="data[0]" />
+          <mei-card-wide v-if="showHighlights && eventData.highlights?.length > 0" :data="eventData.highlights" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}"/>
 
-        <div v-for="tab in tabOptions" :key="tab.value" class="grid" :class="{'hidden': tabSelected !== tab.value}">
-          <mei-event-card v-for="i in data[tab.value].list"
-            :key="i.title"
-            :figType="i.figType"
-            :data="i"
-          />
-        </div>
+          <div class="grid" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}">
+            <mei-event-card v-for="i in eventData.list"
+              :key="i.title"
+              :figType="i.figType"
+              :data="i"
+            />
+          </div>
+        </template>
 
         <div v-if="!hideViewMore" class="text-align:center">
-          <!-- FIXME: Colocar link da página do Belfer -->
-          <nuxt-link to="/events/" class="button" data-color="primary" data-visual="primary">View all MEI events</nuxt-link>
+          <nuxt-link :to="moreUrl" class="button" data-color="primary" data-visual="primary">View all MEI events</nuxt-link>
         </div>
       </stack-l>
     </center-l>
@@ -28,49 +27,44 @@
 </template>
 
 <script setup>
-import { toRefs } from 'vue'
-
-const tabOptions = [
-  {
-    'label': 'Upcoming Events',
-    'value': 'upcoming',
-    'defaultOption': 'true'
-  },
-  {
-    'label': 'Past Events',
-    'value': 'past'
-  }
-]
+import { toRefs } from 'vue';
 
 const props = defineProps({
   data: {
     type: Array,
-    default: {
-      upcoming: {
-        type: Object,
-        default: {
-          list: {
-            type: Array
-          },
-          heading: {
-            type: String,
-            default: 'Upcoming Events'
-          }
-        }
-      },
-      past: {
-        type: Object,
-        default: {
-          list: {
-            type: Array
-          },
-          heading: {
-            type: String,
-            default: 'Past Events'
-          }
+    default: [{
+      type: Object,
+      default: {
+        list: {
+          type: Array
+        },
+        highlights: {
+          type: Object
+        },
+        heading: {
+          type: String,
+          default: 'Events'
         }
       }
-    }
+    }]
+  },
+  tabOptions: {
+    type: Array,
+    default: [
+      {
+        'label': 'Upcoming Events',
+        'value': 'Upcoming Events',
+        'defaultOption': 'true'
+      },
+      {
+        'label': 'Past Events',
+        'value': 'Past Events'
+      }
+    ]
+  },
+  moreUrl: {
+    type: String,
+    default: ''
   },
   showHighlights: {
     type: Boolean,
@@ -85,7 +79,7 @@ const props = defineProps({
     default: false
   },
 });
-const { hideTabBar, data, heading } = toRefs(props)
+const { data, tabOptions } = toRefs(props)
 
 const tabSelected = ref('');
 

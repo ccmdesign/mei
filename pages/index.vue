@@ -11,7 +11,7 @@
     <mei-highlights />
     <mei-about-highlight class="mei-texture-bg"/>
 
-    <mei-events :data="{upcoming: upcomingEvents, past: pastEvents}" showHighlights />
+    <mei-events :data="[upcomingEvents, pastEvents]" showHighlights moreUrl="/events/" />
 
     <mei-people-highlight class="mei-texture-bg" :options="peopleData" />
     
@@ -32,7 +32,8 @@ const today = new Date();
 
 const upcomingEvents = {
   heading: 'Upcoming Events',
-  list: reactive([])
+  list: reactive([]),
+  highlights: reactive([])
 };
 
 const pastEvents = {
@@ -47,17 +48,21 @@ let pos = 0;
 //
 do {
   if (events.length <= pos) break; // Se chegar no fim da lista de eventos.
-
   const event = events[pos];
   const eventDate = new Date(event.start_date);
 
   if (eventDate >= today) {
-    upcomingEvents.list.push(event);
+    if (!!upcomingEvents.highlights) {
+      upcomingEvents.highlights = event; // FIXME: O primeiro evento seria sempre o em destaque.
+
+    } else if (upcomingEvents.list.length < UPCOMING_MAX_EVENTS) {
+      upcomingEvents.list.push(event);
+    }
 
   } else {
     pastEvents.list = events.slice(pos, PAST_MAX_EVENTS);
   }
-
+  console.log(pastEvents)
   pos += 1;
 
 } while (pastEvents.list.length < PAST_MAX_EVENTS);
@@ -94,11 +99,6 @@ const peopleData = {
   }
 ]
 }
-
-
-
-
-
 </script>
 
 <style scoped>

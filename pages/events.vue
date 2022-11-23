@@ -6,10 +6,11 @@
       description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis."
     />
 
-    <mei-events :data="upcomingEvents.slice(UPCOMING_MAX_EVENTS)" heading="Upcoming Events" hideTabBar showHighlights hideViewMore />
+    <mei-events :data="[upcomingEvents]" hideTabBar showHighlights hideViewMore />
     
+    <!-- FIXME: Adicionar url do site da Belfer -->
     <div class="mei-texture-bg">
-      <mei-events :data="pastEvents" heading="Past Events" hideTabBar />
+      <mei-events :data="[pastEvents]" hideTabBar moreUrl="/events/" />
     </div>
 
     <mei-publications heading="News" :list="news" :options="typeOptions" />
@@ -22,8 +23,17 @@ const PAST_MAX_EVENTS = 4; // FIXME: Máximo de eventos passados sendo mostrados
 
 const events = await queryContent("event").find();
 const today = new Date();
-let upcomingEvents = reactive([]);
-let pastEvents = reactive([]);
+
+const upcomingEvents = {
+  heading: 'Upcoming Events',
+  list: reactive([]),
+  highlights: reactive([]),
+};
+
+const pastEvents = {
+  heading: 'Past Events',
+  list: reactive([]),
+};
 
 let pos = 0;
 
@@ -37,15 +47,19 @@ do {
   const eventDate = new Date(event.start_date);
 
   if (eventDate >= today) {
-    upcomingEvents.push(event);
+    if (!!upcomingEvents.highlights) {
+      upcomingEvents.highlights = event; // FIXME: O primeiro evento seria sempre o em destaque.
 
+    } else if (upcomingEvents.list.length < UPCOMING_MAX_EVENTS) {
+      upcomingEvents.list.push(event);
+    }
   } else {
-    pastEvents = events.slice(pos, PAST_MAX_EVENTS);
+    pastEvents.list = events.slice(pos, PAST_MAX_EVENTS);
   }
 
   pos += 1;
 
-} while (pastEvents.length < PAST_MAX_EVENTS);
+} while (pastEvents.list.length < PAST_MAX_EVENTS);
 
 
 // News.
