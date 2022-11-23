@@ -62,7 +62,7 @@ do {
   } else {
     pastEvents.list = events.slice(pos, PAST_MAX_EVENTS);
   }
-  console.log(pastEvents)
+
   pos += 1;
 
 } while (pastEvents.list.length < PAST_MAX_EVENTS);

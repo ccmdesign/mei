@@ -33,8 +33,8 @@ const props = defineProps({
   }
 });
 
-
 const { heading, list, options } = toRefs(props);
-const selectedValue = ref(options[0]?.value);
+
+const selectedValue = ref(options.value[0]?.value);
 
 </script>
