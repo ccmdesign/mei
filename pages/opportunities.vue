@@ -11,7 +11,7 @@
     
     <base-section color="transparent">
       <stack-l>
-        <tab-bar :options="tabs" />
+        <tab-bar :options="tabs" scroll />
         <mei-opportunity-group id="students" :content="opportunities[0]" ellipsisClass="bottom-right"/>
         <mei-opportunity-group id="faculty" :content="opportunities[1]" ellipsisClass="top-left" inverted :gradient="true" :pattern="true" />
         <mei-opportunity-group id="outside-scholars" :content="opportunities[2]" ellipsisClass="top-right"/>

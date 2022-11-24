@@ -9,7 +9,9 @@
       voluptates tenetur et consectetur omnis."
     />
 
-    <mei-publications :list="publications" :options="typeOptions" />
+    <div class="margin-top:s2 | margin-bottom:s2">
+      <mei-publications :list="publications" :options="typeOptions" />
+    </div>
 
   </article>
 </template>

@@ -10,8 +10,8 @@
         <h3 data-style="h2" class="color:primary">{{content.heading}}</h3>
         <p>{{content.excerpt}}</p>
         <stack-l>
-          <!-- ToDo: Abstract this? -->
-          <stack-l v-for="j in content.groups" class="mei-opportunity | margin-top:s2">
+          <!-- ToDo: Abstract this? --> 
+          <stack-l v-for="j in content.groups" class="mei-opportunity | margin-top:s2" :key="j.heading">
             <h4 class="color:primary | mei-opportunity__title">{{j.heading}}</h4>
             <p class="color:primary">{{j.excerpt}}</p>
             <stack-l class="mei-opportunity__list">

@@ -30,11 +30,11 @@ const menuData = [
     {
       label: 'People',
       url: '/people',
-      submenu: [
-        { label: 'Staff', url: '/people#staff' },
-        { label: 'Faculty', url: '/people#faculty' },
-        { label: 'Fellows', url: '/people#fellows' },
-      ]
+      // submenu: [
+      //   { label: 'Staff', url: '/people#staff' },
+      //   { label: 'Faculty', url: '/people#faculty' },
+      //   { label: 'Fellows', url: '/people#fellows' },
+      // ]
     },
     {
       label: 'Events',

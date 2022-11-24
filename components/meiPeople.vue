@@ -4,9 +4,9 @@
     <base-section size="m" color="transparent">
       <center-l size="wide">
         <stack-l space="var(--s3)">
-          <tab-bar :options="tabs" />
+          <tab-bar :options="tabs" scroll />
 
-          <section v-for="tab in tabs" :key="tab" :id="tab.value">
+          <section v-for="tab in tabs" :key="tab" :id="tab.value.slice(1)">
             <div class="grid">
               <mei-person-card v-for="i in peopleData[tab.value]" :data="i" :key="i.name" excerpt="false" />
             </div>
@@ -33,11 +33,11 @@ const { compact } = toRefs(props);
 const route = useRoute();
 
 const tabs = [
-  { label: 'Program Staff', value: 'staff', url: '#staff', defaultOption: 'true' },
-  { label: 'Faculty', value: 'faculty', url: '#faculty' },
-  { label: 'Senior Fellows', value: 'senior-fellows', url: '#senior-fellows' },
-  { label: 'Fellows', value: 'fellows', url: '#fellows' },
-  { label: 'Research Fellows', value: 'research-fellows', url: '#research-fellows' }
+  { label: 'Program Staff', value: '#staff', url: '#staff', defaultOption: 'true' },
+  { label: 'Faculty', value: '#faculty', url: '#faculty' },
+  { label: 'Senior Fellows', value: '#senior-fellows', url: '#senior-fellows' },
+  { label: 'Fellows', value: '#fellows', url: '#fellows' },
+  { label: 'Research Fellows', value: '#research-fellows', url: '#research-fellows' }
 ]
 
 // FIXME: O campo belfer_role é um array. O "queryContent" não suporta consultas
@@ -51,11 +51,11 @@ const _getPeople = async (role) => {
 }
 
 const peopleData = {
-  staff: await _getPeople('Staff'),
-  faculty: await _getPeople('Faculty'),
-  'senior-fellows': await _getPeople('Senior Fellow'),
-  fellows: await _getPeople('Fellow'),
-  'research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
+  '#staff': await _getPeople('Staff'),
+  '#faculty': await _getPeople('Faculty'),
+  '#senior-fellows': await _getPeople('Senior Fellow'),
+  '#fellows': await _getPeople('Fellow'),
+  '#research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
 };
 </script>
 
