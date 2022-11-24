@@ -3,13 +3,24 @@
     <center-l size="wide">
       <stack-l space="var(--s1)">
         <h2 class="color:primary">Highlights</h2>
-        <mei-card-wide />
+        <mei-card-wide v-if="highlightsData[0].content_type == 'event'" :data="highlightsData[0]"/>
+        <mei-card-wide-publication v-if="highlightsData[0].content_type == 'publication'" :data="highlightsData[0]"/>
+
         <div class="grid">
-          <base-card v-for="i in highlightsData" class="highlight-secondary"
-            :heading='i.heading'
-            :imageUrl="i.image"
+          <base-card v-for="i in highlightsData.slice(1)" class="highlight-secondary"
+            :key="i.heading"
+            :heading='i.title'
+            :imageUrl="i.image.url"
+            :htmlExcerpt="i.summary"
+            :url="i.url"
             clamp="3"
-          />
+          >
+            <!-- <template #action>
+              <base-button color="primary" el="a" :href="i.url" target="_blank">
+              Read More
+              </base-button>
+            </template> -->
+          </base-card>
         </div>
       </stack-l>
     </center-l>
@@ -17,42 +28,20 @@
 </template>
 
 <script setup>
-import meiCardWide from '@/components/meiCardWide.vue';
+const data = await queryContent('highlight').where({'content_type': {$in: ['event', 'publication']}}).find();
 
-const highlightsData = [
-  {
-    heading: 'Arab Constitutionalism: The Coming Revolution',
-    date: 'Tue., Apr. 19, 2022',
-    time: '1:30pm - 2:45pm',
-    tag: 'Online',
-    image: 'https://images.unsplash.com/photo-1561882192-c606a6e15e5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2874&q=80',
-    excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea assumenda culpa dolore, vitae amet laudantium animi! Quaerat ullam in delectus assumenda modi, asperiores voluptatem eaque nulla ab deserunt mollitia.'
-  },
-  {
-    heading: 'Arab Constitutionalism: The Coming Revolution',
-    date: 'Tue., Apr. 19, 2022',
-    time: '1:30pm - 2:45pm',
-    tag: 'Online',
-    image: 'https://images.unsplash.com/photo-1561882192-c606a6e15e5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2874&q=80',
-    excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea assumenda culpa dolore, vitae amet laudantium animi! Quaerat ullam in delectus assumenda modi, asperiores voluptatem eaque nulla ab deserunt mollitia.'
-  },
-  {
-    heading: 'Arab Constitutionalism: The Coming Revolution',
-    date: 'Tue., Apr. 19, 2022',
-    time: '1:30pm - 2:45pm',
-    tag: 'Online',
-    image: 'https://images.unsplash.com/photo-1561882192-c606a6e15e5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2874&q=80',
-    excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea assumenda culpa dolore, vitae amet laudantium animi! Quaerat ullam in delectus assumenda modi, asperiores voluptatem eaque nulla ab deserunt mollitia.'
-  },
-  {
-    heading: 'Arab Constitutionalism: The Coming Revolution',
-    date: 'Tue., Apr. 19, 2022',
-    time: '1:30pm - 2:45pm',
-    tag: 'Online',
-    image: 'https://images.unsplash.com/photo-1561882192-c606a6e15e5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2874&q=80',
-    excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea assumenda culpa dolore, vitae amet laudantium animi! Quaerat ullam in delectus assumenda modi, asperiores voluptatem eaque nulla ab deserunt mollitia.'
+for (const item of data) {
+  if (item.changed) {
+    item.changed = new Date(item.changed);
   }
-]
+}
+
+const highlightsData = reactive(data.sort((a, b) => {
+  if (a.changed < b.changed) return -1;
+  if (a.changed > b.changed) return 1;
+
+  return 0
+}));
 
 </script>
 
@@ -67,5 +56,12 @@ const highlightsData = [
   font-size: 1.2rem;
   color: var(--primary-color);
 }
+
+.highlight-secondary {
+    --card-bg-hsl: transparent;
+    --card-hover-border: none;
+    --card-border: none;
+    --card-hover-shadow: none;
+  }
 
 </style>

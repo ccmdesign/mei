@@ -9,6 +9,7 @@
     voluptates tenetur et consectetur omnis."
     />
     <mei-highlights />
+
     <mei-about-highlight class="mei-texture-bg"/>
 
     <mei-events :data="[upcomingEvents, pastEvents]" showHighlights moreUrl="/events/" />

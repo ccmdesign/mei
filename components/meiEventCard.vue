@@ -42,7 +42,7 @@
       <div>
         <base-button color="primary" el="a" :href="data.url" target="_blank">
         More
-      </base-button>
+        </base-button>
       </div>
     </template>
   </base-card>
