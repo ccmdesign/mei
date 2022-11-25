@@ -9,6 +9,7 @@
       :htmlExcerpt="data.summary"
       :imageUrl="data.image.url"
       :heading="data.title"
+      :tagline="data.publication_display_date"
       clamp="4"
     >
       <template #action>

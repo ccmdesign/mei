@@ -6,7 +6,7 @@
       :shadow="false"
       actionLabel="More"
       :fullClick="false"
-      :excerpt="data.summary"
+      :htmlExcerpt="data.summary"
       clamp="4"
     >
       <template #headings>
