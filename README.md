@@ -1,3 +1,12 @@
+## Pre requisites
+
+After cloning the repo, init the "mei-fetch-data" submodule with the following commands.
+
+```bash
+git submodule init
+git submodule update
+```
+
 # Nuxt 3 Minimal Starter
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.

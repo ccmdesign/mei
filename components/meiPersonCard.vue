@@ -5,18 +5,21 @@
       :fullClick="false"
       :url="data.url"
       :htmlExcerpt="data.biography"
-      actionLabel="More"
+      hideAction
       :imageUrl="data.avatar.url"
+      :clamp="3"
     >
       <template #headings>
         <h2 class="mei-person-card__title">
           <a class="color-primary" :href="data.url" target="_blank">
             {{ data.name }}
           </a>
-          <a class="mei-person-card__title-email icon" :href="`mailto:${data.email}`">email</a>
         </h2>
-
-        <h4 class="mei-person-card__tagline">{{ data.belfer_role[0] }}</h4>
+        <hr class="divider" />
+        <div class="mei-contact-card-section">
+          <h4 class="mei-person-card__tagline">{{ data.belfer_role[0] }}</h4>
+          <a class="mei-person-card__title-email icon" :href="`mailto:${data.email}`">email</a>
+        </div>
       </template>
     </person-card>
   </div>
@@ -45,14 +48,17 @@
     --card-headings-alignment: left;
     --card-vertical-space: var(--s1);
     background-color: transparent;
+    font-size: 1.2rem;
+    text-align: center;
   }
   .mei-person-card__title {
+    display: flex;
+    justify-content: center;
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
   }
   .mei-person-card__tagline {
-    font-size: 1rem;
     font-weight: bold;
   }
 
@@ -60,18 +66,30 @@
     margin-top: 0;
   }
 
-  @media (min-width: 40rem) {
-    .mei-person-card :deep(.circle) {
-      margin-left: 0;
-    }
-  }
-
   .mei-person-card__title :deep(a) {
     text-decoration: none;
+    font-size: 2rem;
   }
 
   .mei-person-card__title-email {
     margin-left: var(--s0);
     vertical-align: middle;
+    font-size: 2rem;
   }
+
+  .mei-contact-card-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    & a {
+      text-decoration: none;
+    }
+  }
+
+  .divider {
+    border: none;
+    height: 2px;
+    background-color: hsla(var(--base-hsl), .5);
+  }
+  
 </style>
