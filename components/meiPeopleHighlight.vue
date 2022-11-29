@@ -18,7 +18,7 @@
             >
               <template #action>
                 <!-- ToDo: update with new baseButton -->
-                <a href="/" class="button" color="primary" visual="primary">View Profile</a>
+                <a href="/" class="button center" color="primary" visual="primary">View Profile</a>
               </template>
             </person-card>
           </div>
@@ -75,8 +75,8 @@ const selectTab = (tab) => {
 }
 
 .compact-person-card :deep(h2) { 
-  color: var(--primary-color); 
-  font-size: 1.15em;
+  color: var(--base-hsl); 
+  font-size: 1.375em;
 }
 .compact-person-card :deep(h4) { --space: var(--s-2); }
 

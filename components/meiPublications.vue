@@ -7,7 +7,13 @@
 
       <hr />
       <stack-l v-for="i in list[selectedValue]" :key="i.title" space="var(--s2)">
-        <mei-card-wide-publication :data="i" />
+        <mei-card-wide-publication 
+        :summary="i.summary"
+        :title="i.title"
+        :url="i.url"
+        :image="i.image"
+        :date="i.publication_display_date"
+        />
         <hr />
       </stack-l>
 

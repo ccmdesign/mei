@@ -14,7 +14,7 @@
 
     <mei-events-highlight />
 
-    <mei-people-highlight class="mei-texture-bg" :options="peopleData" />
+    <mei-people-highlight class="mei-texture-bg" />
     
     <mei-opportunities-highlight />
 
@@ -23,40 +23,6 @@
     <mei-publications-highlight />
   </article>  
 </template>
-
-<script setup>
-// not working because mei-people-highlight props are not set up
-const peopleData = {
-  tabs: [
-    { label: 'Staff', value: 'staff', defaultOption: 'true'},
-    { label: 'Faculty Affiliates', value: 'faculty-affiliates'},
-    { label: 'Senior Fellows', value: 'senior-fellows'},
-    { label: 'Fellows', value: 'fellows'}
-  ],
-  list: [
-    {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  },
-  {
-    name: "People Data This is the name",
-    title: "This is the title",
-    bio: "This is the bio"
-  }
-]
-}
-</script>
 
 <style scoped>
 .cover { --height: 30;}

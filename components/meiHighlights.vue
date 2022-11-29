@@ -15,11 +15,11 @@
             :url="i.url"
             clamp="3"
           >
-            <!-- <template #action>
-              <base-button color="primary" el="a" :href="i.url" target="_blank">
+            <template #action>
+              <a class="highlight-secondary__action" :href="i.url" target="_blank">
               Read More
-              </base-button>
-            </template> -->
+              </a>
+            </template>
           </base-card>
         </div>
       </stack-l>
@@ -58,10 +58,16 @@ const highlightsData = reactive(data.sort((a, b) => {
 }
 
 .highlight-secondary {
-    --card-bg-hsl: transparent;
-    --card-hover-border: none;
-    --card-border: none;
-    --card-hover-shadow: none;
-  }
+  --card-bg-hsl: transparent;
+  --card-hover-border: none;
+  --card-border: none;
+  --card-hover-shadow: none;
+}
 
+.highlight-secondary__action {
+  text-decoration: underline;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+}
 </style>

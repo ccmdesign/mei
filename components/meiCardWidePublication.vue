@@ -6,17 +6,17 @@
       :shadow="false"
       actionLabel="More"
       :fullClick="false"
-      :htmlExcerpt="data.summary"
-      :imageUrl="data.image.url"
-      :heading="data.title"
-      :tagline="data.publication_display_date"
+      :htmlExcerpt="summary"
+      :heading="title"
+      :imageUrl="image.url"
+      :tagline="displayDate ? date : type"
       clamp="4"
     >
       <template #action>
         <div>
-          <base-button color="primary" visual="primary" el="a" :href="data.url" target="_blank">
-          More
-        </base-button>
+          <base-button color="primary" visual="primary" el="a" :href="url" target="_blank">
+            More
+          </base-button>
         </div>
       </template>
     </base-card>
@@ -26,14 +26,38 @@
 <script setup>
   import { toRefs } from 'vue';
 
-const props = defineProps({
-  data: {
+  const props = defineProps({
+  summary: {
+    type: String,
+    default: '',
+  },
+  title: {
+    type: String,
+    default: '',
+  },
+  image: {
     type: Object,
-    default: { }
-  }
+    default: {
+      url: '',
+      alt: '',
+      title: ''
+    },
+  },
+  date: {
+    type: String,
+    default: '',
+  },
+  type: {
+    type: String,
+    default: '',
+  },
+  displayDate: {
+    type: Boolean,
+    default: true,
+  },
 });
 
-const { data } = toRefs(props)
+const { htmlExcerpt, image, location, online, tagline, url, title } = toRefs(props)
 
 </script>
 

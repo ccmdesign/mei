@@ -12,7 +12,7 @@
               <h3 data-style="h2" class="color:primary">What is MEI</h3>
               <p>The Middle East Initiative (MEI) is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region. Tarek Masoud, Ford Foundation Professor of Democracy and Governance at Harvard Kennedy School, is MEI's Faculty Director.</p>
               <div>
-                <base-button color="primary" visual="primary">More</base-button>
+                <base-button color="primary" visual="primary" el="a" href="/about">More</base-button>
               </div>
           </div>
         </div>
