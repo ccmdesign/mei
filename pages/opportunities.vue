@@ -34,19 +34,21 @@ const opportunities = [
     imageUrl: '../assets/images/opportunities1.jpg',
     imageLabel: 'Opportunities for Harvard Students',
     heading: 'Opportunities for Harvard Students',
-    excerpt: 'The deadline to apply for the Spring 2023 Kuwait Visiting Research Fellowship has passed. Applications for this position are no longer being accepted at this time.',
+    excerpt: 'Learn more about the various degrees offered through HKS and how to apply from the <a href="https://www.hks.harvard.edu/admissions-aid/masters-program-admissions" target="_blank">Office of Admissions</a>.<br/>There are ample fellowship opportunities for prospective students from the Middle East.',
     groups: [
       {
         heading: 'J-term course',
-        excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
+        excerpt: 'Classroom-in-the-Field <strong>Leadership and Social Transformation in the Arab World</strong>',
         links: [
           {
             title: 'Current Syllabus',
-            url: '#'
+            url: '#',// Disabled button
+            disabled: true,
           },
           {
             title: 'Photos from past course',
-            url: '#'
+            url: '#',
+            disabled: true
           },
         ]
       },
@@ -55,12 +57,9 @@ const opportunities = [
         excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
         links: [
           {
-            title: 'Current Syllabus',
-            url: '#'
-          },
-          {
-            title: 'Photos from past course',
-            url: '#'
+            title: 'More Information',
+            url: '#',
+            disabled: true
           },
         ]
       }
@@ -77,12 +76,14 @@ const opportunities = [
         excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
         links: [
           {
-            title: 'Current Grants',
-            url: '#'
+            title: 'More Information',
+            url: '#',
+            disabled: true
           },
           {
-            title: 'How to apply',
-            url: '#'
+            title: 'Faculty Research Grants',
+            url: '#',
+            disabled: true
           },
         ]
       },
@@ -91,12 +92,9 @@ const opportunities = [
         excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
         links: [
           {
-            title: 'Current Grants',
-            url: '#'
-          },
-          {
-            title: 'How to apply',
-            url: '#'
+            title: 'Faculty Research Grants',
+            url: '#',
+            disabled: true
           },
         ]
       }
@@ -108,31 +106,33 @@ const opportunities = [
     heading: 'Opportunities for Scholars',
     excerpt: 'The deadline to apply for the Spring 2023 Kuwait Visiting Research Fellowship has passed. Applications for this position are no longer being accepted at this time. ',
     groups: [
-      {
-        heading: 'Emirates Leadership Initiative Research Fellowship',
-        excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
-        links: [
-          {
-            title: 'Current Grants',
-            url: '#'
-          },
-          {
-            title: 'How to apply',
-            url: '#'
-          },
-        ]
-      },
+      // {
+      //   heading: 'Emirates Leadership Initiative Research Fellowship',
+      //   excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
+      //   links: [
+      //     {
+      //       title: 'Current Grants',
+      //       url: '#'
+      //     },
+      //     {
+      //       title: 'How to apply',
+      //       url: '#'
+      //     },
+      //   ]
+      // },
       {
         heading: 'Kuwait Grants',
         excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
         links: [
           {
-            title: 'Current Grants',
-            url: '#'
+            title: 'Visiting Scholars Program',
+            url: '#',
+            disabled: true
           },
           {
-            title: 'How to apply',
-            url: '#'
+            title: 'Visiting Research Fellowship',
+            url: '#',
+            disabled: true
           },
         ]
       }

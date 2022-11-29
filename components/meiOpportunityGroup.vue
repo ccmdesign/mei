@@ -1,6 +1,6 @@
 <template>
   <div class="mei-opportunity-group" :class="{'mei-opportunity-group--gradient': gradient, 'mei-opportunity-group--pattern': pattern}">
-    <center-l size="wide" class="grid">
+    <!-- <center-l size="wide" class="grid">
       <div class="mei-opportunity-group__image" :class="ellipsisClass">
         <figure class="circle | frame">
           <img :src="content.imageUrl" :alt="content.imageLabel">
@@ -8,21 +8,20 @@
       </div>
       <div class="mei-opportunity-group__content">
         <h3 data-style="h2" class="color:primary">{{content.heading}}</h3>
-        <p>{{content.excerpt}}</p>
-        <stack-l>
+        <div v-html="content.excerpt"></div>
+        <stack-l> -->
           <!-- ToDo: Abstract this? --> 
           <stack-l v-for="j in content.groups" class="mei-opportunity | margin-top:s2" :key="j.heading">
             <h4 class="color:primary | mei-opportunity__title">{{j.heading}}</h4>
-            <p class="color:primary">{{j.excerpt}}</p>
-            <stack-l class="mei-opportunity__list">
-              <li>Current Syllabus <base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward"></base-button></li>
+            <div class="color:primary" v-html="j.excerpt"></div>
+            <stack-l class="mei-opportunity__list" v-for="link of j.links" :key="link.title">
+              <li>{{link.title }}<base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward" :disabled="link.disabled" :href="link.url"></base-button></li>
               <hr>
-              <li>Photos from past course <base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward"></base-button></li>
             </stack-l>
           </stack-l>
-        </stack-l>        
+        <!-- </stack-l>        
       </div>
-    </center-l>
+    </center-l> -->
   </div>
 </template>
 

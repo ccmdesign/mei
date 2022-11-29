@@ -16,7 +16,8 @@ const programData = [
   {
     title: 'Emirates Leadership Initiative',
     description: 'The deadline to apply for the Spring 2023 Kuwait Visiting Research Fellowship has passed. Applications for this position are no longer being accepted at this time.',
-    imageUrl: '../assets/images/emirates-logo.png'
+    imageUrl: '../assets/images/emirates-logo.png',
+    url: '/programs/emirates-leadership-initiative'
   },
   {
     title: 'Kuwait Program',
