@@ -1,6 +1,6 @@
 <template>
   <div class="mei-opportunity-group" :class="{'mei-opportunity-group--gradient': gradient, 'mei-opportunity-group--pattern': pattern}">
-    <!-- <center-l size="wide" class="grid">
+    <center-l size="wide" class="grid">
       <div class="mei-opportunity-group__image" :class="ellipsisClass">
         <figure class="circle | frame">
           <img :src="content.imageUrl" :alt="content.imageLabel">
@@ -9,7 +9,7 @@
       <div class="mei-opportunity-group__content">
         <h3 data-style="h2" class="color:primary">{{content.heading}}</h3>
         <div v-html="content.excerpt"></div>
-        <stack-l> -->
+        <stack-l>
           <!-- ToDo: Abstract this? --> 
           <stack-l v-for="j in content.groups" class="mei-opportunity | margin-top:s2" :key="j.heading">
             <h4 class="color:primary | mei-opportunity__title">{{j.heading}}</h4>
@@ -19,9 +19,9 @@
               <hr>
             </stack-l>
           </stack-l>
-        <!-- </stack-l>        
+        </stack-l>        
       </div>
-    </center-l> -->
+    </center-l>
   </div>
 </template>
 
