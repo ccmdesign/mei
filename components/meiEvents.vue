@@ -12,8 +12,17 @@
           <div class="grid" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}">
             <mei-event-card v-for="i in eventData.list"
               :key="i.title"
-              :figType="i.figType"
-              :data="i"
+              :title="i.title"
+              :htmlExcerpt="i.summary"
+              :url="i.url"
+              :tagline="i.formatedDate"
+              :tag="i.location.name === 'Online' ? 'Online' : ''"
+              :image="!!i.image.url"
+              :imageUrl="i.image.url"
+              :imageDescription="i.image.alt || i.image.name"
+              :embedCode="i.embed_code"
+              :location="i.location"
+              :figType="i.embed_code ? 'video' : 'image'" 
             />
           </div>
         </template>

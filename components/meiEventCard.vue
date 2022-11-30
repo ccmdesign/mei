@@ -3,44 +3,37 @@
     :shadow="false"
     actionLabel="More"
     :fullClick="false"
-    :htmlExcerpt="data.summary"
-    :image="!!data.image.url"
-    :imageUrl="data.image.url"
+    :htmlExcerpt="htmlExcerpt"
+    :image="image"
+    :imageUrl="imageUrl"
     clamp="4"
   >
     <template #headings>
       <stack-l>
         <h3 class="mei-event-card__title | color:primary">
-          {{ data.title }}
+          {{ title }}
         </h3>
         <div class="mei-event-card__tagline">
-          <h6 v-if="data.location.name == 'Online'" >
-            {{ data.formatedDate }}
-            <span class="mei-event-card__tag | margin-left:s-2">Online</span>
-            <!-- FIXME: Location -->
+          <h6 v-if="tag !== ''" >
+            {{ tagline }}
+            <span class="mei-event-card__tag | margin-left:s-2">{{ tag }}</span>
           </h6>
 
           <h6 v-else>
-            {{ data.formatedDate }}<br />
-            <a :href="data.location.directions" class="color-primary">{{ data.location.name }}</a>
+            {{ tagline }}<br />
+            <a :href="location.directions" class="color-primary">{{ location.name }}</a>
           </h6>
         </div>
       </stack-l>
     </template>
 
-    <template #image v-if="data.embed_code">
-      <figure class="frame" v-html="data.embed_code"></figure>
+    <template #image v-if="embedCode">
+      <figure class="frame" v-html="embedCode"></figure>
     </template>
-
-    <slot name="image">
-      <div v-if="image || imageUrl" class="base-card__img" :class="horizontal ? '' : '| frame'">
-        <img v-if="imageUrl" :src=imageUrl :alt=imageDescription>
-      </div>
-    </slot>
 
     <template #action>
       <div>
-        <base-button color="primary" el="a" :href="data.url" target="_blank">
+        <base-button color="primary" el="a" :href="url" target="_blank">
         More
         </base-button>
       </div>
@@ -56,22 +49,52 @@ const props = defineProps({
     type: String,
     default: 'image'
   },
-  data: {
+  htmlExcerpt: {
+    type: String,
+    default: '',
+  },
+  image: {
+    type: Boolean,
+    default: false,
+  },
+  imageUrl: {
+    type: String,
+    default: '',
+  },
+  imageDescription: {
+    type: String,
+    default: '',
+  },
+  title: {
+    type: String,
+    default: '',
+  },
+  url: {
+    type: String,
+    default: '',
+  },
+  tagline: {
+    type: String,
+    default: '',
+  },
+  embedCode: {
+    type: String,
+    default: '',
+  },
+  tag: {
+    type: String,
+    default: '',
+  },
+  location: {
     type: Object,
     default: {
-      url: '',
-      title: 'Title',
-      location: {
-        name: '',
-        directions: ''
-      },
-      summary: '',
-      formatedDate: ''
-    }
-  }
+      name: '',
+      directions: ''
+    },
+  },
 });
 
-const { url, data } = toRefs(props)
+const { url, location, tag, tagline, embedCode, image, imageDescription, imageUrl } = toRefs(props)
 
 </script>
 

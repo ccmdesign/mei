@@ -22,7 +22,6 @@
 </template>
 
 <script setup>
-import tabBar from '@/components/tabBar.vue';
 const tabs = [
   { label: 'Students', value: '#students', url: '#students'},
   { label: 'Faculty', value: '#faculty', url: '#faculty'},
