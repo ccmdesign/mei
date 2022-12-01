@@ -7,7 +7,7 @@
       :htmlExcerpt="data.biography"
       hideAction
       :imageUrl="data.avatar.url"
-      :clamp="3"
+      clamp=3
     >
       <template #headings>
         <h2 class="mei-person-card__title">
@@ -18,7 +18,7 @@
         <hr class="divider" />
         <div class="mei-contact-card-section">
           <h4 class="mei-person-card__tagline">{{ data.belfer_role[0] }}</h4>
-          <a class="mei-person-card__title-email icon" :href="`mailto:${data.email}`">email</a>
+          <a v-if="data.email" class="mei-person-card__title-email icon" :href="`mailto:${data.email}`">email</a>
         </div>
       </template>
     </person-card>

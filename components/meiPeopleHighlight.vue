@@ -33,22 +33,23 @@
 </template>
 
 <script setup>
-// FIXME: Get Highlighted people.
 const _getPeople = async (role) => {
-  const query = {'belfer_role': [role]};
-  
-  // FIXME: Limitar a quantidade de highlighted para 4.
-  return await queryContent('person').where(query).limit(4).find();
-}
-const tabSelected = ref('staff');
+  const query = {'content_type': 'person', 'belfer_role': [role]};
+  const data = await queryContent('highlight').where(query).find();
 
-const tabOptions = [
-  { label: 'Staff', value: 'staff', defaultOption: 'true'},
-  { label: 'Faculty', value: 'faculty'},
-  { label: 'Senior Fellows', value: 'senior-fellows'},
-  { label: 'Fellows', value: 'fellows'},
-  { label: 'Research Fellows', value: 'research-fellows'}
-];
+  for (const item of data) {
+    if (item.changed) {
+      item.changed = new Date(item.changed);
+    }
+  }
+
+  return reactive(data.sort((a, b) => {
+    if (a.changed < b.changed) return -1;
+    if (a.changed > b.changed) return 1;
+
+    return 0
+  }).slice(4));
+}
 
 const peopleData = {
   staff: await _getPeople('Staff'),
@@ -57,6 +58,32 @@ const peopleData = {
   fellows: await _getPeople('Fellow'),
   'research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
 };
+
+const tabOptions = [];
+let firstOption = '';
+
+if (peopleData.staff.length > 0) {
+  tabOptions.push({label: 'Staff', value: 'staff'});
+  firstOption = 'staff';
+}
+if (peopleData.faculty.length > 0) {
+  tabOptions.push({label: 'Faculty', value: 'faculty'});
+  if (firstOption === '') firstOption = 'faculty';
+}
+if (peopleData['senior-fellows'].length > 0) {
+  tabOptions.push({label: 'Senior Fellows', value: 'senior-fellows'});
+  if (firstOption === '') firstOption = 'senior-fellows';
+}
+if (peopleData.fellows.length > 0) {
+  tabOptions.push({label: 'Fellows', value: 'fellows'});
+  if (firstOption === '') firstOption = 'fellows';
+}
+if (peopleData['research-fellows'].length > 0) {
+  tabOptions.push({label: 'Research Fellows', value: 'research-fellows'});
+  if (firstOption === '') firstOption = 'research-fellows';
+}
+
+const tabSelected = ref(firstOption);
 
 const selectTab = (tab) => {
   tabSelected.value = tab;

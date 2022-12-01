@@ -13,7 +13,7 @@
             :imageUrl="i.image.url"
             :htmlExcerpt="i.summary"
             :url="i.url"
-            clamp="3"
+            clamp=3
           >
             <template #action>
               <a class="highlight-secondary__action" :href="i.url" target="_blank">

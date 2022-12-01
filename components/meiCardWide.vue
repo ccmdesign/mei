@@ -32,7 +32,8 @@
 
       <template #image>
         <div class="base-card__img">
-          <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
+          <div class="brown">{{data.content_type}}</div>
+          <img :src="data.image.url" :alt="(data.image.alt || data.image.title)">
         </div>
       </template>
 
@@ -107,5 +108,20 @@ const { data } = toRefs(props)
     color: var(--white-color);
     padding: var(--s-3) var(--s-2);
     font-size: 90%;
+  }
+
+  .base-card__img {
+    position: relative;
+    
+    & .brown {
+      position: absolute;
+      padding: 0 var(--s-1);
+      margin: var(--s0);
+      font-family: var(--display-font);
+      color: var(--white-color);
+      background-color: var(--primary-color);
+      border-radius: var(--s-2);
+      text-transform: capitalize;
+    }
   }
 </style>

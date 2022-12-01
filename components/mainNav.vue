@@ -3,9 +3,14 @@
     <button class="nav__trigger"><i class="icon" @click="openMenu()">menu</i></button>
     <ul class="nav__list">
       <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu='i.submenu'>
-        <nuxtLink v-if="i.url" :to="i.url" class="nav__item" :class="{submenuActive: i.submenu}">{{ i.label }}</nuxtLink>
-        <span v-else class="nav__item">{{ i.label }}</span>
-        
+        <nuxtLink v-if="i.url" :to="i.url" class="nav__item" :class="{submenuActive: i.submenu}">
+          {{ i.label }}
+        </nuxtLink>
+
+        <span v-else class="nav__item">
+          {{ i.label }}
+        </span>
+
         <ul v-if="i.submenu" class="nav__submenu">
           <li v-for="j in i.submenu" :key="j.url">
             <nuxtLink v-if="j.url" :to="j.url" class="nav__item" :disabled=i.disabled :title="j.label">{{ j.label }}</nuxtLink>
@@ -17,46 +22,44 @@
 </template>
 
 <script setup>
-
 const openMenu = function() {
   
 }
 
 const menuData = [
-    {
-      label: 'About',
-      url: '/about'
-    },
-    {
-      label: 'People',
-      url: '/people',
-      // submenu: [
-      //   { label: 'Staff', url: '/people#staff' },
-      //   { label: 'Faculty', url: '/people#faculty' },
-      //   { label: 'Fellows', url: '/people#fellows' },
-      // ]
-    },
-    {
-      label: 'Events',
-      url: '/events'
-    },
-    {
-      label: 'Publications',
-      url: '/publications'
-    },
-    {
-      label: 'Opportunities',
-      url: '/opportunities'
-    },
-    {
-      label: 'Programs',
-      url: '/programs'
-    },
-  ]
+  {
+    label: 'About',
+    url: '/about'
+  },
+  {
+    label: 'People',
+    url: '/people',
+    // submenu: [
+    //   { label: 'Staff', url: '/people#staff' },
+    //   { label: 'Faculty', url: '/people#faculty' },
+    //   { label: 'Fellows', url: '/people#fellows' },
+    // ]
+  },
+  {
+    label: 'Events',
+    url: '/events'
+  },
+  {
+    label: 'Publications',
+    url: '/publications'
+  },
+  {
+    label: 'Opportunities',
+    url: '/opportunities'
+  },
+  {
+    label: 'Programs',
+    url: '/programs'
+  },
+]
 </script>
 
 <style lang="scss" scoped>
-
 .nav { display: flex; }
 
 .nav__trigger {
@@ -69,16 +72,17 @@ const menuData = [
   border-bottom: 1px solid hsla(var(--base-hsl), .2);
 }
 
-.nav ul {  }
-
 .nav__list,
 .nav__list li,
 .nav__item { display: inherit; }
 
 .nav__list li { align-items: stretch; }
+
 .nav__item { 
   align-items: center; 
-  color: white !important;
+  color: var(--white-color) !important;
+  font-weight: 700;
+  border: none;
 }
 
 .nav__list { 
@@ -123,9 +127,7 @@ const menuData = [
   flex-direction: column;
   align-items: stretch;
   background-color: var(--topbar-bg);
-  
 }
-
 
 @media (min-width: 35.98em) {
   .nav__submenu { display: none; }
@@ -137,7 +139,6 @@ const menuData = [
   .nav__submenu .nav__item {
     padding-block: var(--s-1);
   }
-
 }
 
 @media (max-width: 35.98em) { 
@@ -148,8 +149,6 @@ const menuData = [
     position: fixed;
     z-index: 100;
     width: 100vw;
-    // top: calc(100vh - 40px);
-    // bottom: -600px;
     top: 100vh;
     margin-top: -60px;
     transition: all .4s ease;
@@ -180,9 +179,6 @@ const menuData = [
   .nav__submenu { position: relative; }
 }
 
-.lang-switcher-parent {
-}
-
 .lang-switcher {
   text-transform: uppercase;
   border: none;
@@ -198,9 +194,9 @@ const menuData = [
   }
 }
 
-  .lang-switcher__list-selector {
-    text-transform: uppercase;
-  }
+.lang-switcher__list-selector {
+  text-transform: uppercase;
+}
 
-  .logo { flex-shrink: 0; }
+.logo { flex-shrink: 0; }
 </style>

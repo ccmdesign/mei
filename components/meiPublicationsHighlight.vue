@@ -36,7 +36,19 @@ const publicationsTypes = [
 'Book Chapter',
 ];
 
-// FIXME: Pegar os highlights e limitar em dois.
-const highlights = await queryContent("publication").where({type: {$in: publicationsTypes}}).limit(2).find();
-</script>
+const query = {type: {$in: publicationsTypes}, content_type: 'publication'};
+const data = await queryContent('highlight').where(query).find();
 
+for (const item of data) {
+  if (item.changed) {
+    item.changed = new Date(item.changed);
+  }
+}
+
+const highlights = reactive(data.sort((a, b) => {
+  if (a.changed < b.changed) return -1;
+  if (a.changed > b.changed) return 1;
+
+  return 0
+}).slice(2));
+</script>

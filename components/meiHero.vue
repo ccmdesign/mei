@@ -35,9 +35,7 @@
 </script>
 
 <style lang="scss" scoped>
-  
-
-  .mei-description {
+    .mei-description {
     max-width: 65ch;
 
     > * {
@@ -47,6 +45,11 @@
 
     :not(:first-child) {
       font-weight: 400;
+    }
+
+    :deep(h1) {
+      font-size: 2.625rem;
+      font-weight: 700;
     }
   }
 </style>
