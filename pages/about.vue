@@ -3,7 +3,7 @@
     <mei-hero
       background="../assets/images/about-hero.png"
       title="About"
-      description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis."
+      description="The Middle East Initiative (MEI) is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />
 
     <base-section size="l">
@@ -27,10 +27,12 @@
           <div class="grid">
             <stack-l space="var(--s2)">
               <h2>What we do</h2>
-              <p>The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis.</p>
+              <!-- FIXME: Get content -->
+              <p>The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis.</p> 
             </stack-l>
             <stack-l space="var(--s2)">
               <h2>Why we do it</h2>
+              <!-- FIXME: Get content -->
               <p>The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nesciunt nostrum deleniti reprehenderit delectus facere quibusdam aliquam temporibus numquam, dolore error hic dolorem iste nobis voluptates tenetur et consectetur omnis.</p>
             </stack-l>
             
