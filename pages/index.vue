@@ -3,10 +3,7 @@
     <mei-hero 
       background="../assets/images/home-bg.png"
       title="Middle East Initiative"
-      description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-    nesciunt nostrum deleniti reprehenderit delectus facere quibusdam
-    aliquam temporibus numquam, dolore error hic dolorem iste nobis
-    voluptates tenetur et consectetur omnis."
+      description="The Middle East Initiative at Harvard Kennedy School is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />
     <mei-highlights />
 

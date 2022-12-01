@@ -1,9 +1,24 @@
 <template>
-  <base-card class="mei-program-card" />
+  <base-card class="mei-program-card">
+    <template #action>
+      <div>
+        <base-button color="primary" visual="primary" el="a" :href="url" target="_blank">
+          More
+        </base-button>
+      </div>
+    </template>
+  </base-card>
 </template>
 
 <script setup>
+const props = defineProps({
+  url: {
+    type: String,
+    default: ''
+  }
+});
 
+const { url } = toRefs(props);
 </script>
 
 <style lang="scss" scoped>
@@ -22,5 +37,4 @@
 }
 
 .mei-program-card :deep(.card-action) { align-self: self-start; }
-
 </style>

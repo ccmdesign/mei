@@ -5,33 +5,14 @@
         <stack-l>
           <h2 class="color:primary">Special Initiatives</h2>
           <div class="grid">
-            <div>
-              <h4 class="color:primary">Emirated Leadership</h4>
+            <div v-for="program of content" :key="program.title">
+              <h4 class="mei-programs__heading | color:primary">{{program.title}}</h4>
               <mei-program-card 
                 heading=""
-                excerpt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In suscipit iste soluta nam, quo non corporis inventore similique? Enim dolorum ut nisi optio eveniet quas ipsa incidunt distinctio reprehenderit officiis."
-                imageUrl="../assets/images/emirates-logo.png"
-                customSlug="/program-emirates/"
-              />
-            </div>
-            <div>
-              <h4 class="color:primary">Kwait Program</h4>
-              <mei-program-card 
-                customClass="kwait-card"  
-                heading=""
-                excerpt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In suscipit iste soluta nam, quo non corporis inventore similique? Enim dolorum ut nisi optio eveniet quas ipsa incidunt distinctio reprehenderit officiis."
-                imageUrl="../assets/images/kwait-logo.png"
-                customSlug="/program-kwait/"
-              />
-            </div>
-            <div>
-              <h4 class="color:primary">Tunisia Program</h4>
-              <mei-program-card 
-                customClass="tunisia-card"  
-                heading=""
-                excerpt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. In suscipit iste soluta nam, quo non corporis inventore similique? Enim dolorum ut nisi optio eveniet quas ipsa incidunt distinctio reprehenderit officiis."
-                imageUrl="../assets/images/kwait-logo.png"
-                customSlug="/program-tunisia/"
+                :excerpt="program.excerpt"
+                :imageUrl="program.imageUrl"
+                :url="program.url"
+                :customClass="program.class"
               />
             </div>
           </div>
@@ -42,16 +23,38 @@
 </template>
 
 <script setup>
-import meiProgramCard from '@/components/meiProgramCard.vue';
+const content = [{
+    title: 'Emirated Leadership',
+    excerpt: 'The program provides the critical opportunities needed for emerging leaders from the United Arab Emirates and the Middle East to confront the region’s public policy issues in question through a multi-pronged approach.',
+    imageUrl: '../assets/images/emirates-logo.png',
+    url: '/program-emirates'
+  },
+  {
+    title: 'Kwait Program',
+    class: "kwait-card",
+    excerpt: "The Kuwait Program serves current and emerging leaders and decision-makers in Kuwait, the Gulf Cooperation Council, and the wider Arab world through opportunities for cooperation on critical issues of importance to Kuwait and the region.",
+    imageUrl: "../assets/images/kwait-logo.png",
+    url: "/program-kwait/",
+  },
+  {
+    title: 'Tunisia Program',
+    class: "tunisia-card",
+    excerpt: "", // FIXME: Need content
+    imageUrl: "../assets/images/tunisia-logo.png",
+    url: "/program-tunisia/",
+  }
+]
 </script>
 
 <style lang="scss" scoped>
-
 .grid { grid-gap: var(--s1) }
 
 @media (min-width: 40em) {
   .grid { grid-gap: var(--s2) }
 }
 
-// .kwait-card { --card-image-fit: none; }
+
+.mei-programs__heading {
+  font-weight: 700;
+}
 </style>
