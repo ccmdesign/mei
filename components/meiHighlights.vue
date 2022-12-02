@@ -3,7 +3,15 @@
     <center-l size="wide">
       <stack-l space="var(--s1)">
         <h2 class="color:primary">Highlights</h2>
-        <mei-card-wide v-if="highlightsData[0].content_type == 'event'" :data="highlightsData[0]"/>
+        <mei-card-wide v-if="highlightsData[0].content_type == 'event'"
+          :summary="highlightsData[0].summary"
+          :title="highlightsData[0].title"
+          :url="highlightsData[0].url"
+          :location="highlightsData[0].location"
+          :formatedDate="highlightsData[0].formatedDate"
+          :image="highlightsData[0].image"
+          :contentType="highlightsData[0].content_type" 
+        />
         <mei-card-wide-publication v-if="highlightsData[0].content_type == 'publication'" :data="highlightsData[0]"/>
 
         <div class="grid">

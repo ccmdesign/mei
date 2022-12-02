@@ -7,9 +7,18 @@
         <template v-for="eventData in data" :key="eventData.heading">
           <h2 class="color:primary" v-if="hideTabBar">{{eventData.heading}}</h2>         
 
-          <mei-card-wide v-if="showHighlights && eventData.highlights?.length > 0" :data="eventData.highlights" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}"/>
+          <mei-card-wide v-if="showHighlights"
+            :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}"
+            :summary="eventData.highlights.summary"
+            :title="eventData.highlights.title"
+            :url="eventData.highlights.url"
+            :location="eventData.highlights.location"
+            :formatedDate="eventData.highlights.formatedDate"
+            :image="eventData.highlights.image"
+            :contentType="eventData.highlights.content_type" 
+          />
 
-          <div class="grid" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}">
+          <div class="grid" v-if="(eventData.list.length > 0)" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}">
             <mei-event-card v-for="i in eventData.list"
               :key="i.title"
               :title="i.title"
@@ -25,6 +34,7 @@
               :figType="i.embed_code ? 'video' : 'image'" 
             />
           </div>
+          <h4 v-else class="center | color:secondary" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}">There are no upcoming events at the moment.</h4>
         </template>
 
         <div v-if="!hideViewMore" class="text-align:center">
@@ -42,19 +52,9 @@ const props = defineProps({
   data: {
     type: Array,
     default: [{
-      type: Object,
-      default: {
-        list: {
-          type: Array
-        },
-        highlights: {
-          type: Object
-        },
-        heading: {
-          type: String,
-          default: 'Events'
-        }
-      }
+      list: [],
+      highlights: [],
+      heading: 'Events'
     }]
   },
   tabOptions: {
@@ -90,7 +90,7 @@ const props = defineProps({
 });
 const { data, tabOptions } = toRefs(props)
 
-const tabSelected = ref('');
+const tabSelected = ref('Upcoming Events');  // FIXME: Make this dinamic.
 
 const selectTab = (tab) => {
   tabSelected.value = tab;

@@ -6,25 +6,24 @@
       :shadow="false"
       actionLabel="More"
       :fullClick="false"
-      :htmlExcerpt="data.summary"
+      :htmlExcerpt="summary"
       clamp="4"
     >
       <template #headings>
         <stack-l>
           <h3 class="mei-card-wide__title | color:primary">
-            {{ data.title }}
+            {{ title }}
           </h3>
 
           <div class="mei-card-wide__tagline">
-            <h6 v-if="data.location.name == 'Online'" >
-              {{ data.formatedDate }}
+            <h6 v-if="location.name == 'Online'" >
+              {{ formatedDate }}
               <span class="mei-card-wide__tag | margin-left:s-2">Online</span>
-              <!-- FIXME: Location -->
             </h6>
 
             <h6 v-else>
-              {{ data.formatedDate }}<br />
-              <a :href="data.location.directions" class="color-primary">{{ data.location.name }}</a>
+              {{ formatedDate }}<br />
+              <a :href="location.directions" class="color-primary">{{ location.name }}</a>
             </h6>
           </div>
         </stack-l>
@@ -32,14 +31,14 @@
 
       <template #image>
         <div class="base-card__img">
-          <div class="brown">{{data.content_type}}</div>
-          <img :src="data.image.url" :alt="(data.image.alt || data.image.title)">
+          <div class="brown">{{contentType}}</div>
+          <img :src="image.url" :alt="(image.alt || image.title)">
         </div>
       </template>
 
       <template #action>
         <div>
-          <base-button color="primary" visual="primary" el="a" :href="data.url" target="_blank">
+          <base-button color="primary" visual="primary" el="a" :href="url" target="_blank">
           More
         </base-button>
         </div>
@@ -52,22 +51,44 @@
   import { toRefs } from 'vue';
 
 const props = defineProps({
-  data: {
-    type: Object,
+  summary: {
+    type: String,
+    default: '',
+  },
+  title: {
+    type: String,
+    default: '',
+  },
+  url: {
+    type: String,
+    default: '',
+  },
+  location:  {
+    type: String,
     default: {
-      summary: '',
-      title: 'Title',
-      url: '',
-      location: {
-        name: '',
-        directions: ''
-      },
-      formatedDate: ''
+      name: '',
+      directions: ''
     }
-  }
+  },
+  formatedDate: {
+    type: String,
+    default: '',
+  },
+  image:  {
+    type: String,
+    default: {
+      alt: '',
+      title: '',
+      url: '',
+    }
+  },
+  contentType: {
+    type: String,
+    default: '',
+  },
 });
 
-const { data } = toRefs(props)
+const { summary, title, url, location, formatedDate, image } = toRefs(props)
 
 </script>
 
