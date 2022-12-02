@@ -3,10 +3,7 @@
     <mei-hero
       background="../assets/images/opportunities-hero.jpg"
       title="Opportunities"
-      description="The Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-      nesciunt nostrum deleniti reprehenderit delectus facere quibusdam
-      aliquam temporibus numquam, dolore error hic dolorem iste nobis
-      voluptates tenetur et consectetur omnis."
+      description="The Middle East Initiative at Harvard Kennedy School is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />
     
     <base-section color="transparent">
@@ -33,7 +30,7 @@ const opportunities = [
     imageUrl: '../assets/images/opportunities1.jpg',
     imageLabel: 'Opportunities for Harvard Students',
     heading: 'Opportunities for Harvard Students',
-    excerpt: 'Learn more about the various degrees offered through HKS and how to apply from the <a href="https://www.hks.harvard.edu/admissions-aid/masters-program-admissions" target="_blank">Office of Admissions</a>.<br/>There are ample fellowship opportunities for prospective students from the Middle East.',
+    excerpt: 'Learn more about the various degrees offered through HKS and how to apply from the <a href="http://www.hks.harvard.edu/degrees/admissions/overview" target="_blank">Office of Admissions</a>. There are ample fellowship opportunities for prospective students from the Middle East.',
     groups: [
       {
         heading: 'J-term course',
@@ -68,7 +65,7 @@ const opportunities = [
     imageUrl: '../assets/images/opportunities2.jpg',
     imageLabel: 'Research Grants for Harvard Faculty',
     heading: 'Research Grants for Harvard Faculty',
-    excerpt: 'The deadline to apply for the Spring 2023 Kuwait Visiting Research Fellowship has passed. Applications for this position are no longer being accepted at this time. ',
+    excerpt: 'We accept research proposals for projects that target major policy issues affecting the Middle East and North Africa. Details regarding priority topic areas for each program are can be found below.',
     groups: [
       {
         heading: 'Emirates Leadership Initiative Research Fellowship',
@@ -103,7 +100,7 @@ const opportunities = [
     imageUrl: '../assets/images/opportunities3.jpg',
     imageLabel: 'Opportunities for Scholars',
     heading: 'Opportunities for Scholars',
-    excerpt: 'The deadline to apply for the Spring 2023 Kuwait Visiting Research Fellowship has passed. Applications for this position are no longer being accepted at this time. ',
+    excerpt: 'We hosts senior policymakers and academics to engage with students and faculty as a visiting scholar as part of our programs. We focus on applications from scholars working on contemporary issues of policy relevance to the Middle East, and the Arabian Gulf in particular, in the disciplines of political science, economics, history, and sociology.',
     groups: [
       // {
       //   heading: 'Emirates Leadership Initiative Research Fellowship',
