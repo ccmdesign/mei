@@ -7,10 +7,9 @@
     />
 
     <mei-events :data="[upcomingEvents]" hideTabBar :showHighlights="(upcomingEvents.highlights.length > 0)" hideViewMore />
-    
-    <!-- FIXME: Adicionar url do site da Belfer -->
+      
     <div class="mei-texture-bg">
-      <mei-events :data="[pastEvents]" hideTabBar moreUrl="/events/" />
+      <mei-events :data="[pastEvents]" hideTabBar />
     </div>
 
     <mei-publications heading="News" :list="news" :options="typeOptions" />

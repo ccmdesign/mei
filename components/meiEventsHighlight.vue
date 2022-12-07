@@ -1,11 +1,9 @@
 <template>
   <base-section size="m" color="transparent">
     <center-l size="wide">
-      <stack-l space="var(--s3)">
-        <h2 class="color:primary">Events</h2>
-        <mei-events :data="[upcomingEvents, pastEvents]" :showHighlights="(upcomingEvents.highlights.length > 0)" moreUrl="/events/" />
-      </stack-l>
+      <h2 class="color:primary">Events</h2>
     </center-l>
+    <mei-events :data="[upcomingEvents, pastEvents]" :showHighlights="(upcomingEvents.highlights.length > 0)"/>
   </base-section>
 </template>
 

@@ -3,11 +3,13 @@
     :shadow="false"
     actionLabel="More"
     :fullClick="false"
+    excerpt=""
     :htmlExcerpt="htmlExcerpt"
     :image="image"
     :imageUrl="imageUrl"
-    clamp="4"
+    clamp=4
   >
+  
     <template #headings>
       <stack-l>
         <h3 class="mei-event-card__title | color:primary">
@@ -94,7 +96,7 @@ const props = defineProps({
   },
 });
 
-const { url, location, tag, tagline, embedCode, image, imageDescription, imageUrl } = toRefs(props)
+const { url, location, tag, tagline, embedCode, image, imageDescription, imageUrl, htmlExcerpt } = toRefs(props)
 
 </script>
 
@@ -105,6 +107,7 @@ const { url, location, tag, tagline, embedCode, image, imageDescription, imageUr
   --card-frame-d: 16; 
   --card-frame-n: 9;
   --card-padding: 0;
+  --card-hover-shadow: none;
   background-color: transparent;
 }
 

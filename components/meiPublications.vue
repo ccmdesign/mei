@@ -1,29 +1,31 @@
 <template>
-  <center-l size="wide">
-    <stack-l space="var(--s0)">
-      <h2 v-if="heading" class="color:primary">{{heading}}</h2>
+  <base-section color="transparent">
+    <center-l size="wide">
+      <stack-l space="var(--s0)">
+        <h2 v-if="heading" class="color:primary">{{heading}}</h2>
 
-      <sorting-header :itemsCount="list[selectedValue]?.length" :typeOptions="options" v-model="selectedValue" />
+        <sorting-header :itemsCount="list[selectedValue]?.length" :typeOptions="options" v-model="selectedValue" />
 
-      <hr />
-      <stack-l v-for="i in list[selectedValue]" :key="i.title" space="var(--s2)">
-        <mei-card-wide-publication 
-        :summary="i.summary"
-        :title="i.title"
-        :url="i.url"
-        :image="i.image"
-        :date="i.publication_display_date"
-        />
         <hr />
-      </stack-l>
+        <stack-l v-for="i in list[selectedValue]" :key="i.title" space="var(--s2)">
+          <mei-card-wide-publication 
+          :summary="i.summary"
+          :title="i.title"
+          :url="i.url"
+          :image="i.image"
+          :date="i.publication_display_date"
+          />
+          <hr />
+        </stack-l>
 
-      <div class="text-align:center">
-        <base-button color="primary" visual="primary">
-          View more updates
-        </base-button>
-      </div>
-    </stack-l>
-  </center-l>
+        <div class="text-align:center">
+          <base-button color="primary" visual="primary">
+            View more updates
+          </base-button>
+        </div>
+      </stack-l>
+    </center-l>
+  </base-section>
 </template>
 
 <script setup>

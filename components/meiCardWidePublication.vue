@@ -6,8 +6,11 @@
       :shadow="false"
       actionLabel="More"
       :fullClick="false"
+      :url="url"
+      excerpt=""
       :htmlExcerpt="summary"
       :heading="title"
+      :image="!!image.url"
       :imageUrl="image.url"
       :tagline="displayDate ? date : type"
       clamp="4"
@@ -55,9 +58,13 @@
     type: Boolean,
     default: true,
   },
+  url: {
+    type: String,
+    default: ''
+  }
 });
 
-const { htmlExcerpt, image, location, online, tagline, url, title } = toRefs(props)
+const { htmlExcerpt, image, location, online, tagline, title, url } = toRefs(props)
 
 </script>
 
@@ -70,8 +77,8 @@ const { htmlExcerpt, image, location, online, tagline, url, title } = toRefs(pro
     --card-gap: var(--s3);
     // ToDo: Replace the switcher with a grid in the card-wide
     --switcher-threshold: 500px !important;
-    --card-horizontal-image-ratio: 4;
-    --card-horizontal-content-ratio: 3;
+    // --card-horizontal-image-ratio: 4;
+    // --card-horizontal-content-ratio: 3;
   }
 
   .mei-card-wide-publication[horizontal="true"] .base-card__img {
