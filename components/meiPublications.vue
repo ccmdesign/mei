@@ -17,12 +17,6 @@
           />
           <hr />
         </stack-l>
-
-        <div class="text-align:center">
-          <base-button color="primary" visual="primary">
-            View more updates
-          </base-button>
-        </div>
       </stack-l>
     </center-l>
   </base-section>
