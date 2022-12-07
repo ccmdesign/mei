@@ -33,7 +33,7 @@ const { compact } = toRefs(props);
 const route = useRoute();
 
 const tabs = [
-  { label: 'Program Staff', value: '#staff', url: '#staff', defaultOption: 'true' },
+  { label: 'Program Staff', value: '#staff', url: '#staff' },
   { label: 'Faculty', value: '#faculty', url: '#faculty' },
   { label: 'Senior Fellows', value: '#senior-fellows', url: '#senior-fellows' },
   { label: 'Fellows', value: '#fellows', url: '#fellows' },
@@ -45,7 +45,7 @@ const tabs = [
 // Atualmente só considera os items com um único valor correspondendo ao papel(role) pesquisado.
 // exemplo: lewis-m-branscomb.json
 const _getPeople = async (role) => {
-  const query = {'belfer_role': [role]};
+  const query = {'category': role};
 
   return await queryContent('person').where(query).find();
 }

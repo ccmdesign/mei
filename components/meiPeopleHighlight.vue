@@ -34,7 +34,7 @@
 
 <script setup>
 const _getPeople = async (role) => {
-  const query = {'content_type': 'person', 'belfer_role': [role]};
+  const query = {'content_type': 'person', 'category': role};
   const data = await queryContent('highlight').where(query).find();
 
   for (const item of data) {

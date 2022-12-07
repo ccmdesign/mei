@@ -10,7 +10,7 @@
       <center-l size="wide">
         <mei-people-wide 
         :url="person.url"
-        :role="(person.display_title || person.belfer_role[0])"
+        :role="(data.display_titles[0] || data.category)"
         :email="person.email"
         :name="person.name"
         :biography="person.biography"

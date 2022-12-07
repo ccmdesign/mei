@@ -17,7 +17,7 @@
         </h2>
         <hr class="divider" />
         <div class="mei-contact-card-section">
-          <h4 class="mei-person-card__tagline">{{ data.belfer_role[0] }}</h4>
+          <h4 class="mei-person-card__tagline">{{( data.display_titles[0] || data.category )}}</h4>
           <a v-if="data.email" class="mei-person-card__title-email icon" :href="`mailto:${data.email}`">email</a>
         </div>
       </template>
@@ -35,7 +35,7 @@
         name: "Person Name",
         url: "/person-name",
         email: "example@email.com",
-        job: "Job Title", // FIXME: Belfer-role or official_titles? Both are arrays.
+        job: "Job Title", // FIXME: ( data.display_titles[0] || data.category )
       },
     },
   });
