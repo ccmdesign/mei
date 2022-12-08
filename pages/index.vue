@@ -12,8 +12,8 @@
     <mei-events-highlight />
 
     <mei-people-highlight class="mei-texture-bg" />
-    
-    <mei-opportunities-highlight />
+    <!-- FIXME: Remover o componente -->
+    <!-- <mei-opportunities-highlight /> -->
 
     <mei-programs-highlight />
 
