@@ -1,28 +1,30 @@
 <template>
-  <div class="mei-people-section"> <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
+  <div v-if="hasPeopleHighlighted" class="mei-people-section" > <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
     <base-section size="m" color="transparent">
       <center-l size="wide">
         <stack-l space="var(--s3)">
           <h2 class="color:primary">Our People</h2>
 
-          <tab-bar :options="tabOptions" @tab-click="selectTab" />
-
-          <div v-for="tab in tabOptions" :key="tab.value" class="grid" :class="{'hidden': tab.value !== tabSelected}">
-            <person-card v-for="i in peopleData[tab.value]"
-            class="compact-person-card"
-            :key="i.name"
-            :heading="i.name"
-            :tagline="i.official_titles.join(',')" 
-            :imageUrl="i.avatar.url"
-            excerpt=""
-            >
+          <template>
+            <tab-bar :options="tabOptions" @tab-click="selectTab" />
+            
+            <div v-for="tab in tabOptions" :key="tab.value" class="grid" :class="{'hidden': tab.value !== tabSelected}">
+              <person-card v-for="i in peopleData[tab.value]"
+              class="compact-person-card"
+              :key="i.name"
+              :heading="i.name"
+              :tagline="i.official_titles.join(',')" 
+              :imageUrl="i.avatar.url"
+              excerpt=""
+              >
               <template #action>
                 <!-- ToDo: update with new baseButton -->
                 <a href="/" class="button center" color="primary" visual="primary">View Profile</a>
               </template>
             </person-card>
           </div>
-          <div class="text-align:center margin-top:s3" >
+        </template>
+        <div class="text-align:center margin-top:s3" >
             <!-- ToDo: update with new baseButton -->
             <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
           </div>
@@ -61,30 +63,35 @@ const peopleData = {
 
 const tabOptions = [];
 let firstOption = '';
+let hasPeopleHighlighted = false;
 
 if (peopleData.staff.length > 0) {
   tabOptions.push({label: 'Staff', value: 'staff'});
   firstOption = 'staff';
+  hasPeopleHighlighted = true;
 }
 if (peopleData.faculty.length > 0) {
   tabOptions.push({label: 'Faculty', value: 'faculty'});
   if (firstOption === '') firstOption = 'faculty';
+  hasPeopleHighlighted = true;
 }
 if (peopleData['senior-fellows'].length > 0) {
   tabOptions.push({label: 'Senior Fellows', value: 'senior-fellows'});
   if (firstOption === '') firstOption = 'senior-fellows';
+  hasPeopleHighlighted = true;
 }
 if (peopleData.fellows.length > 0) {
   tabOptions.push({label: 'Fellows', value: 'fellows'});
   if (firstOption === '') firstOption = 'fellows';
+  hasPeopleHighlighted = true;
 }
 if (peopleData['research-fellows'].length > 0) {
   tabOptions.push({label: 'Research Fellows', value: 'research-fellows'});
   if (firstOption === '') firstOption = 'research-fellows';
+  hasPeopleHighlighted = true;
 }
 
 const tabSelected = ref(firstOption);
-
 const selectTab = (tab) => {
   tabSelected.value = tab;
 }
