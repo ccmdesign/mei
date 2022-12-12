@@ -4,9 +4,9 @@
     <base-section size="m" color="transparent">
       <center-l size="wide">
         <stack-l space="var(--s3)">
-          <tab-bar :options="tabs" scroll />
+          <tab-bar :options="tabs" @tab-click="selectTab" />
 
-          <section v-for="tab in tabs" :key="tab" :id="tab.value.slice(1)">
+          <section v-for="tab in tabs" :key="tab" :id="tab.value" :class="{'hidden': tab.value !== tabSelected}">
             <div class="grid">
               <mei-person-card v-for="i in peopleData[tab.value]" :data="i" :key="i.name" excerpt="false" />
             </div>
@@ -33,11 +33,11 @@ const { compact } = toRefs(props);
 const route = useRoute();
 
 const tabs = [
-  { label: 'Program Staff', value: '#staff', url: '#staff' },
-  { label: 'Faculty', value: '#faculty', url: '#faculty' },
-  { label: 'Senior Fellows', value: '#senior-fellows', url: '#senior-fellows' },
-  { label: 'Fellows', value: '#fellows', url: '#fellows' },
-  { label: 'Research Fellows', value: '#research-fellows', url: '#research-fellows' }
+  { label: 'Program Staff', value: 'staff' },
+  { label: 'Faculty', value: 'faculty' },
+  { label: 'Senior Fellows', value: 'senior-fellows' },
+  { label: 'Fellows', value: 'fellows' },
+  { label: 'Research Fellows', value: 'research-fellows' }
 ]
 
 // FIXME: O campo belfer_role é um array. O "queryContent" não suporta consultas
@@ -51,12 +51,17 @@ const _getPeople = async (role) => {
 }
 
 const peopleData = {
-  '#staff': await _getPeople('Staff'),
-  '#faculty': await _getPeople('Faculty'),
-  '#senior-fellows': await _getPeople('Senior Fellow'),
-  '#fellows': await _getPeople('Fellow'),
-  '#research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
+  'staff': await _getPeople('Staff'),
+  'faculty': await _getPeople('Faculty'),
+  'senior-fellows': await _getPeople('Senior Fellow'),
+  'fellows': await _getPeople('Fellow'),
+  'research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
 };
+
+const tabSelected = ref('staff');
+const selectTab = (tab) => {
+  tabSelected.value = tab;
+}
 </script>
 
 <style lang="scss" scoped>
@@ -72,5 +77,9 @@ const peopleData = {
 
 .compact-person-card {
   background-color: transparent;
+}
+
+.hidden {
+  display: none;
 }
 </style>

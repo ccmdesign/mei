@@ -21,7 +21,7 @@
 
     <base-section>
       <center-l size="wide">
-        <mei-people />
+        <mei-people compact />
       </center-l>
     </base-section>
   </article>
