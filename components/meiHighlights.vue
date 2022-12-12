@@ -3,7 +3,7 @@
     <center-l size="wide">
       <stack-l space="var(--s1)">
         <h2 class="color:primary">Highlights</h2>
-        <mei-card-wide v-if="highlightsData[0].content_type == 'event'"
+        <mei-card-wide v-if="highlightsData[0] ? highlightsData[0].content_type == 'event' : false"
           :summary="highlightsData[0].summary"
           :title="highlightsData[0].title"
           :url="highlightsData[0].url"

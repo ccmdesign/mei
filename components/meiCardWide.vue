@@ -6,6 +6,7 @@
       :shadow="false"
       actionLabel="More"
       :fullClick="false"
+      excerpt=""
       :htmlExcerpt="summary"
       clamp="4"
     >
