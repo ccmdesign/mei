@@ -3,16 +3,16 @@
     <base-section class="mei-programs" color="transparent">
       <center-l size="wide">
         <stack-l>
-          <h2 class="color:primary">Special Initiatives</h2>
+          <h2 class="color:primary">Programs</h2>
           <div class="grid">
-            <div v-for="program of content" :key="program.title">
+            <div v-for="program of data" :key="program.title">
               <h4 class="mei-programs__heading | color:primary">{{program.title}}</h4>
               <mei-program-card 
                 heading=""
-                :excerpt="program.excerpt"
-                :imageUrl="program.imageUrl"
+                :title="program.title"
+                :excerpt="program.summary"
+                :imageUrl="_getImage(program.title)"
                 :url="program.url"
-                :customClass="program.class"
               />
             </div>
           </div>
@@ -23,27 +23,33 @@
 </template>
 
 <script setup>
-const content = [{
-    title: 'Emirated Leadership',
-    excerpt: 'The program provides the critical opportunities needed for emerging leaders from the United Arab Emirates and the Middle East to confront the region’s public policy issues in question through a multi-pronged approach.',
-    imageUrl: '../assets/images/emirates-logo.png',
-    url: '/program-emirates'
+// FIXME: Should this be highlights?
+const data = await queryContent('program').sort({title: 1}).find();
+
+// FIXME: For now, the images are hardcoded.
+const images = {
+  'Emirates Leadership Initiative': {
+    url: '../assets/images/emirates-logo.png',
+    alt: 'Emirates Leadership Initiative',
+    name: '',
   },
-  {
-    title: 'Kwait Program',
-    class: "kwait-card",
-    excerpt: "The Kuwait Program serves current and emerging leaders and decision-makers in Kuwait, the Gulf Cooperation Council, and the wider Arab world through opportunities for cooperation on critical issues of importance to Kuwait and the region.",
-    imageUrl: "../assets/images/kwait-logo.png",
-    url: "/program-kwait/",
+  'Kuwait Program': {
+    url: '../assets/images/kwait-logo.png',
+    alt: 'Kuwait Program',
+    name: '',
   },
-  {
-    title: 'Tunisia Program',
-    class: "tunisia-card",
-    excerpt: "", // FIXME: Need content
-    imageUrl: "../assets/images/tunisia-logo.png",
-    url: "/program-tunisia/",
-  }
-]
+  'Tunisia Program': {
+    url: '../assets/images/tunisia-logo.png',
+    alt: 'Tunisia Program',
+    name: '',
+  },
+}
+
+const _getImage = (key) => {
+  if (Object.keys(images).includes(key)) return images[key].url;
+
+  return '';
+}
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +58,6 @@ const content = [{
 @media (min-width: 40em) {
   .grid { grid-gap: var(--s2) }
 }
-
 
 .mei-programs__heading {
   font-weight: 700;

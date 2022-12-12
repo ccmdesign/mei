@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-const data = await queryContent('program').find();
+const data = await queryContent('program').sort({title: 1}).find();
 
 // FIXME: For now, the images are hardcoded.
 const images = {
