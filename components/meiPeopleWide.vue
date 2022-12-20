@@ -7,7 +7,7 @@
           <a class="color-primary" :href="url" target="_blank">
             {{ name }}
           </a>
-          <a class="mei-people-wide__title-email icon" :href="`mailto:${email}`">email</a>
+          <a v-if="email" class="mei-people-wide__title-email icon" :href="`mailto:${email}`">email</a>
         </h2>
 
         <h4 class="mei-people-wide__tagline">{{ role }}</h4>

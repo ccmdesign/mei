@@ -1,7 +1,7 @@
 <template>
   <div class="mei-people-section" :compact="compact">
     <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
-    <base-section size="m" color="transparent">
+    <!-- <base-section size="l" color="transparent"> -->
       <center-l size="wide">
         <stack-l space="var(--s3)">
           <tab-bar :options="tabs" @tab-click="selectTab" />
@@ -13,7 +13,7 @@
           </section>
         </stack-l>
       </center-l>
-    </base-section>
+    <!-- </base-section> -->
   </div>
 </template>
 
@@ -23,8 +23,8 @@ import { toRefs } from 'vue';
 
 const props = defineProps({
   compact: {
-    type: String,
-    default: "false"
+    type: Boolean,
+    default: false
   }
 });
 
@@ -71,8 +71,8 @@ const selectTab = (tab) => {
 }
 
 .mei-people-section[compact="false"] .grid {
-  --itemWidth: 320px;
-  grid-gap: var(--s3);
+  --itemWidth: 385px;
+  grid-gap: var(--s1);
 }
 
 .compact-person-card {

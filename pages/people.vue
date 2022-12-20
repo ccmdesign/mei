@@ -6,11 +6,11 @@
       description="The Middle East Initiative at Harvard Kennedy School is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />
 
-    <base-section size="s" class="margin-top:s3" v-if="!!person">
+    <base-section size="l" class="margin-top:s3" v-if="!!person">
       <center-l size="wide">
         <mei-people-wide 
         :url="person.url"
-        :role="(data.display_titles[0] || data.category)"
+        :role="person.belfer_role.join('-')"
         :email="person.email"
         :name="person.name"
         :biography="person.biography"
@@ -19,9 +19,9 @@
       </center-l>
     </base-section>
 
-    <base-section>
+    <base-section size="l">
       <center-l size="wide">
-        <mei-people compact />
+        <mei-people />
       </center-l>
     </base-section>
   </article>
@@ -46,3 +46,9 @@ if (data.length > 0) {
   person = reactive(data.sort(_sort)[0]);
 }
 </script>
+
+<style scoped>
+.a {
+  --center-measure:  min(90%, 1280px);
+}
+</style>
