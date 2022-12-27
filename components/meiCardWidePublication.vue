@@ -88,4 +88,13 @@ const { htmlExcerpt, image, location, online, tagline, title, url } = toRefs(pro
     flex-basis: calc((var(--card-horizontal-threshold) - 100%) * 999);
   }
 
+  .mei-card-wide-publication:hover {
+    transform: none;
+  }
+
+  .mei-card-wide-publication :deep(.base-card__img img) {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: top center;
+  }
 </style>
