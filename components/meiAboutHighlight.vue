@@ -3,7 +3,7 @@
     <base-section color="transparent">
       <center-l size="wide">
         <div class="grid">
-          <div class="mei-about-highlight__image">
+          <div class="mei-about-highlight__image | bottom-right">
             <figure class="circle | frame">
               <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
             </figure>
@@ -42,12 +42,44 @@
 // }
 
 .grid { grid-gap: var(--s3); }
-.mei-about-highlight__image {
-  padding-inline: var(--s3);
-}
+
 .mei-about-highlight__content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.mei-about-highlight__image {
+  position: relative;
+  width: calc(100% - (var(--s3) * 2));
+  margin: 0 auto;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+  }
+}
+
+.mei-about-highlight__image.bottom-right {
+  &::before {
+    transform: translate(0.5rem, 1.5rem);
+  }
+}
+
+.mei-about-highlight__image.top-right {
+  &::before {
+    transform: translate(1rem, -1rem);
+  }
+}
+
+.mei-about-highlight__image.top-left {
+  &::before {
+    transform: translate(-1rem, -1rem);
+  }
 }
 </style>
