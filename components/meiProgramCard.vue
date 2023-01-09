@@ -33,7 +33,7 @@ const { url } = toRefs(props);
   --card-frame-d: 4;
   --card-frame-n: 1;
   --card-vertical-space: var(--s1);
-  --card-bg-hsl: transparent
+  --card-bg-hsl: transparent;
 }
 
 .mei-program-card :deep(.card-action) { align-self: self-start; }

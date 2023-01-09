@@ -21,10 +21,12 @@
             <span class="mei-event-card__tag | margin-left:s-2">{{ tag }}</span>
           </h6>
 
-          <h6 v-else>
-            {{ tagline }}<br />
-            <a :href="location.directions" class="color-primary">{{ location.name }}</a>
-          </h6>
+          <template v-else>
+            <h6>
+              {{ tagline }}
+            </h6>
+            <a :href="location.directions" class="color-primary" target="_blank">{{ location.name }}</a>
+          </template>
         </div>
       </stack-l>
     </template>

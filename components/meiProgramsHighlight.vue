@@ -23,7 +23,6 @@
 </template>
 
 <script setup>
-// FIXME: Should this be highlights?
 const data = await queryContent('program').sort({title: 1}).find();
 
 // FIXME: For now, the images are hardcoded.
@@ -53,10 +52,13 @@ const _getImage = (key) => {
 </script>
 
 <style lang="scss" scoped>
-.grid { grid-gap: var(--s1) }
+.grid { 
+  --itemWidth: 500px;
+  grid-gap: var(--s1);
+}
 
 @media (min-width: 40em) {
-  .grid { grid-gap: var(--s2) }
+  .grid { grid-gap: var(--s2); }
 }
 
 .mei-programs__heading {
