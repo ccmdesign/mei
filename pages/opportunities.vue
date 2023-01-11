@@ -33,32 +33,37 @@ const opportunities = [
     excerpt: 'Learn more about the various degrees offered through HKS and how to apply from the <a href="http://www.hks.harvard.edu/degrees/admissions/overview" target="_blank">Office of Admissions</a>. There are ample fellowship opportunities for prospective students from the Middle East.',
     groups: [
       {
-        heading: 'J-term course',
-        excerpt: 'Classroom-in-the-Field <strong>Leadership and Social Transformation in the Arab World</strong>',
+        heading: 'Student Research Grants',
+        excerpt: 'MEI offers funding to HKS students to support PAE and SYPA research and summer internships located in or for work regarding the Middle East and North Africa.',
         links: [
           {
-            title: 'Current Syllabus',
-            url: '#',// Disabled button
-            disabled: true,
-          },
-          {
-            title: 'Photos from past course',
-            url: '#',
-            disabled: true
-          },
+            title: 'Eligibility & Application Information',
+            url: 'https://www.belfercenter.org/opportunities#mei-students-research-grants'
+          }
         ]
       },
+
       {
-        heading: 'Other Student Opportunities',
-        excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
+        heading: 'J-Term “Classroom-in-the-Field”',
+        excerpt: 'Faculty Director Professor Tarek Masoud leads an annual January term for-credit course to the region to meet with and learn from local leaders.',
         links: [
           {
-            title: 'More Information',
-            url: '#',
-            disabled: true
-          },
+            title: 'Eligibility & Application Information',
+            url: 'https://www.belfercenter.org/opportunities#mei-students-j-term'
+          }
         ]
-      }
+      },
+
+      {
+        heading: 'Kuwait Foundation Fellowship for Outstanding Emerging Leaders',
+        excerpt: 'The Kuwait Foundation Fellowship for Outstanding Emerging Leaders provides a full scholarship to students from the Arab League with a preference for those from Kuwait.',
+        links: [
+          {
+            title: 'Eligibility & Application Information',
+            url: 'https://www.belfercenter.org/opportunities#mei-students-kuwait-fellowship'
+          }
+        ]
+      },
     ]
   },
   {
@@ -67,71 +72,39 @@ const opportunities = [
     heading: 'Research Grants for Harvard Faculty',
     excerpt: 'We accept research proposals for projects that target major policy issues affecting the Middle East and North Africa. Details regarding priority topic areas for each program are can be found below.',
     groups: [
-      {
-        heading: 'Emirates Leadership Initiative Research Fellowship',
-        excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
+    {
+        heading: 'Faculty Research Grants',
+        excerpt: 'MEI’s Faculty Research Grants support research projects conducted by Harvard faculty on policy-relevant research in the Middle East. This program generates interest in MENA-based research, including opportunities to collaborate with or present at institutions in the region. The project findings contribute to a growing body of policy-relevant research on a variety of topics. ',
         links: [
           {
-            title: 'More Information',
-            url: '#',
-            disabled: true
+            title: 'Fund Details and Priority Topics',
+            url: 'https://www.belfercenter.org/opportunities#mei-faculty-research-details'
           },
           {
-            title: 'Faculty Research Grants',
-            url: '#',
-            disabled: true
-          },
+            title: 'Eligibility & Application Information',
+            url: 'https://www.belfercenter.org/opportunities#mei-faculty-research-eligibililty'
+          }
         ]
       },
-      {
-        heading: 'Kuwait Grants',
-        excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
-        links: [
-          {
-            title: 'Faculty Research Grants',
-            url: '#',
-            disabled: true
-          },
-        ]
-      }
     ]
   },
   {
     imageUrl: '../assets/images/opportunities3.jpg',
-    imageLabel: 'Opportunities for Scholars',
+    imageLabel: 'For Visiting Scholars',
     heading: 'Opportunities for Scholars',
     excerpt: 'We hosts senior policymakers and academics to engage with students and faculty as a visiting scholar as part of our programs. We focus on applications from scholars working on contemporary issues of policy relevance to the Middle East, and the Arabian Gulf in particular, in the disciplines of political science, economics, history, and sociology.',
     groups: [
-      // {
-      //   heading: 'Emirates Leadership Initiative Research Fellowship',
-      //   excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
-      //   links: [
-      //     {
-      //       title: 'Current Grants',
-      //       url: '#'
-      //     },
-      //     {
-      //       title: 'How to apply',
-      //       url: '#'
-      //     },
-      //   ]
-      // },
       {
-        heading: 'Kuwait Grants',
-        excerpt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quod possimus repudiandae aliquid error. Illo id error saepe quis, mollitia in sapiente sit neque aspernatur porro vel, facilis enim pariatur.',
+        heading: 'Kuwait Visiting Research Fellowship',
+        excerpt: 
+        "The Middle East Initiative hosts senior policymakers and academics to engage with students and faculty as a visiting scholar for one semester as part of the Kuwait Program at Harvard Kennedy School. Applications from scholars working on contemporary issues of policy relevance to the Middle East, and the Arabian Gulf in particular, in the disciplines of political science, economics, history, and sociology are especially welcome. All visiting scholars are expected to either: - Conduct a research project preferably with a Harvard Kennedy School faculty member; or - Lead a not-for-credit eight week study group on a topic relevant to policy and development in the Middle East and North Africa.",
         links: [
           {
-            title: 'Visiting Scholars Program',
-            url: '#',
-            disabled: true
-          },
-          {
-            title: 'Visiting Research Fellowship',
-            url: '#',
-            disabled: true
+            title: 'Eligibility & Application information',
+            url: 'https://www.belfercenter.org/opportunities#mei-visiting-research'
           },
         ]
-      }
+      },
     ]
   },
 ]

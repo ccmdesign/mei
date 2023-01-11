@@ -28,7 +28,7 @@ const data = await queryContent('program').sort({title: 1}).find();
 // FIXME: For now, the images are hardcoded.
 const images = {
   'Emirates Leadership Initiative': {
-    url: '../assets/images/emirates-logo.png',
+    url: '../assets/images/emirates-logo.svg',
     alt: 'Emirates Leadership Initiative',
     name: '',
   },
