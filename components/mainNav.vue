@@ -56,6 +56,10 @@ const menuData = [
     label: 'Programs',
     url: '/programs'
   },
+  {
+    label: 'Subscribe',
+    url: 'https://hksexeced.tfaforms.net/f/subscribe-s?s=a1n4V0000017w3iQAA',
+  }
 ]
 </script>
 
