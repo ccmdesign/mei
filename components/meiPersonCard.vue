@@ -11,24 +11,20 @@
     >
     <div class="mei-person-card__content">
         <div class="padding-left:s0 | padding-right:s0 | padding-top:s0">
-          <p class="margin-bottom:s-1 ">{{data.official_titles[0]}}</p>
-          <p class="margin-bottom:s-1 ">{{data.official_titles[1]}}</p>
-          <p class="margin-bottom:s-1 ">{{data.official_titles[2]}}</p>
+          <p class="mei-person-card__name">{{data.name}}</p>
+          <p class="mei-person-card__roles">{{data.belfer_role.join('-')}}</p>
+          <p class="mei-person-card__title" :title="data.official_titles[0]">{{data.official_titles[0]}}</p>
+          <p class="mei-person-card__title" :title="data.official_titles[1]">{{data.official_titles[1]}}</p>
+          <p class="mei-person-card__title" :title="data.official_titles[2]">{{data.official_titles[2]}}</p>
         </div>
 
-        <div style="display: flex;" class="margin-bottom:s-2">
+        <div class="mei-person-card__decoration | margin-bottom:s-2">
           <hr class="divider"/>
-          <base-button class="pill margin-left:s-2 margin-right:s-2" color="white" icon-before="arrow_forward" el="a" :href="data.url"></base-button>
+          <base-button class="pill margin-left:s-2 margin-right:s-2 align-self:center" color="primary" icon-before="arrow_forward" el="a" :href="data.url"></base-button>
         </div>
       </div>
       <template #image>
         <div class="mei-person-card__img">
-            <div class="layer"></div>
-            <div class="brown">
-              <p class="mei-person-card__name">{{data.name}}</p>
-              <p class="mei-person-card__roles">{{data.belfer_role.join('-')}}</p>
-            </div>
-            
             <img :src="data.avatar.url" :alt="(data.avatar.alt || data.avatar.title || data.name)">
           </div>
       </template>
@@ -60,14 +56,14 @@
 
 <style lang="scss" scoped>
   .mei-person-card {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+    background-color: var(--white-color);
+    color: var(--base-color);
 
     --card-gap: 0;
     --card-padding: 0;
 
-    --card-border: none;
-    --card-hover-border: none;
+    --card-border: 1px solid hsla(var(--base-hsl), .2);
+    --card-hover-border: 1px solid hsla(var(--base-hsl), .2);
     --card-hover-shadow: none;
     --switcher-threshold: 225px !important;
     --card-horizontal-image-max-width: 160px;
@@ -89,6 +85,7 @@
       aspect-ratio: 1/1;
       overflow: hidden;
       object-fit: cover;
+      flex-basis: 180px;
     }
 
     & .brown {
@@ -97,25 +94,31 @@
       margin: var(--s-1);
       text-align: left;
     }
-
-    & .layer {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.76) 0%, rgba(157, 157, 157, 0) 100%);
-    }
   }
 
   .mei-person-card__roles {
     font-family: var(--display-font);
-    font-size: 6px; // FIXME: ?
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: uppercase;    
+  }
+
+  .mei-person-card__decoration {
+    display: flex;
+    align-items: center;
+  }
+
+  .mei-person-card__title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 45ch;
   }
 
   .mei-person-card__name {
     font-family: var(--display-font);
     font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1rem;
   }
 
   .mei-person-card__content {
@@ -123,15 +126,9 @@
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
-    & p {
-      font-size: 11px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
+    font-size: .75rem;
     & .divider {
-      border-color: var(--white-color);
+      border-color: var(--primary-color);
       border-width: 1px;
     }
     & .pill {
