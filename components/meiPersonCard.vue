@@ -4,12 +4,16 @@
       class="mei-person-card"
       horizontal
       :url="data.url"
+      :customSlug="data.url"
       hideAction
       :imageUrl="data.avatar.url"
+      :fullClick="true"
     >
-      <div class="mei-person-card__content">
-        <div class="padding-left:s0 | padding-right:s0 | padding-top:s1 | padding-bottom:s0">
-          <p v-for="title of data.official_titles" :key="title" class="margin-bottom:s-1 ">{{title}}</p>
+    <div class="mei-person-card__content">
+        <div class="padding-left:s0 | padding-right:s0 | padding-top:s0">
+          <p class="margin-bottom:s-1 ">{{data.official_titles[0]}}</p>
+          <p class="margin-bottom:s-1 ">{{data.official_titles[1]}}</p>
+          <p class="margin-bottom:s-1 ">{{data.official_titles[2]}}</p>
         </div>
 
         <div style="display: flex;" class="margin-bottom:s-2">
@@ -17,17 +21,16 @@
           <base-button class="pill margin-left:s-2 margin-right:s-2" color="white" icon-before="arrow_forward" el="a" :href="data.url"></base-button>
         </div>
       </div>
-
       <template #image>
         <div class="mei-person-card__img">
-          <div class="layer"></div>
-          <div class="brown">
-            <p class="mei-person-card__name">{{data.name}}</p>
-            <p class="mei-person-card__roles">{{data.belfer_role.join('-')}}</p>
+            <div class="layer"></div>
+            <div class="brown">
+              <p class="mei-person-card__name">{{data.name}}</p>
+              <p class="mei-person-card__roles">{{data.belfer_role.join('-')}}</p>
+            </div>
+            
+            <img :src="data.avatar.url" :alt="(data.avatar.alt || data.avatar.title || data.name)">
           </div>
-          
-          <img :src="data.avatar.url" :alt="(data.avatar.alt || data.avatar.title || data.name)">
-        </div>
       </template>
     </base-card>
   </div>
@@ -67,7 +70,7 @@
     --card-hover-border: none;
     --card-hover-shadow: none;
     --switcher-threshold: 225px !important;
-    --card-horizontal-image-max-width: 120px;
+    --card-horizontal-image-max-width: 160px;
     --card-horizontal-image-ratio: 4;
     --card-horizontal-content-ratio: 3;
   }
@@ -81,6 +84,12 @@
 
   .mei-person-card__img {
     position: relative;
+
+    & img {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      object-fit: cover;
+    }
 
     & .brown {
       position: absolute;

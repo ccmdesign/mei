@@ -1,19 +1,15 @@
 <template>
   <div class="mei-people-section" :compact="compact">
     <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
-    <!-- <base-section size="l" color="transparent"> -->
-      <center-l size="wide">
-        <stack-l space="var(--s3)">
-          <tab-bar :options="tabs" @tab-click="selectTab" />
+    <stack-l space="var(--s3)">
+      <tab-bar :options="tabs" @tab-click="selectTab" />
 
-          <section v-for="tab in tabs" :key="tab" :id="tab.value" :class="{'hidden': tab.value !== tabSelected}">
-            <div class="grid">
-              <mei-person-card v-for="i in peopleData[tab.value]" :data="i" :key="i.name" excerpt="false" />
-            </div>
-          </section>
-        </stack-l>
-      </center-l>
-    <!-- </base-section> -->
+      <section v-for="tab in tabs" :key="tab" :id="tab.value" :class="{'hidden': tab.value !== tabSelected}">
+        <div class="grid">
+          <mei-person-card v-for="i in peopleData[tab.value]" :data="i" :key="i.name" excerpt="false" />
+        </div>
+      </section>
+    </stack-l>
   </div>
 </template>
 

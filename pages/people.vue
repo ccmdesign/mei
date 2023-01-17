@@ -46,9 +46,3 @@ if (data.length > 0) {
   person = reactive(data.sort(_sort)[0]);
 }
 </script>
-
-<style scoped>
-.a {
-  --center-measure:  min(90%, 1280px);
-}
-</style>
