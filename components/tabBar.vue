@@ -1,9 +1,9 @@
 <!-- This is a DS Candidate -->
 
 <template>
-  <section class="tab-bar" :id="id">
+  <section class="tab-bar" :id="id" :sticky="sticky">
     <label :for="i.value" v-for="i,pos in options" :key="i.value" class="tab-bar__item">
-      <input :id="i.value" type="radio" :name="id" :value="i.value" @click="$emit('tabClick', i.value)" :checked="!scroll && pos == 0">
+      <input :id="i.value" type="radio" :name="id" :value="i.value" @click="$emit('tabClick', i.value)" :checked="!sticky && pos == 0">
       <a v-if="i.url" :href="i.url" class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</a>
       <span v-else class="tab-bar__button button" data-visual="unstyled" data-color="primary">{{i.label}}</span>
     </label>
@@ -14,7 +14,7 @@
 import { toRefs } from 'vue'
 import { v4 as uuidv4 } from 'uuid';
 
-const id = uuidv4(); // FIXME: Qual o uso?
+const id = uuidv4();
 
 const props = defineProps({
   options: {
@@ -25,13 +25,13 @@ const props = defineProps({
       { label: 'Label Example', value: 'value-example-3' }
     ]
   },
-  scroll: {
+  sticky: {
     type: Boolean,
     default: false
   }
 });
 
-const { options } = toRefs(props);
+const { options, sticky } = toRefs(props);
 
 defineEmits(['tabClick']);
 
@@ -42,6 +42,13 @@ defineEmits(['tabClick']);
   display: flex;
   justify-content: center;
   border-bottom: 1px solid hsla(var(--base-hsl), .2);
+}
+
+.tab-bar[sticky="true"] {
+  position: sticky;
+  top: 0;
+  background-color: hsla(var(--white-hsl), 0.8);
+  z-index: 120;
 }
 
 .tab-bar__button {

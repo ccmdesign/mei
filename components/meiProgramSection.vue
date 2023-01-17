@@ -1,6 +1,6 @@
 <template>
   <div :class="texture ? 'mei-texture-bg | background-color:primary-03' : ''">
-    <base-Section class="program-panel" size="xl" color="transparent">
+    <base-section size="xl" color="transparent">
       <center-l size="wide">
         <div class="grid" :inverted="inverted">
           <stack-l space="var(--s1)" class="program-panel__content">
@@ -15,7 +15,7 @@
           </figure>
         </div>
       </center-l>
-    </base-Section>
+    </base-section>
   </div>
 </template>
 

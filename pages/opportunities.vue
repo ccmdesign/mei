@@ -6,9 +6,9 @@
       description="The Middle East Initiative at Harvard Kennedy School is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />
     
-    <base-section color="transparent">
+    <base-section class="opportunities" color="transparent">
       <stack-l>
-        <tab-bar :options="tabs" scroll />
+        <tab-bar :options="tabs" sticky />
         <mei-opportunity-group id="students" :content="opportunities[0]" ellipsisClass="bottom-right"/>
         <mei-opportunity-group id="faculty" :content="opportunities[1]" ellipsisClass="top-left" inverted :gradient="true" :pattern="true" />
         <mei-opportunity-group id="outside-scholars" :content="opportunities[2]" ellipsisClass="top-right"/>
@@ -111,5 +111,7 @@ const opportunities = [
 </script>
 
 <style lang="scss" scoped>
-
+.opportunities {
+  overflow: visible;
+}
 </style>
