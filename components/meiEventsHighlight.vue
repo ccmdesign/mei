@@ -12,7 +12,6 @@ const UPCOMING_MAX_EVENTS = 3; // FIXME: Máximo de eventos futuros sendo mostra
 const PAST_MAX_EVENTS = 4; // FIXME: Máximo de eventos passados sendo mostrados na tela.
 
 const events = await queryContent("event").find();
-console.log(events)
 const today = new Date();
 
 const upcomingEvents = {

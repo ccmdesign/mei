@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-const data = await queryContent('program').sort({title: 1}).find();
+const data = await queryContent('highlight').where({content_type: 'program'}).sort({title: 1}).find();
 
 // FIXME: For now, the images are hardcoded.
 const images = {
@@ -35,11 +35,6 @@ const images = {
   'Kuwait Program': {
     url: '../assets/images/kwait-logo.png',
     alt: 'Kuwait Program',
-    name: '',
-  },
-  'Tunisia Program': {
-    url: '../assets/images/tunisia-logo.png',
-    alt: 'Tunisia Program',
     name: '',
   },
 }
