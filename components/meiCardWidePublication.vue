@@ -10,8 +10,7 @@
       excerpt=""
       :htmlExcerpt="summary"
       :heading="title"
-      :image="!!image.url"
-      :imageUrl="image.url"
+      :imageUrl="image.url || '../assets/images/news-default-image.png'"
       :tagline="displayDate ? date : type"
       clamp="4"
     >
