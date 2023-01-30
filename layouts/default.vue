@@ -1,5 +1,5 @@
 <template>
-    <a class="production-link" ref="productionlink" href="#" target="_top">Replace parent url</a>
+    <a class="production-link" ref="productionlink" href="#" target="_top">Replace parent url(Should be hidden)</a>
   <slot />
 </template>
 
