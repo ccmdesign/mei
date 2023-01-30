@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article> 
     <mei-hero 
       background="../assets/images/home-bg.png"
       title="Middle East Initiative"
