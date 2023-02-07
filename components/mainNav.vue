@@ -1,6 +1,6 @@
 <template>
   <nav class="nav" role="navigation" aria-label="Main" :open=open>
-    <button class="nav__trigger"><i class="icon" @click="openMenu()">menu</i></button>
+    <button class="nav__trigger" @click="openMenu"><i class="icon">menu</i></button>
     <ul class="nav__list">
       <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu='i.submenu'>
         <nuxtLink v-if="i.url" :to="i.url" class="nav__item" :class="{submenuActive: i.submenu}">
@@ -22,8 +22,10 @@
 </template>
 
 <script setup>
+const open = ref(false);
+
 const openMenu = function() {
-  
+  open.value = !open.value;
 }
 
 const menuData = [
@@ -83,8 +85,7 @@ const menuData = [
 .nav__list li { align-items: stretch; }
 
 .nav__item { 
-  align-items: center; 
-  color: var(--white-color) !important;
+  align-items: center;
   font-weight: 700;
   border: none;
 }
@@ -100,7 +101,7 @@ const menuData = [
 }
 
 .nav__item { 
-  color: hsla(var(--base-hsl), 1);
+  color: hsla(var(--white-hsl), 1);
   padding-inline: var(--s0);
   letter-spacing: .5px;
   white-space: nowrap;
@@ -156,10 +157,11 @@ const menuData = [
     top: 100vh;
     margin-top: -60px;
     transition: all .4s ease;
+    left: 0;
   }
 
-  .nav[open] { 
-    bottom: 0; 
+  .nav[open="true"] { 
+    bottom: 0;
     top: unset;
     transition: all .4s ease;
   }
@@ -174,7 +176,8 @@ const menuData = [
   .nav__list li { 
     flex-direction: column;
   }
-  .nav__item { 
+  .nav__item {
+    color: var(--base-color);
     flex: 1;
     justify-content: center;
     padding: var(--s-3);
