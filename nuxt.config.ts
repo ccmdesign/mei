@@ -57,8 +57,5 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxt/content'
-  ],
-  publicRuntimeConfig: {
-    baseURL: process.env.NODE_ENV == 'production' ? 'https://mei-hksbelfer.pantheonsite.io/mei' : ''
-  },
+  ]
 });

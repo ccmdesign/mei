@@ -3,7 +3,7 @@
     <button class="nav__trigger" @click="openMenu"><i class="icon">menu</i></button>
     <ul class="nav__list">
       <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu='i.submenu'>
-        <nuxtLink v-if="i.url" :to="`${$config.baseURL}${i.url}`" class="nav__item" :class="{submenuActive: i.submenu}">
+        <nuxtLink v-if="i.url" :to="i.url" class="nav__item" :class="{submenuActive: i.submenu}">
           {{ i.label }}
         </nuxtLink>
 
@@ -13,7 +13,7 @@
 
         <ul v-if="i.submenu" class="nav__submenu">
           <li v-for="j in i.submenu" :key="j.url">
-            <nuxtLink v-if="j.url" :to="`${$config.baseURL}${j.url}`" class="nav__item" :disabled=i.disabled :title="j.label">{{ j.label }}</nuxtLink>
+            <nuxtLink v-if="j.url" :to="j.url" class="nav__item" :disabled=i.disabled :title="j.label">{{ j.label }}</nuxtLink>
           </li>
         </ul>
       </li>
