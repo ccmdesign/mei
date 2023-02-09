@@ -38,7 +38,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .mei-description {
+  .mei-description {
     max-width: 65ch;
 
     > * {
