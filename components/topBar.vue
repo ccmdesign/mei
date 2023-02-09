@@ -1,6 +1,6 @@
 <template>
   <div class="top-bar">
-    <nuxtLink to="/" class="website-logo">Middle East Initiative</nuxtLink>
+    <nuxtLink :to="`${$config.baseURL}`" class="website-logo">Middle East Initiative</nuxtLink>
     <main-nav />
   </div>
 </template>
