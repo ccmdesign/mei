@@ -9,7 +9,15 @@ export default defineNuxtConfig({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     script: [
-      { src: "@/assets/js/iframeResizer.contentWindow.min.js" }
+      {
+        type: 'text/javascript',
+        src: 'js/iframeResizer.contentWindow.min.js',
+      },
+      {
+        type: 'text/javascript',
+        src: 'js/iframeResizer.min.js',
+        body: true
+      },
     ],
     link: [
       { rel: 'stylesheet', href: 'https://use.typekit.net/tsd2tcy.css' },
