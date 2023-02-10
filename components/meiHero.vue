@@ -1,5 +1,5 @@
 <template>
-  <ccm-hero :background="background" height="60vh">
+  <ccm-hero :background="background" height="60%">
     <template #top-bar>
       <center-l size="wide">
         <top-bar />

@@ -3,12 +3,12 @@
     <center-l size="wide">
       <h2 class="color:primary">Events</h2>
     </center-l>
-    <mei-events :data="[upcomingEvents, pastEvents]" :showHighlights="(upcomingEvents.highlights.length > 0)"/>
+    <mei-events :data="[upcomingEvents, pastEvents]" :showHighlights="(Boolean(upcomingEvents.highlights))"/>
   </base-section>
 </template>
 
 <script setup>
-const UPCOMING_MAX_EVENTS = 3; // FIXME: Máximo de eventos futuros sendo mostrados na tela.
+const UPCOMING_MAX_EVENTS = 4; // FIXME: Máximo de eventos futuros sendo mostrados na tela.
 const PAST_MAX_EVENTS = 4; // FIXME: Máximo de eventos passados sendo mostrados na tela.
 
 const events = await queryContent("event").find();
@@ -36,10 +36,11 @@ do {
   const eventDate = new Date(event.start_date);
 
   if (eventDate >= today) {
-    if (!!upcomingEvents.highlights) {
-      upcomingEvents.highlights = event; // FIXME: O primeiro evento seria sempre o em destaque.
+    // if (upcomingEvents.highlights.length <= 0) {
+    //   upcomingEvents.highlights = event; // FIXME: O primeiro evento seria sempre o em destaque.
 
-    } else if (upcomingEvents.list.length < UPCOMING_MAX_EVENTS) {
+    // } else 
+    if (upcomingEvents.list.length < UPCOMING_MAX_EVENTS) {
       upcomingEvents.list.push(event);
     }
 
@@ -50,5 +51,9 @@ do {
   pos += 1;
 
 } while (pastEvents.list.length < PAST_MAX_EVENTS);
+
+
+pastEvents.list = events.filter(e => new Date(e.start_date) < today).slice(4)
+console.log('A', pastEvents.list)
 
 </script>

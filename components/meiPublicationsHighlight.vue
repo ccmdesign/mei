@@ -50,5 +50,7 @@ const highlights = reactive(data.sort((a, b) => {
   if (a.changed > b.changed) return 1;
 
   return 0
-}).slice(2));
+}));
+// Only show two first
+
 </script>

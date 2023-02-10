@@ -19,10 +19,13 @@
             :key="i.heading"
             :heading='i.title'
             :imageUrl="i.image.url"
-            :htmlExcerpt="i.summary"
             :url="i.url"
             clamp=3
           >
+
+            <h2 class="base-card__title"><a :href="i.url" target="_blank" class="base-card__title-link">{{i.title}}</a></h2>
+            <div v-html="i.summary" class="summary" />
+            
             <template #action>
               <a class="highlight-secondary__action" :href="i.url" target="_blank">
               Read More
@@ -36,7 +39,7 @@
 </template>
 
 <script setup>
-const data = await queryContent('highlight').where({'content_type': {$in: ['event', 'publication']}}).find();
+const data = await queryContent('highlight').where({'content_type': {$in: ['event']}}).find();
 
 for (const item of data) {
   if (item.changed) {
@@ -63,6 +66,9 @@ const highlightsData = reactive(data.sort((a, b) => {
 .highlight-secondary :deep(.base-card__title) {
   font-size: 1.2rem;
   color: var(--primary-color);
+  a {
+    text-decoration: none !important;
+  }
 }
 
 .highlight-secondary {
@@ -70,6 +76,7 @@ const highlightsData = reactive(data.sort((a, b) => {
   --card-hover-border: none;
   --card-border: none;
   --card-hover-shadow: none;
+  --card-padding: 0;
 }
 
 .highlight-secondary__action {
@@ -78,4 +85,12 @@ const highlightsData = reactive(data.sort((a, b) => {
   font-size: 1rem;
   font-weight: bold;
 }
+
+.summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 </style>
