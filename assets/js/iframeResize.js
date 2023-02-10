@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const imgs = document.images;
         let len = imgs.length;
         let counter = 0;
+        console.log('on iframeResize');
 
         [].forEach.call( imgs, function( img ) {
             if(img.complete)
