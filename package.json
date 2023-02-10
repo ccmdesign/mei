@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ccmdesign/ccm-ds": "^0.4.0-alpha",
+    "iframe-resizer": "^4.3.3",
     "path": "^0.12.7",
     "sass": "^1.54.4",
     "uuid": "^9.0.0"
