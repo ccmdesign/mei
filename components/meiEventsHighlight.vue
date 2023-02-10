@@ -54,6 +54,5 @@ do {
 
 
 pastEvents.list = events.filter(e => new Date(e.start_date) < today).slice(4)
-console.log('A', pastEvents.list)
 
 </script>
