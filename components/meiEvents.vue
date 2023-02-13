@@ -6,6 +6,17 @@
       <template v-for="eventData in data" :key="eventData.heading">
         <h2 class="color:primary" v-if="hideTabBar">{{eventData.heading}}</h2>      
    
+        <!-- <mei-card-wide v-if="showHighlights && eventData.highlights"
+          :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}"
+          :summary="eventData.highlights.summary"
+          :title="eventData.highlights.title"
+          :url="eventData.highlights.url"
+          :location="eventData.highlights.location"
+          :formatedDate="eventData.highlights.formatedDate"
+          :image="eventData.highlights.image"
+          :contentType="eventData.highlights.content_type" 
+        /> -->
+
         <div class="grid" v-if="(eventData.list.length > 0)" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}">
           <mei-event-card v-for="i in eventData.list"
             :key="i.title"
