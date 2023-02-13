@@ -3,7 +3,7 @@
     <center-l size="wide">
       <h2 class="color:primary">Events</h2>
     </center-l>
-    <mei-events :data="[upcomingEvents, pastEvents]" :showHighlights="(Boolean(upcomingEvents.highlights))"/>
+    <mei-events :data="[upcomingEvents, pastEvents]" />
   </base-section>
 </template>
 
@@ -17,7 +17,6 @@ const today = new Date();
 const upcomingEvents = {
   heading: 'Upcoming Events',
   list: reactive([]),
-  highlights: reactive([])
 };
 
 const pastEvents = {
@@ -27,32 +26,21 @@ const pastEvents = {
 
 let pos = 0;
 
-// Toda a lógica abaixo pressupõe que os eventos virão ordenados do content
-// pela data de início (start_date) do mais recente para o mais antigo.
-//
 do {
-  if (events.length <= pos) break; // Se chegar no fim da lista de eventos.
+  if (pos == events.length) break; // Quando chega no último evento.
+
   const event = events[pos];
   const eventDate = new Date(event.start_date);
 
   if (eventDate >= today) {
-    // if (upcomingEvents.highlights.length <= 0) {
-    //   upcomingEvents.highlights = event; // FIXME: O primeiro evento seria sempre o em destaque.
-
-    // } else 
-    if (upcomingEvents.list.length < UPCOMING_MAX_EVENTS) {
-      upcomingEvents.list.push(event);
-    }
+    upcomingEvents.list.splice(0, 0, event);
 
   } else {
-    pastEvents.list = events.slice(pos, PAST_MAX_EVENTS);
+    pastEvents.list.push(event);
   }
 
-  pos += 1;
+  pos++
 
-} while (pastEvents.list.length < PAST_MAX_EVENTS);
-
-
-pastEvents.list = events.filter(e => new Date(e.start_date) < today).slice(4)
+} while (pastEvents.list.length < PAST_MAX_EVENTS)
 
 </script>
