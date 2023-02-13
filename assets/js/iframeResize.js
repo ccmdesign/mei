@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
           body.offsetHeight,
           html.offsetHeight
         );
+        console.log('Sending message');
         window.parent.postMessage(height + 50 + "px", "*");
       }
     }

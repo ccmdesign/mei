@@ -11,12 +11,14 @@ const route = useRoute();
 const productionlink = ref(null);
 // URL de produção.
 // Caution: Não pode ter a barra no final.
-// FIXME: Pegar essa URL de uma variável e bloquear para só funcionar em produção. 
+// FIXME: Pegar essa URL de uma variável. 
 const baseLink = 'https://mei-hksbelfer.pantheonsite.io/mei'; 
 
 watch(route, (to) => {
-  productionlink.value.href = baseLink + to.fullPath;
-  productionlink.value.click();
+  if (process.env.NODE_ENV !== 'development') { // Only in production mode.
+    productionlink.value.href = baseLink + to.fullPath;
+    productionlink.value.click();
+  }
 });
 </script>
 
