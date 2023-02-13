@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     script: [
       {
         type: 'text/javascript',
-        src: 'assets/js/iframeResize.js',
+        src: '/assets/js/iframeResize.js',
         body: true
       },
     ],
