@@ -55,7 +55,6 @@ const props = defineProps({
 const { url, role, email, name, biography, imageUrl } = toRefs(props);
 </script>
 
-
 <style lang="scss" scoped>
 .mei-people-wide {
   --card-padding: var(--s2);
@@ -71,10 +70,16 @@ const { url, role, email, name, biography, imageUrl } = toRefs(props);
 }
 
 .mei-people-wide :deep(.circle) {
-  padding: var(--card-image-padding); // ToDo: Include this config in the person card?
+  padding: var(--card-image-padding);
   margin-left: var(--s2);
   width: 320px;
   height: 320px;
+
+  @media screen and (max-width: 40em) {
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+  }
 }
 
 .mei-people-wide :deep(h2) {

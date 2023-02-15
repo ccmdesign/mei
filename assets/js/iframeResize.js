@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       body.offsetHeight,
       html.offsetHeight
     );
-  
+
     return !isNaN(height) ? height : 0;
   };
 
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.parent.postMessage(getHeight() + "px", "*");
       }
     }
+    console.log('Resize after content load')
   }
 
   const tabs = document.querySelectorAll('#people-tabs label input');
@@ -34,12 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabs) {
     tabs.forEach(tab => {
       tab.addEventListener("click", () => {
+        console.log('Resize for tab click');
         window.parent.postMessage(getHeight() + "px", "*");
       });
     });
   }
-
-  window.parent.postMessage(getHeight() + "px", "*");
 
   window.setTimeout(sendHeightMessageAfterImageLoad, 500);
 });

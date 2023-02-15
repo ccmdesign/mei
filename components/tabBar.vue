@@ -42,6 +42,7 @@ defineEmits(['tabClick']);
   display: flex;
   justify-content: center;
   border-bottom: 1px solid hsla(var(--base-hsl), .2);
+  flex-wrap: wrap;
 }
 
 .tab-bar[sticky="true"] {
