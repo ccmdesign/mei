@@ -9,9 +9,7 @@ import { ref, watch } from 'vue'
 import { useRoute } from "vue-router"
 const route = useRoute();
 const productionlink = ref(null);
-// URL de produção.
-// Caution: Não pode ter a barra no final.
-// FIXME: Pegar essa URL de uma variável. 
+
 const baseLink = 'https://mei-hksbelfer.pantheonsite.io/mei'; 
 
 watch(route, (to) => {

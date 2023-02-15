@@ -1,10 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
-  window.setTimeout(function () {
+document.addEventListener("DOMContentLoaded", () => {
+  function getHeight() {
+    const body = document.body;
+    const html = document.documentElement;
+    const height = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.offsetHeight
+    );
+  
+    return !isNaN(height) ? height : 0;
+  };
+
+  function sendHeightMessageAfterImageLoad() {
     const imgs = document.images;
     let len = imgs.length;
     let counter = 0;
 
-    [].forEach.call(imgs, function (img) {
+    [].forEach.call(imgs, (img) => {
       if (img.complete) incrementCounter();
       else img.addEventListener("load", incrementCounter, false);
     });
@@ -12,17 +24,22 @@ document.addEventListener("DOMContentLoaded", function () {
     function incrementCounter() {
       counter++;
       if (counter === len) {
-        const body = document.body;
-        const html = document.documentElement;
-        let height = 0;
-        height = Math.max(
-          body.scrollHeight,
-          body.offsetHeight,
-          html.offsetHeight
-        );
-        console.log('Sending message');
-        window.parent.postMessage(height + 50 + "px", "*");
+        window.parent.postMessage(getHeight() + "px", "*");
       }
     }
-  }, 500);
+  }
+
+  const tabs = document.querySelectorAll('#people-tabs label input');
+
+  if (tabs) {
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        window.parent.postMessage(getHeight() + "px", "*");
+      });
+    });
+  }
+
+  window.parent.postMessage(getHeight() + "px", "*");
+
+  window.setTimeout(sendHeightMessageAfterImageLoad, 500);
 });

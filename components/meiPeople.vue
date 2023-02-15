@@ -2,7 +2,7 @@
   <div class="mei-people-section" :compact="compact">
     <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
     <stack-l space="var(--s3)">
-      <tab-bar :options="tabs" @tab-click="selectTab" />
+      <tab-bar id="people-tabs" :options="tabs" @tab-click="selectTab" />
 
       <section v-for="tab in tabs" :key="tab" :id="tab.value" :class="{'hidden': tab.value !== tabSelected}">
         <div class="grid">
