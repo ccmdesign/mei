@@ -17,6 +17,7 @@
 
         <div class="grid">
           <base-card v-for="i in highlightsData.slice(1)" class="highlight-secondary"
+            :fullClick="true"
             :key="i.heading"
             :heading='i.title'
             :htmlExcerpt='i.summary'

@@ -10,7 +10,7 @@ import { useRoute } from "vue-router"
 const route = useRoute();
 const productionlink = ref(null);
 
-const baseLink = 'https://mei-hksbelfer.pantheonsite.io/mei'; 
+const baseLink = 'https://mei-hksbelfer.pantheonsite.io/mei'; // FIXME: Production link.
 
 watch(route, (to) => {
   if (process.env.NODE_ENV !== 'development') { // Only in production mode.

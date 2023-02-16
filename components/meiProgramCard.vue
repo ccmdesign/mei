@@ -1,5 +1,5 @@
 <template>
-  <base-card class="mei-program-card">
+  <base-card class="mei-program-card" :fullClick="true">
     <template #action>
       <div>
         <base-button color="primary" visual="primary" el="a" :href="url" target="_blank">

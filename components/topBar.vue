@@ -1,9 +1,17 @@
 <template>
   <div class="top-bar">
-    <nuxtLink to="/" class="website-logo">Middle East Initiative</nuxtLink>
+    <a @click="clickLink" class="website-logo">Middle East Initiative</a>
     <main-nav />
   </div>
 </template>
+
+<script setup>
+  const clickLink = () => {
+    if (process.client) {
+      window.location.href = '/';
+    }
+  }
+</script>
 
 <style lang="scss" scoped>
 .top-bar {

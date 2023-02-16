@@ -9,7 +9,6 @@
     :imageUrl="imageUrl"
     clamp=4
   >
-
     <template #headings>
       <stack-l>
         <h3 class="mei-event-card__title | color:primary">

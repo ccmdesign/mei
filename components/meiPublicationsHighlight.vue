@@ -14,7 +14,7 @@
         />
 
         <div class="text-align:center padding-top:s2">
-          <base-button color="primary" visual="primary" el="a" href="/publications">View All Publications</base-button>
+          <base-button color="primary" visual="primary" el="a" @click="clickLink">View All Publications</base-button>
         </div>
       </stack-l>
     </center-l>
@@ -35,6 +35,12 @@ const publicationsTypes = [
 'Book',
 'Book Chapter',
 ];
+
+const clickLink = () => {
+  if (process.client) {
+    window.location.href = '/publications'
+  }
+}
 
 const query = {type: {$in: publicationsTypes}, content_type: 'publication'};
 const data = await queryContent('highlight').where(query).find();
