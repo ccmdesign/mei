@@ -25,21 +25,25 @@ document.addEventListener("DOMContentLoaded", () => {
       counter++;
       if (counter === len) {
         window.parent.postMessage(getHeight() + "px", "*");
+        clearTimeout(timeoutID);
       }
     }
-    console.log('Resize after content load')
   }
 
-  const tabs = document.querySelectorAll('#people-tabs label input');
+  const timeoutID = window.setTimeout(sendHeightMessageAfterImageLoad, 500);
 
-  if (tabs) {
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        console.log('Resize for tab click');
-        window.parent.postMessage(getHeight() + "px", "*");
+  // Only on People page
+  if (window.location.href.includes('/people')) {
+    console.log('On People page');
+    const tabs = document.querySelectorAll('#people-tabs label input');
+    
+    if (tabs) {
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          console.log('Resize for tab click');
+          window.parent.postMessage(getHeight() + "px", "*");
+        });
       });
-    });
+    }
   }
-
-  window.setTimeout(sendHeightMessageAfterImageLoad, 500);
 });

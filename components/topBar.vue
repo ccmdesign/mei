@@ -1,17 +1,11 @@
 <template>
   <div class="top-bar">
-    <a @click="clickLink" class="website-logo">Middle East Initiative</a>
+    <a href="https://mei-hksbelfer.pantheonsite.io/mei" target="_top" class="website-logo">
+      Middle East Initiative
+    </a>
     <main-nav />
   </div>
 </template>
-
-<script setup>
-  const clickLink = () => {
-    if (process.client) {
-      window.location.href = '/';
-    }
-  }
-</script>
 
 <style lang="scss" scoped>
 .top-bar {

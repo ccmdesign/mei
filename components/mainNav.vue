@@ -3,7 +3,7 @@
     <button class="nav__trigger" @click="openMenu"><i class="icon">menu</i></button>
     <ul class="nav__list">
       <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu='i.submenu'>
-        <a v-if="i.url" @click="() => clickLink(i.url)" class="nav__item" :class="{submenuActive: i.submenu}">
+        <a v-if="i.url" :href="`https://mei-hksbelfer.pantheonsite.io/mei${i.url}`" target="_top" class="nav__item" :class="{submenuActive: i.submenu}">
           {{ i.label }}
         </a>
 
@@ -63,12 +63,6 @@ const menuData = [
     url: 'https://hksexeced.tfaforms.net/f/subscribe-s?s=a1n4V0000017w3iQAA',
   }
 ]
-
-const clickLink = (url) => {
-  if (process.client) {
-    window.location.href = url
-  }
-}
 </script>
 
 <style lang="scss" scoped>
