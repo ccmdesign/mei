@@ -25,8 +25,8 @@
       </div>
       <template #image>
         <div class="mei-person-card__img">
-            <img :src="data.avatar.url" :alt="(data.avatar.alt || data.avatar.title || data.name)">
-          </div>
+          <img :src="data.avatar.url" :alt="(data.avatar.alt || data.avatar.title || data.name)">
+        </div>
       </template>
     </base-card>
   </div>
@@ -69,6 +69,18 @@
     --card-horizontal-image-max-width: 160px;
     --card-horizontal-image-ratio: 4;
     --card-horizontal-content-ratio: 3;
+  }
+
+  .mei-person-card[horizontal="true"] {
+    @media screen and (max-width: 35em) {
+      flex-direction: column;
+    }
+  }
+
+  .mei-person-card :deep(.base-card__content) {
+    @media screen and (max-width: 35em) {
+      width: 100%;
+    }
   }
 
   .mei-person-card[horizontal="true"] .mei-person-card__img {
