@@ -28,22 +28,22 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTimeout(timeoutID);
       }
     }
-
-    // Only on People page
-    if (window.location.href.includes('/people')) {
-      console.log('On People page');
-      const tabs = document.querySelectorAll('#people-tabs label input');
-      
-      if (tabs) {
-        tabs.forEach(tab => {
-          tab.addEventListener("click", () => {
-            console.log('Resize for tab click');
-            window.parent.postMessage(getHeight() + "px", "*");
-          });
-        });
-      }
-    }
   }
 
   const timeoutID = window.setTimeout(sendHeightMessageAfterImageLoad, 500);
+
+  // Only on People page
+  if (window.location.href.includes('/people')) {
+    console.log('On People page');
+    const tabs = document.querySelectorAll('#people-tabs label input');
+    
+    if (tabs) {
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          console.log('Resize for tab click');
+          window.setTimeout(sendHeightMessageAfterImageLoad, 500);
+        });
+      });
+    }
+  }
 });
