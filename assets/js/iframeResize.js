@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Only on People page
   if (window.location.href.includes('/people')) {
-    console.log('On People page');
     const tabs = document.querySelectorAll('#people-tabs label input');
     
     if (tabs) {
