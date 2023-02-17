@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function resizeHeight() {
   function getHeight() {
     const body = document.body;
     const html = document.documentElement;
@@ -31,6 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const timeoutID = window.setTimeout(sendHeightMessageAfterImageLoad, 500);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  resizeHeight();
 
   // Only on People page
   if (window.location.href.includes('/people')) {
@@ -39,10 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     if (tabs) {
       tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-          console.log('Resize for tab click');
-          window.setTimeout(sendHeightMessageAfterImageLoad, 500);
-        });
+        tab.addEventListener("click", resizeHeight);
       });
     }
   }
