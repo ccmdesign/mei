@@ -6,8 +6,8 @@
       description="The Middle East Initiative at Harvard Kennedy School is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />
 
-    <base-section class="people_section" size="l" v-if="!!person">
-      <center-l size="wide">
+    <base-section class="people_section" size="l">
+      <center-l size="wide" v-if="!!person">
         <mei-people-wide 
         :url="person.url"
         :role="person.belfer_role.join('-')"
