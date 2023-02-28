@@ -30,14 +30,14 @@
             :imageDescription="i.image.alt || i.image.name"
             :embedCode="i.embed_code"
             :location="i.location"
-            :figType="i.embed_code ? 'video' : 'image'" 
+            :figType="i.embed_code ? 'video' : 'image'"
           />
         </div>
         <h4 v-else class="center | color:secondary" :class="{'hidden': !hideTabBar && (tabSelected !== eventData.heading)}">There are no upcoming events at the moment.</h4>
       </template>
 
       <div v-if="!hideViewMore" class="text-align:center">
-        <nuxt-link :to="moreUrl" class="button" data-color="primary" data-visual="primary">View all MEI events</nuxt-link>
+        <a :href="moreUrl" class="button" target="_blank" data-color="primary" data-visual="primary">View all MEI events</a>
       </div>
     </stack-l>
   </center-l>

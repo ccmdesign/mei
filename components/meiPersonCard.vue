@@ -20,7 +20,7 @@
 
         <div class="mei-person-card__decoration | margin-bottom:s-2">
           <hr class="divider"/>
-          <base-button class="pill margin-left:s-2 margin-right:s-2 align-self:center" color="primary" icon-before="arrow_forward" el="a" :href="data.url"></base-button>
+          <base-button class="pill margin-left:s-2 margin-right:s-2 align-self:center" color="primary" icon-before="arrow_forward" el="a" :href="data.url" target="_blank"></base-button>
         </div>
       </div>
       <template #image>

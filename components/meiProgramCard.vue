@@ -1,10 +1,10 @@
 <template>
-  <base-card class="mei-program-card" :fullClick="true">
+  <base-card class="mei-program-card" :fullClick="true" :url="url">
     <template #action>
       <div>
-        <base-button color="primary" visual="primary" el="a" :href="url" target="_blank">
+        <a class="button" data-color="primary" data-visual="primary" :href="url" target="_blank">
           More
-        </base-button>
+        </a>
       </div>
     </template>
   </base-card>

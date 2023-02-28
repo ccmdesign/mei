@@ -1,13 +1,13 @@
 <template>
   <base-card class="mei-event-card"
     :shadow="false"
-    actionLabel="More"
-    :fullClick="false"
+    :url="url"
     excerpt=""
     :htmlExcerpt="htmlExcerpt"
     :image="image"
     :imageUrl="imageUrl"
     clamp=4
+    :fullClick="true"
   >
     <template #headings>
       <stack-l>

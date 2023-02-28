@@ -5,7 +5,7 @@
       horizontal
       :shadow="false"
       actionLabel="More"
-      :fullClick="false"
+      :fullClick="true"
       :url="url"
       excerpt=""
       :htmlExcerpt="summary"
