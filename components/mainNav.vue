@@ -7,6 +7,10 @@
           {{ i.label }}
         </a>
 
+        <a v-else-if="i.fullUrl" :href="i.fullUrl" target="_blank" class="nav__item" :class="{submenuActive: i.submenu}">
+          {{ i.label }}
+        </a>
+
         <span v-else class="nav__item">
           {{ i.label }}
         </span>
@@ -60,7 +64,7 @@ const menuData = [
   },
   {
     label: 'Subscribe',
-    url: 'https://hksexeced.tfaforms.net/f/subscribe-s?s=a1n4V0000017w3iQAA',
+    fullUrl: 'https://hksexeced.tfaforms.net/f/subscribe-s?s=a1n4V0000017w3iQAA',
   }
 ]
 </script>

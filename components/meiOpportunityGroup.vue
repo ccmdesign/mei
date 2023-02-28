@@ -15,7 +15,7 @@
             <h4 class="color:primary | mei-opportunity__title">{{j.heading}}</h4>
             <div class="color:primary" v-html="j.excerpt"></div>
             <stack-l class="mei-opportunity__list" v-for="link of j.links" :key="link.title">
-              <li>{{link.title }}<base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward" :disabled="link.disabled" el="a" :href="link.url"></base-button></li>
+              <li>{{link.title }}<base-button class="pill margin-left:auto" color="primary" icon-before="arrow_forward" :disabled="link.disabled" el="a" :href="link.url" target="_blank"></base-button></li>
               <hr>
             </stack-l>
           </stack-l>

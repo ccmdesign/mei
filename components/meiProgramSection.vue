@@ -7,7 +7,7 @@
             <h3 class="color:primary">{{title}}</h3>
             <p>{{description}}</p>
             <div>
-              <base-button color="primary" visual="primary" el="a" :href="url">More</base-button>
+              <base-button color="primary" visual="primary" el="a" :href="url" target="_blank">More</base-button>
             </div>
           </stack-l>
           <figure class="program-panel__image | padding:s2">
