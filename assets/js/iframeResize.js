@@ -46,4 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+  // Only on Events and Publications page
+  if (window.location.href.includes('/events') || window.location.href.includes('/publications')) {
+    const select = document.querySelector('.mei-select select');
+    
+    if (select) {
+      select.addEventListener("change", resizeHeight);
+    }
+  }
 });

@@ -3,11 +3,9 @@
     <base-card
       class="mei-person-card"
       horizontal
-      :url="data.url"
-      :customSlug="data.url"
       hideAction
       :imageUrl="data.avatar.url"
-      :fullClick="true"
+      :fullClick="false"
     >
     <div class="mei-person-card__content">
         <div class="padding-left:s0 | padding-right:s0 | padding-top:s0">
@@ -20,7 +18,7 @@
 
         <div class="mei-person-card__decoration | margin-bottom:s-2">
           <hr class="divider"/>
-          <base-button class="pill margin-left:s-2 margin-right:s-2 align-self:center" color="primary" icon-before="arrow_forward" el="a" :href="data.url" target="_blank"></base-button>
+          <a class="button pill margin-left:s-2 margin-right:s-2 align-self:center" data-color="primary" icon-before="arrow_forward" :href="data.url" target="_blank"></a>
         </div>
       </div>
       <template #image>
