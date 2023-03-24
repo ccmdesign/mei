@@ -17,15 +17,14 @@
             :url="i.url"
             excerpt=""
             >
-            <template #action>
-              <!-- ToDo: update with new baseButton -->
-              <a :href=i.url class="button center" color="primary" visual="primary">View Profile</a>
-            </template>
-          </person-card>
-        </div>
-        <div class="text-align:center margin-top:s3" >
-            <!-- ToDo: update with new baseButton -->
-            <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
+              <template #action>
+                <!-- ToDo: update with new baseButton -->
+                <a :href=i.url class="button center" color="primary" visual="primary">View Profile</a>
+              </template>
+            </person-card>
+          </div>
+          <div class="text-align:center margin-top:s3" >
+            <base-button color="primary" visual="primary" el="a" href="https://mei-hksbelfer.pantheonsite.io/mei/people" target="_top">View All</base-button>
           </div>
         </stack-l>
       </center-l>
