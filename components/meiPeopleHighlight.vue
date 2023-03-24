@@ -5,25 +5,24 @@
         <stack-l space="var(--s3)">
           <h2 class="color:primary">Our People</h2>
 
-          <template>
-            <tab-bar :options="tabOptions" @tab-click="selectTab" />
-            
-            <div v-for="tab in tabOptions" :key="tab.value" class="grid" :class="{'hidden': tab.value !== tabSelected}">
-              <person-card v-for="i in peopleData[tab.value]"
-              class="compact-person-card"
-              :key="i.name"
-              :heading="i.name"
-              :tagline="i.official_titles.join(',')" 
-              :imageUrl="i.avatar.url"
-              excerpt=""
-              >
-              <template #action>
-                <!-- ToDo: update with new baseButton -->
-                <a href="/" class="button center" color="primary" visual="primary">View Profile</a>
-              </template>
-            </person-card>
-          </div>
-        </template>
+          <tab-bar :options="tabOptions" @tab-click="selectTab" />
+          
+          <div v-for="tab in tabOptions" :key="tab.value" class="grid" :class="{'hidden': tab.value !== tabSelected}">
+            <person-card v-for="i in peopleData[tab.value].slice(0,4)"
+            class="compact-person-card"
+            :key="i.name"
+            :heading="i.name"
+            :tagline="i.official_titles.join(',')" 
+            :imageUrl="i.avatar.url"
+            :url="i.url"
+            excerpt=""
+            >
+            <template #action>
+              <!-- ToDo: update with new baseButton -->
+              <a :href=i.url class="button center" color="primary" visual="primary">View Profile</a>
+            </template>
+          </person-card>
+        </div>
         <div class="text-align:center margin-top:s3" >
             <!-- ToDo: update with new baseButton -->
             <a href="/people/" class="button" data-color="primary" data-visual="primary">View All</a>
@@ -44,21 +43,26 @@ const _getPeople = async (role) => {
       item.changed = new Date(item.changed);
     }
   }
-
   return reactive(data.sort((a, b) => {
     if (a.changed < b.changed) return -1;
     if (a.changed > b.changed) return 1;
 
     return 0
-  }).slice(4));
+  }));
 }
 
+const staff = await _getPeople('Staff')
+const faculty =  await _getPeople('Faculty')
+const seniorFellows = await _getPeople('Senior Fellow')
+const fellows = await _getPeople('Fellow')
+const researchFellows = await _getPeople('Research Fellow')
+
 const peopleData = {
-  staff: await _getPeople('Staff'),
-  faculty: await _getPeople('Faculty'),
-  'senior-fellows': await _getPeople('Senior Fellow'),
-  fellows: await _getPeople('Fellow'),
-  'research-fellows': await _getPeople('Research Fellow'), // FIXME: Qual o "role" aqui?
+  staff,
+  faculty,
+  fellows,
+  'senior-fellows': seniorFellows,
+  'research-fellows': researchFellows,
 };
 
 const tabOptions = [];
@@ -113,6 +117,10 @@ const selectTab = (tab) => {
   font-size: 1.375em;
 }
 .compact-person-card :deep(h4) { --space: var(--s-2); }
+
+.compact-person-card :deep(.base-card__content) {
+  max-width: 100%;
+}
 
 .hidden {
   display: none;
