@@ -29,7 +29,7 @@ const { compact } = toRefs(props);
 const route = useRoute();
 
 const tabs = [
-  { label: 'Program Staff', value: 'staff' },
+  { label: 'Leadership & Staff', value: 'staff' },
   { label: 'Faculty', value: 'faculty' },
   { label: 'Senior Fellows', value: 'senior-fellows' },
   { label: 'Fellows', value: 'fellows' },
