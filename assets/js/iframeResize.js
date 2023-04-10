@@ -33,7 +33,7 @@ function resizeHeight() {
   const timeoutID = window.setTimeout(sendHeightMessageAfterImageLoad, 500);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (event) => {
   resizeHeight();
 
   // Only on People page
@@ -54,5 +54,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (select) {
       select.addEventListener("change", resizeHeight);
     }
+  }
+
+  // Opportunities page
+  if (window.location.href.includes('/opportunities')) {
+    const tabButtons = document.querySelectorAll('.tab-bar__button');
+
+    if (tabButtons) {
+      console.log('TabButtons', tabButtons)
+      tabButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          const tabValue = button.getAttribute('data-value');
+          const element = document.getElementById(tabValue.slice(1));
+          const rect = element.getBoundingClientRect();
+
+          event.target.contentWindow.scrollBy(0, rect.top);
+  
+          console.log('Content Window', event.target.contentWindow);
+          console.log('Boundaries', rect);
+        })
+      });
+    }  
   }
 });
