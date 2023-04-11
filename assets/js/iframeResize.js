@@ -24,7 +24,7 @@ function resizeHeight() {
     function incrementCounter() {
       counter++;
       if (counter === len) {
-        window.parent.postMessage(getHeight() + "px", "*");
+        window.parent.postMessage({height: getHeight() + "px"}, "*");
         clearTimeout(timeoutID);
       }
     }
@@ -61,17 +61,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const tabButtons = document.querySelectorAll('.tab-bar__button');
 
     if (tabButtons) {
-      console.log('TabButtons', tabButtons)
       tabButtons.forEach(button => {
         button.addEventListener("click", () => {
           const tabValue = button.getAttribute('data-value');
-          const element = document.getElementById(tabValue.slice(1));
-          const rect = element.getBoundingClientRect();
 
-          event.target.contentWindow.scrollBy(0, rect.top);
-  
-          console.log('Content Window', event.target.contentWindow);
-          console.log('Boundaries', rect);
+          window.parent.postMessage({scrollTo: tabValue.slice(1)}, "*");
         })
       });
     }  
