@@ -5,7 +5,9 @@ function resizeHeight() {
     const height = Math.max(
       body.scrollHeight,
       body.offsetHeight,
-      html.offsetHeight
+      html.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight
     );
 
     return !isNaN(height) ? height : 0;
@@ -36,6 +38,19 @@ function resizeHeight() {
 document.addEventListener("DOMContentLoaded", (event) => {
   resizeHeight();
 
+  // On Main page
+  const tabBar = document.getElementById('events-tabs');
+
+  if (tabBar) {
+    const tabs = document.querySelectorAll('#events-tabs label input');
+
+    if (tabs) {
+      tabs.forEach(tab => {
+        tab.addEventListener("click", resizeHeight); 
+      });
+    }
+  }
+
   // Only on People page
   if (window.location.href.includes('/people')) {
     const tabs = document.querySelectorAll('#people-tabs label input');
@@ -56,18 +71,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   }
 
-  // Opportunities page
-  if (window.location.href.includes('/opportunities')) {
-    const tabButtons = document.querySelectorAll('.tab-bar__button');
-
-    if (tabButtons) {
-      tabButtons.forEach(button => {
-        button.addEventListener("click", () => {
-          const tabValue = button.getAttribute('data-value');
-
-          window.parent.postMessage({scrollTo: tabValue.slice(1)}, "*");
-        })
-      });
-    }  
-  }
 });

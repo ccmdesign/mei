@@ -36,7 +36,6 @@ const { options, sticky } = toRefs(props);
 defineEmits(['tabClick']);
 
 const scroll = (id) => {
-  // Iframe id on Belfer website.
   if (process.env.NODE_ENV === 'development') {
     const element = document.getElementById(id.slice(1));
     const rect = element.getBoundingClientRect();

@@ -2,7 +2,7 @@
   <base-section color="transparent">
   <center-l size="wide">
     <stack-l space="var(--s2)">
-      <tab-bar v-if="!hideTabBar" :options="tabOptions" @tab-click="selectTab" />
+      <tab-bar id="events-tabs" v-if="!hideTabBar" :options="tabOptions" @tab-click="selectTab" />
       <template v-for="eventData in data" :key="eventData.heading">
         <h2 class="color:primary" v-if="hideTabBar">{{eventData.heading}}</h2>      
    
