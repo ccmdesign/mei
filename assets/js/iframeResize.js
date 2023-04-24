@@ -35,6 +35,16 @@ function resizeHeight() {
   const timeoutID = window.setTimeout(sendHeightMessageAfterImageLoad, 500);
 }
 
+// Positions menu from mainNav.vue according to Visual Viewport height sent from iframe parent 
+// on production.
+window.addEventListener('message', event  => {
+  if (event.data.hasOwnProperty('vvheight')) {
+    const menu = document.querySelector('nav.nav');
+
+    menu.style.setProperty('--navHeight', event.data.vvheight + 'px');
+  } 
+});
+
 document.addEventListener("DOMContentLoaded", (event) => {
   resizeHeight();
 
@@ -70,5 +80,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
       select.addEventListener("change", resizeHeight);
     }
   }
-
 });

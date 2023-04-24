@@ -14,12 +14,6 @@
         <span v-else class="nav__item">
           {{ i.label }}
         </span>
-
-        <!-- <ul v-if="i.submenu" class="nav__submenu">
-          <li v-for="j in i.submenu" :key="j.url">
-            <nuxtLink v-if="j.url" :to="j.url" class="nav__item" :disabled=i.disabled :title="j.label">{{ j.label }}</nuxtLink>
-          </li>
-        </ul> -->
       </li>
     </ul>
   </nav>
@@ -70,6 +64,12 @@ const menuData = [
 </script>
 
 <style lang="scss" scoped>
+// CSS var for menu placement on production inside iframe.
+.nav {
+  --navHeight: 100vh;
+  // --navHeightOpen: unset;
+}
+
 .nav { display: flex; }
 
 .nav__trigger {
@@ -80,6 +80,10 @@ const menuData = [
   border: 0;
   border-top: 1px solid hsla(var(--base-hsl), .2);
   border-bottom: 1px solid hsla(var(--base-hsl), .2);
+}
+
+.nav__trigger .icon {
+  vertical-align: middle;
 }
 
 .nav__list,
@@ -158,15 +162,15 @@ const menuData = [
     position: fixed;
     z-index: 100;
     width: 100vw;
-    top: 100vh;
+    top: var(--navHeight);
+    height: 300px;
     margin-top: -60px;
     transition: all .4s ease;
     left: 0;
   }
 
-  .nav[open="true"] { 
-    bottom: 0;
-    top: unset;
+  .nav[open="true"] {
+    margin-top: -300px;
     transition: all .4s ease;
   }
 
