@@ -33,7 +33,7 @@ const images = {
     name: '',
   },
   'Kuwait Program': {
-    url: '../assets/images/kwait-logo.png',
+    url: '../assets/images/kuwait-program-logo.png',
     alt: 'Kuwait Program',
     name: '',
   },

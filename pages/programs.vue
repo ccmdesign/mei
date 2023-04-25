@@ -28,12 +28,12 @@ const images = {
     name: '',
   },
   'Kuwait Program': {
-    url: '../assets/images/kwait-logo.png',
+    url: '../assets/images/kuwait-program-logo.png',
     alt: 'Kuwait Program',
     name: '',
   },
   'Tunisia Program': {
-    url: '../assets/images/tunisia-logo.png',
+    url: '../assets/images/tunisia-program-logo.png',
     alt: 'Tunisia Program',
     name: '',
   },
