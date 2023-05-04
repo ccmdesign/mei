@@ -18,6 +18,7 @@
 
         <div class="mei-person-card__decoration | margin-bottom:s-2">
           <hr class="divider"/>
+          <a class="button pill margin-left:s-2 margin-right:s-2 align-self:center" data-color="primary" icon-before="email" :href="`mailto:${data.email}`" @click.stop></a>
           <a class="button pill margin-left:s-2 margin-right:s-2 align-self:center" data-color="primary" icon-before="arrow_forward" :href="data.url" target="_blank"></a>
         </div>
       </div>

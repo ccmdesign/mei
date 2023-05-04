@@ -9,7 +9,6 @@
     <base-section size="l" class="mei-about-section">
       <center-l size="wide">
         <stack-l>
-          <h2 class="color:primary">What is MEI</h2>
           <div class="mei-about-what-why | grid">
             <figure>
               <img src="../assets/images/what-is-mei.png" alt="" />
