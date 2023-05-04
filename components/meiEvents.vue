@@ -1,5 +1,5 @@
 <template>
-  <base-section color="transparent">
+  <base-section class="mei-events" color="transparent">
   <center-l size="wide">
     <stack-l space="var(--s2)">
       <tab-bar id="events-tabs" v-if="!hideTabBar" :options="tabOptions" @tab-click="selectTab" />
@@ -96,6 +96,10 @@ const selectTab = (tab) => {
 </script>
 
 <style lang="scss" scoped>
+.mei-events {
+  --base-section-padding: var(--s2);
+}
+
 .grid { 
   grid-gap: var(--s3); 
   --itemWidth: 350px;

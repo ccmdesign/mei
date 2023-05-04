@@ -111,6 +111,7 @@ const opportunities = [
 
 <style lang="scss" scoped>
 .opportunities {
+  --base-section-padding: var(--s2);
   overflow: visible;
 }
 </style>

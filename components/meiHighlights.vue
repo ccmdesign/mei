@@ -1,5 +1,5 @@
 <template>
-  <base-section>
+  <base-section class="mei-highlights">
     <center-l size="wide">
       <stack-l space="var(--s2)" class="margin-bottom:s2">
         <h2 class="color:primary">Highlights</h2>
@@ -58,6 +58,10 @@ const highlightsData = reactive(data.sort((a, b) => {
 </script>
 
 <style lang="scss" scoped>
+.mei-highlights {
+  --base-section-padding: var(--s2);
+}
+
 .highlight-grid { 
   display: flex; 
   gap: var(--s1);

@@ -1,5 +1,5 @@
 <template>
-  <base-section size="m" color="transparent">
+  <base-section class="mei-events-highlight" size="m" color="transparent">
     <center-l size="wide">
       <h2 class="color:primary">Events</h2>
     </center-l>
@@ -44,3 +44,9 @@ do {
 } while (pastEvents.list.length < PAST_MAX_EVENTS)
 
 </script>
+
+<style lang="scss" scoped>
+.mei-events-highlight {
+  --base-section-padding: var(--s2);
+}
+</style>

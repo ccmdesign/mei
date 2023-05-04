@@ -6,7 +6,7 @@
       description="The Middle East Initiative (MEI) is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />
 
-    <base-section size="l">
+    <base-section size="l" class="mei-about-section">
       <center-l size="wide">
         <stack-l>
           <h2 class="color:primary">What is MEI</h2>
@@ -29,7 +29,7 @@
     </base-section>
 
     <div class="mei-about-where | mei-texture-bg">
-      <base-section color="transparent" size="l">
+      <base-section color="transparent" size="l" class="mei-about-section">
         <center-l size="wide">
           <div class="grid">           
             <div class="grid inner">
@@ -63,6 +63,10 @@
 </template>    
           
 <style scoped lang="scss">
+.mei-about-section {
+  --base-section-padding: var(--s2);
+}
+
 .mei-about-where h2,
 .mei-about-where h5,
 .mei-about-where .questions p {

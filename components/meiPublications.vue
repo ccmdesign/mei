@@ -1,5 +1,5 @@
 <template>
-  <base-section color="transparent">
+  <base-section color="transparent" class="mei-publications">
     <center-l size="wide">
       <stack-l space="var(--s0)">
         <h2 v-if="heading" class="color:primary">{{heading}}</h2>
@@ -40,3 +40,9 @@ const { heading, list, options } = toRefs(props);
 const selectedValue = ref(options.value[0]?.value);
 
 </script>
+
+<style lang="scss" scoped>
+.mei-publications {
+  --base-section-padding: var(--s2);
+}
+</style>

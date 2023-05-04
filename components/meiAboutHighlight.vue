@@ -1,6 +1,6 @@
 <template>
   <div class="mei-about-highlight | mei-texture-bg">
-    <base-section color="transparent">
+    <base-section class="mei-about-highlight" color="transparent">
       <center-l size="wide">
         <div class="grid">
           <div class="mei-about-highlight__image | bottom-right">
@@ -22,6 +22,10 @@
 </template>
 
 <style lang="scss" scoped>
+.mei-about-highlight{
+  --base-section-padding: var(--s2);
+}
+
 .circle {
   --d: 1;
   --n: 1;

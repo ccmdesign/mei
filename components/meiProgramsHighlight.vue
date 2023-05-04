@@ -47,6 +47,10 @@ const _getImage = (key) => {
 </script>
 
 <style lang="scss" scoped>
+.mei-programs {
+  --base-section-padding: var(--s2);
+}
+
 .grid { 
   --itemWidth: 500px;
   grid-gap: var(--s1);

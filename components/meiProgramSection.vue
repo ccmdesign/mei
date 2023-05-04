@@ -1,6 +1,6 @@
 <template>
   <div :class="texture ? 'mei-texture-bg | background-color:primary-03' : ''">
-    <base-section size="xl" color="transparent">
+    <base-section size="xl" color="transparent" class="mei-program-section">
       <center-l size="wide">
         <div class="grid" :inverted="inverted">
           <stack-l space="var(--s1)" class="program-panel__content">
@@ -53,6 +53,10 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
+.mei-program-section {
+  --base-section-padding: var(--s2);
+}
+
 .grid[inverted="true"] .program-panel__image { order: -1; }
 
 @media (max-width: 40em) {

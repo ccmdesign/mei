@@ -47,9 +47,7 @@ if (data.length > 0) {
 
 <style scoped lang="scss">
 .people_section {
-  @media screen and (max-width: 40em) {
-    --base-section-padding: var(--s2)
-  }
+  --base-section-padding: var(--s2);
 }
 
 .people__highlight + .people__tabs {

@@ -1,5 +1,5 @@
 <template>
-  <ccm-hero :background="background" height="60%">
+  <ccm-hero :background="background" height="60%" class="mei-hero">
     <template #top-bar>
       <center-l size="wide">
         <top-bar />
@@ -38,6 +38,15 @@
 </script>
 
 <style lang="scss" scoped>
+  .mei-hero {
+    padding-block: 0 var(--padding-v);
+  }
+
+  .mei-hero :deep(.hero__top) {
+    background-color: var(--base-color);
+    padding-block: var(--s1);
+  }
+
   .mei-description {
     max-width: 65ch;
 

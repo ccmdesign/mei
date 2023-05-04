@@ -1,6 +1,6 @@
 <template>
   <div v-if="hasPeopleHighlighted" class="mei-people-section" > <!-- I had to add this element here, to avoid a conflict with .mei-texture-bg -->
-    <base-section size="m" color="transparent">
+    <base-section size="m" color="transparent" class="mei-people-highlight">
       <center-l size="wide">
         <stack-l space="var(--s3)">
           <h2 class="color:primary">Our People</h2>
@@ -101,6 +101,10 @@ const selectTab = (tab) => {
 </script>
 
 <style lang="scss" scoped>
+.mei-people-highlight {
+  --base-section-padding: var(--s2);
+}
+
 .mei-people-section .grid {
   --itemWidth: 180px; 
   grid-gap: var(--s2);

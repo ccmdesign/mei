@@ -1,5 +1,5 @@
 <template>
-  <base-section v-if="data && data.length > 0" color="transparent">
+  <base-section v-if="data && data.length > 0" color="transparent" class="mei-publications-highlight">
     <center-l size="wide">
       <stack-l space="var(--s2)">
         <h2 class="color:primary padding-bottom:s2">Publications & Commentary</h2>
@@ -54,3 +54,9 @@ const highlights = reactive(data.sort((a, b) => {
 // Only show two first
 
 </script>
+
+<style scoped lang="scss">
+.mei-publications-highlight {
+  --base-section-padding: var(--s2);
+}
+</style>
