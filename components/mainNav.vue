@@ -2,18 +2,27 @@
   <nav class="nav" role="navigation" aria-label="Main" :open=open>
     <button class="nav__trigger" @click="openMenu"><i class="icon">menu</i></button>
     <ul class="nav__list">
-      <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu='i.submenu'>
+      <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu="i.hasOwnProperty('submenu')">
         <a v-if="i.url" :href="`https://mei-hksbelfer.pantheonsite.io/mei${i.url}`" target="_top" class="nav__item" :class="{submenuActive: i.submenu}">
           {{ i.label }}
+          <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
         </a>
 
         <a v-else-if="i.fullUrl" :href="i.fullUrl" target="_blank" class="nav__item" :class="{submenuActive: i.submenu}">
           {{ i.label }}
+          <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
         </a>
 
-        <span v-else class="nav__item">
+        <div v-else class="nav__item" :class="{submenuActive: i.submenu}">
           {{ i.label }}
-        </span>
+          <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
+        </div>
+        
+        <ul v-if="i.submenu" class="nav__submenu">
+          <li v-for="j in i.submenu" :key="j.url">
+            <a v-if="j.url" :href="j.url" class="nav__item" :disabled=i.disabled :title="j.label" target="_top">{{ j.label }}</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </nav>
@@ -34,11 +43,6 @@ const menuData = [
   {
     label: 'People',
     url: '/people',
-    // submenu: [
-    //   { label: 'Staff', url: '/people#staff' },
-    //   { label: 'Faculty', url: '/people#faculty' },
-    //   { label: 'Fellows', url: '/people#fellows' },
-    // ]
   },
   {
     label: 'Events',
@@ -53,8 +57,13 @@ const menuData = [
     url: '/opportunities'
   },
   {
+
     label: 'Programs',
-    url: '/programs'
+    submenu: [
+      { label: 'Emirates Leadership Initiative', url: 'https://www.belfercenter.org/emirates-leadership-initiative' },
+      { label: 'Kuwait Program', url: 'https://www.belfercenter.org/kuwait-program' },
+      { label: 'Tunisia Program', url: 'https://www.belfercenter.org/tunisia-program' },
+    ]
   },
   {
     label: 'Subscribe',
@@ -88,7 +97,10 @@ const menuData = [
 
 .nav__list,
 .nav__list li,
-.nav__item { display: inherit; }
+.nav__item {
+  display: inherit;
+  cursor: pointer
+}
 
 .nav__list li { align-items: stretch; }
 
@@ -139,7 +151,15 @@ const menuData = [
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background-color: var(--topbar-bg);
+  background-color: var(--base-color);
+}
+
+.nav__list li .icon:after {
+  content: 'expand_more'
+}
+
+.nav__list li:hover .icon:after {
+  content: 'expand_less'
 }
 
 @media (min-width: 35.98em) {
@@ -163,14 +183,14 @@ const menuData = [
     z-index: 100;
     width: 100vw;
     top: var(--navHeight);
-    height: 300px;
+    height: 400px;
     margin-top: -60px;
     transition: all .4s ease;
     left: 0;
   }
 
   .nav[open="true"] {
-    margin-top: -300px;
+    margin-top: -400px;
     transition: all .4s ease;
   }
 
@@ -191,7 +211,16 @@ const menuData = [
     padding: var(--s-3);
   }
 
-  .nav__submenu { position: relative; }
+  .nav__submenu {
+    position: relative;
+    background-color: var(--gray-color);
+    position: static;
+  }
+
+  .nav__list li .icon:after,
+  .nav__list li:hover .icon:after {
+    content: '';
+  }
 }
 
 .lang-switcher {

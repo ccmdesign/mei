@@ -48,7 +48,7 @@
   --yellow-color: hsla(var(--yellow-hsl), 1);
 
   --gray-hsl: 0, 0%, 92%;
-  --gray-color: hsla(var(--yellow-hsl), 1);
+  --gray-color: hsla(var(--gray-hsl), 1);
 
   /* Aliases */
   --fail-color: var(--red-color);
