@@ -14,7 +14,7 @@
         />
 
         <div class="text-align:center padding-top:s2">
-          <base-button color="primary" visual="primary" el="a" href="https://mei-hksbelfer.pantheonsite.io/mei/publications" target="_top">View All Publications</base-button>
+          <base-button color="primary" visual="primary" el="a" :href="$getLink('/publications')" target="_top">View All Publications</base-button>
         </div>
       </stack-l>
     </center-l>

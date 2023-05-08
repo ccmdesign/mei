@@ -20,6 +20,11 @@ export default defineNuxtConfig({
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined' },
     ],
   },
+  publicRuntimeConfig: {
+    dev: process.env.NODE_ENV !== 'production',
+    baseURL: process.env.BASE_URL || 'https://www.belfercenter.org/'
+  },
+  plugins: ['~/plugins/getLinks.js'],
   css: [
     '@ccmdesign/ccm-ds/assets/css/00-resets/body-structure.css',
     '@ccmdesign/ccm-ds/assets/css/00-resets/normalize.css',

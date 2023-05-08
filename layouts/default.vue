@@ -10,10 +10,9 @@ import { useRoute } from "vue-router"
 const route = useRoute();
 const productionlink = ref(null);
 
-const baseLink = 'https://mei-hksbelfer.pantheonsite.io/mei'; // FIXME: Production link.
-
 watch(route, (to) => {
   if (process.env.NODE_ENV !== 'development') { // Only in production mode.
+    const baseLink = process.env.BASE_URL;
     productionlink.value.href = baseLink + to.fullPath;
     productionlink.value.click();
   }

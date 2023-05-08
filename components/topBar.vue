@@ -1,6 +1,6 @@
 <template>
   <div class="top-bar">
-    <a href="https://mei-hksbelfer.pantheonsite.io/mei" target="_top" class="website-logo">
+    <a :href="$getLink('/')" target="_top" class="website-logo">
       Middle East Initiative
     </a>
     <main-nav />

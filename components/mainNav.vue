@@ -3,7 +3,7 @@
     <button class="nav__trigger" @click="openMenu"><i class="icon">menu</i></button>
     <ul class="nav__list">
       <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu="i.hasOwnProperty('submenu')">
-        <a v-if="i.url" :href="`https://mei-hksbelfer.pantheonsite.io/mei${i.url}`" target="_top" class="nav__item" :class="{submenuActive: i.submenu}">
+        <a v-if="i.url" :href="$getLink(i.url)" target="_top" class="nav__item" :class="{submenuActive: i.submenu}">
           {{ i.label }}
           <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
         </a>
@@ -20,7 +20,7 @@
         
         <ul v-if="i.submenu" class="nav__submenu">
           <li v-for="j in i.submenu" :key="j.url">
-            <a v-if="j.url" :href="j.url" class="nav__item" :disabled=i.disabled :title="j.label" target="_top">{{ j.label }}</a>
+            <a v-if="j.url" :href="$getLink(j.url, j.external)" class="nav__item" :disabled=i.disabled :title="j.label" target="_top">{{ j.label }}</a>
           </li>
         </ul>
       </li>
@@ -60,9 +60,9 @@ const menuData = [
 
     label: 'Programs',
     submenu: [
-      { label: 'Emirates Leadership Initiative', url: 'https://www.belfercenter.org/emirates-leadership-initiative' },
-      { label: 'Kuwait Program', url: 'https://www.belfercenter.org/kuwait-program' },
-      { label: 'Tunisia Program', url: 'https://www.belfercenter.org/tunisia-program' },
+      { label: 'Emirates Leadership Initiative', url: '/emirates-leadership-initiative', external: true },
+      { label: 'Kuwait Program', url: '/kuwait-program', external: true },
+      { label: 'Tunisia Program', url: '/tunisia-program', external: true },
     ]
   },
   {
@@ -76,7 +76,6 @@ const menuData = [
 // CSS var for menu placement on production inside iframe.
 .nav {
   --navHeight: 100vh;
-  // --navHeightOpen: unset;
 }
 
 .nav { display: flex; }

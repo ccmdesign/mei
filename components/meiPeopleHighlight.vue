@@ -24,7 +24,7 @@
             </person-card>
           </div>
           <div class="text-align:center margin-top:s3" >
-            <base-button color="primary" visual="primary" el="a" href="https://mei-hksbelfer.pantheonsite.io/mei/people" target="_top">View All</base-button>
+            <base-button color="primary" visual="primary" el="a" :href="$getLink('/people')" target="_top">View All</base-button>
           </div>
         </stack-l>
       </center-l>
