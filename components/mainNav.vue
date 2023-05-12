@@ -21,6 +21,8 @@
         <ul v-if="i.submenu" class="nav__submenu">
           <li v-for="j in i.submenu" :key="j.url">
             <a v-if="j.url" :href="$getLink(j.url, j.external)" class="nav__item" :disabled=i.disabled :title="j.label" target="_top">{{ j.label }}</a>
+            <a v-else-if="j.fullUrl" :href="j.fullUrl" class="nav__item" target="_top">{{ j.label }}</a>
+            <span v-else class="nav__item">{{ j.label }}</span>
           </li>
         </ul>
       </li>
@@ -46,29 +48,40 @@ const menuData = [
   },
   {
     label: 'Events',
-    url: '/events'
+    url: '/events',
+    submenu: [
+      {
+        label: 'Subscribe',
+        fullUrl: 'https://hksexeced.tfaforms.net/f/subscribe-s?s=a1n4V0000017w3iQAA',
+      }
+    ]
   },
   {
-    label: 'Publications',
-    url: '/publications'
-  },
-  {
-    label: 'Opportunities',
-    url: '/opportunities'
-  },
-  {
-
     label: 'Programs',
     submenu: [
+      { label: 'Senior Fellows', url: '', external: false },
       { label: 'Emirates Leadership Initiative', url: '/emirates-leadership-initiative', external: true },
       { label: 'Kuwait Program', url: '/kuwait-program', external: true },
       { label: 'Tunisia Program', url: '/tunisia-program', external: true },
     ]
   },
   {
-    label: 'Subscribe',
-    fullUrl: 'https://hksexeced.tfaforms.net/f/subscribe-s?s=a1n4V0000017w3iQAA',
-  }
+    label: 'Opportunities',
+    submenu: [
+      { label: 'Faculty research grant', url: '/opportunities/faculty-research-grants' },
+      { label: 'Student travel grants', url: '/opportunities/student-travel-grants' },
+      { label: 'Fellowships for scholars', url: '/opportunities/fellowships-for-scholars' } 
+    ]
+  },
+  {
+    label: 'Publications',
+    url: '/publications',
+    submenu: [
+      { label: 'Mosaic', fullUrl: 'https://www.belfercenter.org/publication/middle-east-initiative-mosaic-2020-2021' },
+      { label: 'Research papers and policy briefs', fullUrl: 'https://www.belfercenter.org/project/middle-east-initiative/publication?f%5B0%5D=type%3APolicy%20Briefs%20%26%20Testimonies&f%5B1%5D=type%3AReports%20%26%20Papers' },
+      { label: 'MEI Blog', fullUrl: 'https://www.belfercenter.org/project/middle-east-initiative/publication?f[0]=type%3ABlogs' }
+    ]
+  },
 ]
 </script>
 
@@ -98,7 +111,10 @@ const menuData = [
 .nav__list li,
 .nav__item {
   display: inherit;
-  cursor: pointer
+}
+
+a.nav__item {
+  cursor: pointer;
 }
 
 .nav__list li { align-items: stretch; }
@@ -242,4 +258,25 @@ const menuData = [
 }
 
 .logo { flex-shrink: 0; }
+
+li .nav__item.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav__list li:last-child .nav__submenu {
+  width: -webkit-fill-available;
+}
+
+.nav__list li:last-child .nav__submenu .nav__item {
+  white-space: break-spaces;
+}
+
+.nav__submenu li:hover {
+  background-color: hsla(var(--white-hsl), .2);
+}
+
+.nav__submenu {
+  z-index: 100;
+}
 </style>

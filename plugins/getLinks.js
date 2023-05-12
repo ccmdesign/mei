@@ -3,7 +3,9 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       getLink: (path, external=false) => {
-        if (external || !config.dev) {
+        if (external) {
+          return `${config.externalURL}${path}`;
+        } else if (!config.dev) {
           return `${config.baseURL}${path}`;
         }
         return path;

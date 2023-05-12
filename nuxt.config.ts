@@ -22,7 +22,8 @@ export default defineNuxtConfig({
   },
   publicRuntimeConfig: {
     dev: process.env.NODE_ENV !== 'production',
-    baseURL: process.env.BASE_URL || 'https://www.belfercenter.org/'
+    baseURL: process.env.BASE_URL || 'https://www.belfercenter.org/mei',
+    externalURL: process.env.EXTERNAL_URL || 'https://www.belfercenter.org/'
   },
   plugins: ['~/plugins/getLinks.js'],
   css: [
