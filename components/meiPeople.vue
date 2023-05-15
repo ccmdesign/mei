@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router';
 import { toRefs } from 'vue';
 
 const props = defineProps({
@@ -26,14 +25,12 @@ const props = defineProps({
 
 const { compact } = toRefs(props);
 
-const route = useRoute();
-
 const tabs = [
-  { label: 'Leadership & Staff', value: 'staff' },
-  { label: 'Faculty', value: 'faculty' },
-  { label: 'Senior Fellows', value: 'senior-fellows' },
-  { label: 'Fellows', value: 'fellows' },
-  { label: 'Research Fellows', value: 'research-fellows' }
+  { label: 'Leadership & Staff', value: 'staff', url: '/people#staff' },
+  { label: 'Faculty', value: 'faculty', url: '/people#faculty' },
+  { label: 'Senior Fellows', value: 'senior-fellows', url: '/people#senior-fellows' },
+  { label: 'Fellows', value: 'fellows', url: '/people#fellows' },
+  { label: 'Research Fellows', value: 'research-fellows', url: '/people#research-fellows' }
 ]
 
 // FIXME: O campo belfer_role é um array. O "queryContent" não suporta consultas

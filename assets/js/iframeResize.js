@@ -35,14 +35,27 @@ function resizeHeight() {
   const timeoutID = window.setTimeout(sendHeightMessageAfterImageLoad, 500);
 }
 
-// Positions menu from mainNav.vue according to Visual Viewport height sent from iframe parent 
-// on production.
 window.addEventListener('message', event  => {
+  // Positions menu from mainNav.vue according to Visual Viewport height sent from iframe parent 
+  // on production.
   if (event.data.hasOwnProperty('vvheight')) {
     const menu = document.querySelector('nav.nav');
 
     menu.style.setProperty('--navHeight', event.data.vvheight + 'px');
-  } 
+  }
+
+  // Selects people tab with id sent from iframe parent on production.
+  if (event.data.hasOwnProperty('routehash')) {
+    const routeHash = event.data.routehash;
+
+    if (routeHash && window.location.href.includes('/people')) {
+      const input = document.getElementById(routeHash.replace('#', ''));
+
+      if (input) {
+        input.click();
+      }
+    }
+  }
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {

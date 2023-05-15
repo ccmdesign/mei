@@ -45,6 +45,13 @@ const menuData = [
   {
     label: 'People',
     url: '/people',
+    submenu: [
+      { label: 'Leadership & Staff', url: '/people#staff' },
+      { label: 'Faculty', url: '/people#faculty' },
+      { label: 'Senior Fellows', url: '/people#senior-fellows' },
+      { label: 'Fellows', url: '/people#fellows' },
+      { label: 'Research Fellows', url: '/people#research-fellows' }
+    ]
   },
   {
     label: 'Events',

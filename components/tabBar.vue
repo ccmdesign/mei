@@ -3,18 +3,22 @@
 <template>
   <section class="tab-bar" :id="id" :sticky="sticky">
     <label :for="i.value" v-for="i,pos in options" :key="i.value" class="tab-bar__item">
-      <input :id="i.value" type="radio" :name="id" :value="i.value" @click="$emit('tabClick', i.value)" :checked="!sticky && pos == 0">
+      <input ref="tabs" :id="i.value" type="radio" :name="id" :value="i.value" @click="$emit('tabClick', i.value)" :checked="!sticky && pos == 0">
       <a v-if="sticky" class="tab-bar__button button" data-visual="unstyled" data-color="primary" :data-value="i.value" @click="() => scroll(i.value)">{{i.label}}</a>
-      <span v-else class="tab-bar__button button" data-visual="unstyled" data-color="primary" >{{i.label}}</span>
+      <a v-else class="tab-bar__button button" data-visual="unstyled" data-color="primary" :href="$getLink(i.url)" target="_top">{{i.label}}</a>
     </label>
   </section>
 </template>
 
 <script setup>
-import { toRefs } from 'vue'
+import { toRefs, ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
 
 const id = uuidv4();
+const tabs = ref([]);
+const { options, sticky } = toRefs(props);
+const route = useRoute();
+const emit = defineEmits(['tabClick']);
 
 const props = defineProps({
   options: {
@@ -31,10 +35,6 @@ const props = defineProps({
   }
 });
 
-const { options, sticky } = toRefs(props);
-
-defineEmits(['tabClick']);
-
 const scroll = (id) => {
   if (process.env.NODE_ENV === 'development') {
     const element = document.getElementById(id.slice(1));
@@ -43,6 +43,46 @@ const scroll = (id) => {
     window.scrollBy(0, rect.top);
   }
 }
+
+const triggerTabClick = () => {
+  // Triggers tab click for the checked tab. To be uses when we 
+  // change the checked tab programmatically.
+  //
+  for (let tabInput in tabs.value) {
+    if (tabs.value[tabInput].checked) {
+      emit('tabClick', tabs.value[tabInput].value);
+      break;
+    }
+  }
+}
+
+const checkTab = () => {
+  // Checks if the current tab is the same as the hash in the URL.
+  // If not, changes the checked tab to the one in the URL.
+  //
+  if (process.env.NODE_ENV === 'development') {
+    if (route.hash) {
+      for (let tabInput in tabs.value) {
+        if (tabs.value[tabInput].id === route.hash.slice(1)) {
+          tabs.value[tabInput].checked = true;
+          break;
+        }
+      }
+    }
+  }
+}
+
+watch(() => route.hash, (newVal, oldVal) => {
+  if (newVal !== oldVal) {
+    checkTab();
+    triggerTabClick();
+  }
+});
+
+onMounted(() => {
+  checkTab();
+  triggerTabClick();
+});
 </script>
 
 <style lang="scss" scoped>
