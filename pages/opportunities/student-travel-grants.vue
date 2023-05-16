@@ -4,7 +4,7 @@
 
 <script setup>
 const opportunity = {
-  imageUrl: '../assets/images/opportunities1.jpg',
+  imageUrl: '../../assets/images/opportunities1.jpg',
   imageLabel: 'Opportunities for Harvard Students',
   heading: 'Opportunities for Harvard Students',
   excerpt: 'Learn more about the various degrees offered through HKS and how to apply from the <a href="http://www.hks.harvard.edu/degrees/admissions/overview" target="_blank">Office of Admissions</a>. There are ample fellowship opportunities for prospective students from the Middle East.',

@@ -4,7 +4,7 @@
 
 <script setup>
 const opportunity = {
-  imageUrl: '../assets/images/opportunities3.jpg',
+  imageUrl: '../../assets/images/opportunities3.jpg',
   imageLabel: 'For Visiting Scholars',
   heading: 'Opportunities for Scholars',
   excerpt: 'We hosts senior policymakers and academics to engage with students and faculty as a visiting scholar as part of our programs. We focus on applications from scholars working on contemporary issues of policy relevance to the Middle East, and the Arabian Gulf in particular, in the disciplines of political science, economics, history, and sociology.',

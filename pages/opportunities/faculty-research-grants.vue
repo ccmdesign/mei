@@ -4,7 +4,7 @@
 
 <script setup>
 const opportunity = {
-  imageUrl: '../assets/images/opportunities2.jpg',
+  imageUrl: '../../assets/images/opportunities2.jpg',
   imageLabel: 'Research Grants for Harvard Faculty',
   heading: 'Research Grants for Harvard Faculty',
   excerpt: 'We accept research proposals for projects that target major policy issues affecting the Middle East and North Africa. Details regarding priority topic areas for each program are can be found below.',
