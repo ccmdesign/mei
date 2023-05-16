@@ -7,5 +7,5 @@
 # Redirect not found pages to homepage
 [[redirects]]
   from = "/*"
-  to = "/"
-  status = 404
+  to = "/index.html"
+  status = 200
