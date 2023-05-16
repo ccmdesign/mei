@@ -1,5 +1,0 @@
-# Redirect with a 301
-/opportunities         /opportunities/faculty-research-grants              301
-
-# Redirect not found pages to homepage
-/*  /              404
