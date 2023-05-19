@@ -8,22 +8,10 @@
     <base-section>
       <center-l size="wide">
         <stack-l space="var(--s2)" class="margin-bottom:s2">
-          <template v-if="error.statusCode === '404'">
-            <h2 class="color:primary">Page not found</h2>
-            <h4>Error {{ error.statusCode }}</h4>
-            <p>Sorry, we couldn't find the page you were looking for.</p>
-          </template>
-          <template v-else>
-            <h2 class="color:primary">{{ error.statusMessage }}</h2>
-            <h4>Error {{ error.statusCode }}</h4>
-            <p>Sorry, something went wrong.</p>
-          </template>
+          <h2 class="color:primary">Page not found</h2>
+          <p>Sorry, we couldn't find the page you were looking for.</p>
         </stack-l>
       </center-l>
     </base-section>
   </article>
 </template>
-
-<script setup>
-defineProps(["error"]);
-</script>

@@ -3,3 +3,9 @@
   from = "/opportunities"
   to = "/opportunities/faculty-research-grants"
   status = 301
+
+# Redirect not found pages to custom 404 page.
+[[redirects]]
+  from = "/*"
+  to = "/page-not-found"
+  status = 404
