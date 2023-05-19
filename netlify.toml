@@ -3,9 +3,3 @@
   from = "/opportunities"
   to = "/opportunities/faculty-research-grants"
   status = 301
-
-# Redirect not found pages to homepage
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
