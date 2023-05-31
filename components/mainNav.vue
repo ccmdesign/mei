@@ -271,14 +271,6 @@ li .nav__item.disabled {
   pointer-events: none;
 }
 
-.nav__list li:last-child .nav__submenu {
-  width: calc(100% + 96px);
-}
-
-.nav__list li:last-child .nav__submenu .nav__item {
-  white-space: break-spaces;
-}
-
 .nav__submenu li:hover {
   background-color: hsla(var(--white-hsl), .2);
 }
