@@ -17,11 +17,11 @@
           {{ i.label }}
           <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
         </div>
-        
+
         <ul v-if="i.submenu" class="nav__submenu">
           <li v-for="j in i.submenu" :key="j.url">
             <a v-if="j.url" :href="$getLink(j.url, j.external)" class="nav__item" :disabled=i.disabled :title="j.label" target="_top">{{ j.label }}</a>
-            <a v-else-if="j.fullUrl" :href="j.fullUrl" class="nav__item" target="_top">{{ j.label }}</a>
+            <a v-else-if="j.fullUrl" :href="j.fullUrl" class="nav__item" target="_top" :title="j.label">{{ j.label }}</a>
             <span v-else class="nav__item">{{ j.label }}</span>
           </li>
         </ul>
@@ -77,7 +77,7 @@ const menuData = [
     submenu: [
       { label: 'Faculty research grant', url: '/opportunities/faculty-research-grants' },
       { label: 'Student travel grants', url: '/opportunities/student-travel-grants' },
-      { label: 'Fellowships for scholars', url: '/opportunities/fellowships-for-scholars' } 
+      { label: 'Fellowships for scholars', url: '/opportunities/fellowships-for-scholars' }
     ]
   },
   {
@@ -126,14 +126,14 @@ a.nav__item {
 
 .nav__list li { align-items: stretch; }
 
-.nav__item { 
+.nav__item {
   align-items: center;
   font-weight: 700;
   border: none;
 }
 
-.nav__list { 
-  flex-wrap: wrap; 
+.nav__list {
+  flex-wrap: wrap;
   margin: 0;
 }
 
@@ -142,7 +142,7 @@ a.nav__item {
   pointer-events: none;
 }
 
-.nav__item { 
+.nav__item {
   color: hsla(var(--white-hsl), 1);
   padding-inline: var(--s0);
   letter-spacing: .5px;
@@ -152,8 +152,8 @@ a.nav__item {
   transition: all .4s ease;
 }
 
-.nav__item:hover { 
-  background-color: hsla(var(--base-hsl), .05); 
+.nav__item:hover {
+  background-color: hsla(var(--base-hsl), .05);
   text-decoration: none;
   transition: all .4s ease;
 }
@@ -186,7 +186,7 @@ a.nav__item {
 
 @media (min-width: 35.98em) {
   .nav__submenu { display: none; }
-  [submenu]:hover .nav__submenu { 
+  [submenu]:hover .nav__submenu {
     display: flex;
     box-shadow: 0 8px 12px hsla(var(--base-hsl), .1);
   }
@@ -196,11 +196,11 @@ a.nav__item {
   }
 }
 
-@media (max-width: 35.98em) { 
+@media (max-width: 35.98em) {
   /* positions the navigation at the bottom of the mobile screens */
-  .nav { 
+  .nav {
     flex-direction: column;
-    background-color: hsla(var(--white-hsl), 1); 
+    background-color: hsla(var(--white-hsl), 1);
     position: fixed;
     z-index: 100;
     width: 100vw;
@@ -217,13 +217,13 @@ a.nav__item {
   }
 
   .nav__trigger { display: block; }
-  
-  .nav__list { 
-    flex-direction: column; 
+
+  .nav__list {
+    flex-direction: column;
     flex-grow: 1;
   }
 
-  .nav__list li { 
+  .nav__list li {
     flex-direction: column;
   }
   .nav__item {
@@ -272,7 +272,7 @@ li .nav__item.disabled {
 }
 
 .nav__list li:last-child .nav__submenu {
-  width: -webkit-fill-available;
+  width: calc(100% + 96px);
 }
 
 .nav__list li:last-child .nav__submenu .nav__item {
