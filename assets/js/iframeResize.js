@@ -36,7 +36,7 @@ function resizeHeight() {
 }
 
 window.addEventListener('message', event  => {
-  // Positions menu from mainNav.vue according to Visual Viewport height sent from iframe parent 
+  // Positions menu from mainNav.vue according to Visual Viewport height sent from iframe parent
   // on production.
   if (event.data.hasOwnProperty('vvheight')) {
     const menu = document.querySelector('nav.nav');
@@ -53,6 +53,7 @@ window.addEventListener('message', event  => {
 
       if (input) {
         input.click();
+        resizeHeight();
       }
     }
   }
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     if (tabs) {
       tabs.forEach(tab => {
-        tab.addEventListener("click", resizeHeight); 
+        tab.addEventListener("click", resizeHeight);
       });
     }
   }
@@ -77,7 +78,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Only on People page
   if (window.location.href.includes('/people')) {
     const tabs = document.querySelectorAll('#people-tabs label input');
-    
+
     if (tabs) {
       tabs.forEach(tab => {
         tab.addEventListener("click", resizeHeight);
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Only on Events and Publications page
   if (window.location.href.includes('/events') || window.location.href.includes('/publications')) {
     const select = document.querySelector('.mei-select select');
-    
+
     if (select) {
       select.addEventListener("change", resizeHeight);
     }
