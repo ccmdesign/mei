@@ -65,7 +65,7 @@ const props = defineProps({
     default: '',
   },
   location:  {
-    type: String,
+    type: Object,
     default: {
       name: '',
       directions: ''
@@ -76,7 +76,7 @@ const props = defineProps({
     default: '',
   },
   image:  {
-    type: String,
+    type: Object,
     default: {
       alt: '',
       title: '',
@@ -126,7 +126,7 @@ const { summary, title, url, location, formatedDate, image } = toRefs(props)
 
   .mei-card-wide__tag {
     border-radius: 3px;
-    background-color: var(--tertiary-color); 
+    background-color: var(--tertiary-color);
     color: var(--white-color);
     padding: var(--s-3) var(--s-2);
     font-size: 90%;
@@ -134,7 +134,7 @@ const { summary, title, url, location, formatedDate, image } = toRefs(props)
 
   .base-card__img {
     position: relative;
-    
+
     & .brown {
       position: absolute;
       padding: 0 var(--s-1);

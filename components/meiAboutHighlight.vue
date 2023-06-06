@@ -57,6 +57,7 @@
   position: relative;
   width: calc(100% - (var(--s3) * 2));
   margin: 0 auto;
+  height: fit-content;
   &::before {
     content: '';
     position: absolute;

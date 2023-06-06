@@ -85,7 +85,8 @@ const menuData = [
     url: '/publications',
     submenu: [
       { label: 'Mosaic', fullUrl: 'https://www.belfercenter.org/publication/middle-east-initiative-mosaic-2020-2021' },
-      { label: 'Research papers and policy briefs', fullUrl: 'https://www.belfercenter.org/project/middle-east-initiative/publication?f%5B0%5D=type%3APolicy%20Briefs%20%26%20Testimonies&f%5B1%5D=type%3AReports%20%26%20Papers' },
+      { label: 'Reports & papers', fullUrl: 'https://www.belfercenter.org/project/middle-east-initiative/publication?f[0]=type%3AReports%20%26%20Papers' },
+      { label: 'Policy briefs', fullUrl: 'https://www.belfercenter.org/project/middle-east-initiative/publication?f[0]=type%3APolicy%20Briefs%20%26%20Testimonies' },
       { label: 'MEI Blog', fullUrl: 'https://www.belfercenter.org/project/middle-east-initiative/publication?f[0]=type%3ABlogs' }
     ]
   },
