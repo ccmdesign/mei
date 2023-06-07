@@ -66,7 +66,7 @@ const menuData = [
   {
     label: 'Programs',
     submenu: [
-      { label: 'Senior Fellows', url: '', external: false },
+      { label: 'Senior Fellows', url: '/senior-fellows-program', external: true },
       { label: 'Emirates Leadership Initiative', url: '/emirates-leadership-initiative', external: true },
       { label: 'Kuwait Program', url: '/kuwait-program', external: true },
       { label: 'Tunisia Program', url: '/tunisia-program', external: true },
