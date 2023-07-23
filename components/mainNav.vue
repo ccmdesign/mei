@@ -1,24 +1,33 @@
 <template>
-  <nav class="nav" role="navigation" aria-label="Main" :open=open>
-    <button class="nav__trigger" @click="openMenu"><i class="icon">menu</i></button>
+  <nav class="nav" role="navigation" aria-label="Main" :open="open">
+    <i class="nav__trigger icon color:white" @click="openMenu">{{open ? 'close' : 'menu'}}</i>
     <ul class="nav__list">
       <li v-for="i in menuData" :key=i.url :disabled=i.disabled :title="i.label" :submenu="i.hasOwnProperty('submenu')">
-        <a v-if="i.url" :href="$getLink(i.url)" target="_top" class="nav__item" :class="{submenuActive: i.submenu}">
-          {{ i.label }}
-          <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
-        </a>
-
-        <a v-else-if="i.fullUrl" :href="i.fullUrl" target="_blank" class="nav__item" :class="{submenuActive: i.submenu}">
-          {{ i.label }}
-          <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
-        </a>
-
-        <div v-else class="nav__item" :class="{submenuActive: i.submenu}">
-          {{ i.label }}
-          <span v-if="i.hasOwnProperty('submenu')" class="icon"></span>
+        <div v-if="i.url">
+          <a :href="$getLink(i.url)" target="_top" class="nav__item">
+            {{ i.label }}
+            <span v-if="i.hasOwnProperty('submenu')" class="icon color:white desktop"></span>
+          </a>
+          <span v-if="i.hasOwnProperty('submenu')" class="icon color:white mobile" @click.stop="() => toggleSubmenu(i.label)">{{ opensubmenu[i.label] ? 'expand_less' : 'expand_more' }}</span>
         </div>
 
-        <ul v-if="i.submenu" class="nav__submenu">
+        <div v-else-if="i.fullUrl">
+          <a :href="i.fullUrl" target="_blank" class="nav__item">
+            {{ i.label }}
+            <span v-if="i.hasOwnProperty('submenu')" class="icon color:white desktop"></span>
+          </a>
+          <span v-if="i.hasOwnProperty('submenu')" class="icon color:white mobile" @click.stop="() => toggleSubmenu(i.label)">{{ opensubmenu[i.label] ? 'expand_less' : 'expand_more' }}</span>
+        </div>
+
+        <div v-else>
+          <div class="nav__item">
+            {{ i.label }}
+            <span v-if="i.hasOwnProperty('submenu')" class="icon color:white desktop"></span>
+          </div>
+          <span v-if="i.hasOwnProperty('submenu')" class="icon color:white mobile" @click.stop="() => toggleSubmenu(i.label)">{{ opensubmenu[i.label] ? 'expand_less' : 'expand_more' }}</span>
+        </div>
+
+        <ul v-if="i.submenu" class="nav__submenu" :open="opensubmenu[i.label]">
           <li v-for="j in i.submenu" :key="j.url">
             <a v-if="j.url" :href="$getLink(j.url, j.external)" class="nav__item" :disabled=i.disabled :title="j.label" target="_top">{{ j.label }}</a>
             <a v-else-if="j.fullUrl" :href="j.fullUrl" class="nav__item" target="_top" :title="j.label">{{ j.label }}</a>
@@ -32,9 +41,21 @@
 
 <script setup>
 const open = ref(false);
+const opensubmenu = ref({
+  About: false,
+  People: false,
+  Events: false,
+  Programs: false,
+  Opportunities: false,
+  Publications: false,
+})
 
 const openMenu = function() {
   open.value = !open.value;
+}
+
+const toggleSubmenu = function(label) {
+  opensubmenu.value[label] = !opensubmenu.value[label]
 }
 
 const menuData = [
@@ -94,25 +115,13 @@ const menuData = [
 </script>
 
 <style lang="scss" scoped>
-// CSS var for menu placement on production inside iframe.
 .nav {
   --navHeight: 100vh;
+  display: flex;
 }
-
-.nav { display: flex; }
 
 .nav__trigger {
   display: none;
-  padding: var(--s0);
-  background-color: var(--white-color);
-  color: var(--accent-color);
-  border: 0;
-  border-top: 1px solid hsla(var(--base-hsl), .2);
-  border-bottom: 1px solid hsla(var(--base-hsl), .2);
-}
-
-.nav__trigger .icon {
-  vertical-align: middle;
 }
 
 .nav__list,
@@ -121,29 +130,35 @@ const menuData = [
   display: inherit;
 }
 
-a.nav__item {
-  cursor: pointer;
-}
+.nav__list {
+  flex-wrap: wrap;
+  margin: 0;
 
-.nav__list li { align-items: stretch; }
+  & li {
+    align-items: stretch;
+  }
+
+  & li[disabled] a {
+    opacity: .4;
+    pointer-events: none;
+  }
+
+  &  li .desktop.icon:after {
+    content: 'expand_more'
+  }
+  & li:hover .desktop.icon:after {
+    content: 'expand_less'
+  }
+
+  & [submenu] { 
+    position: relative;
+  }
+}
 
 .nav__item {
   align-items: center;
   font-weight: 700;
   border: none;
-}
-
-.nav__list {
-  flex-wrap: wrap;
-  margin: 0;
-}
-
-.nav__list li[disabled] a {
-  opacity: .4;
-  pointer-events: none;
-}
-
-.nav__item {
   color: hsla(var(--white-hsl), 1);
   padding-inline: var(--s0);
   letter-spacing: .5px;
@@ -151,23 +166,40 @@ a.nav__item {
   width: 100%;
   text-decoration: none;
   transition: all .4s ease;
+
+  &:hover {
+    background-color: hsla(var(--base-hsl), .05);
+    text-decoration: none;
+    transition: all .4s ease;
+  }
+
+  &[active] {
+    color: var(--primary-color);
+  }
 }
 
-.nav__item:hover {
-  background-color: hsla(var(--base-hsl), .05);
-  text-decoration: none;
-  transition: all .4s ease;
+a.nav__item {
+  cursor: pointer;
 }
 
-.nav__item[active],
-.nuxt-link-exact-active,
-.nuxt-link-active.submenuActive {
-  color: var(--primary-color);
+li .nav__item.disabled {
+  cursor: default;
+  pointer-events: none;
 }
-
-.nav__list [submenu] { position: relative; }
 
 .nav__submenu {
+  display: none;
+
+  & li:hover {
+    background-color: hsla(var(--white-hsl), .2);
+  }
+
+  & .nav__item {
+    padding-block: var(--s-1);
+  }
+}
+
+[submenu]:hover .nav__submenu {
   position: absolute;
   left: 0;
   top: 100%;
@@ -175,108 +207,106 @@ a.nav__item {
   flex-direction: column;
   align-items: stretch;
   background-color: var(--base-color);
+  z-index: 100;
+  box-shadow: 0 8px 12px hsla(var(--base-hsl), .1);
 }
 
-.nav__list li .icon:after {
-  content: 'expand_more'
+.mobile {
+  display: none;
 }
 
-.nav__list li:hover .icon:after {
-  content: 'expand_less'
+.nav__list li > div {
+  display: flex;
 }
 
-@media (min-width: 35.98em) {
-  .nav__submenu { display: none; }
-  [submenu]:hover .nav__submenu {
-    display: flex;
-    box-shadow: 0 8px 12px hsla(var(--base-hsl), .1);
-  }
-
-  .nav__submenu .nav__item {
-    padding-block: var(--s-1);
-  }
-}
-
-@media (max-width: 35.98em) {
-  /* positions the navigation at the bottom of the mobile screens */
+@media (max-width: 62em) {
   .nav {
+    order: -1;
     flex-direction: column;
-    background-color: hsla(var(--white-hsl), 1);
-    position: fixed;
-    z-index: 100;
-    width: 100vw;
-    top: var(--navHeight);
-    height: 400px;
-    margin-top: -60px;
-    transition: all .4s ease;
-    left: 0;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .nav__trigger {
+    cursor: pointer;
+    display: block;
+    padding: 0;
+    background-color: inherit;
+    color: var(--white-color);
+    position: absolute;
+    top: var(--s1);
+    left: var(--s1);
+    border: none;
+    line-height: var(--ratio);
+  }
+
+  .nav__list {
+    display: none;
   }
 
   .nav[open="true"] {
-    margin-top: -400px;
-    transition: all .4s ease;
+    padding: var(--s1) 0 0 var(--s0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    width: 100%;
+    min-height: 100vh;
+    z-index: 120;
+
+    & .nav__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-1);
+      padding: var(--s1) var(--s2);
+      margin: 0;
+    }
+  
+    & .nav__list li {
+      display: inline-flex;
+      flex-direction: column;
+
+      & > div {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+    
+    & .nav__submenu {
+      display: none;
+    }
+
+    & .nav__submenu[open="true"] {
+      position: static;
+      margin-left: var(--s0);
+      background-color: var(--primary-color);
+      border-left: 1px solid var(--white-color);
+      display: flex;
+      flex-direction: column;
+
+      & .nav__item {
+        padding-block: var(--s-2);
+        font-weight: normal;
+      }
+    }
+
+    .nav__submenu li:hover {
+      background-color: inherit;
+    }
+
+    & .nav__item {
+      padding-block: var(--s-1);
+    }
   }
 
-  .nav__trigger { display: block; }
-
-  .nav__list {
-    flex-direction: column;
-    flex-grow: 1;
+  [submenu]:hover .nav__submenu {
+    box-shadow: none;
   }
-
-  .nav__list li {
-    flex-direction: column;
-  }
-  .nav__item {
-    color: var(--base-color);
-    flex: 1;
-    justify-content: center;
-    padding: var(--s-3);
-  }
-
-  .nav__submenu {
-    position: relative;
-    background-color: var(--gray-color);
-    position: static;
-  }
-
-  .nav__list li .icon:after,
-  .nav__list li:hover .icon:after {
-    content: '';
-  }
-}
-
-.lang-switcher {
-  text-transform: uppercase;
-  border: none;
-  background: none;
-  transition: font-weight 0.2s ease-in-out;
-  padding: 0 15px;
-  margin: auto;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  &:hover, &.lang-switcher--active {
-    font-weight: 500;
-  }
-}
-
-.lang-switcher__list-selector {
-  text-transform: uppercase;
-}
-
-.logo { flex-shrink: 0; }
-
-li .nav__item.disabled {
-  cursor: default;
-  pointer-events: none;
-}
-
-.nav__submenu li:hover {
-  background-color: hsla(var(--white-hsl), .2);
-}
-
-.nav__submenu {
-  z-index: 100;
 }
 </style>

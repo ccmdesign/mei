@@ -15,13 +15,7 @@ const iframe = document.getElementById('mei-iframe');
 let vvHeight = window.visualViewport.height - iframe.getBoundingClientRect().top;
 
 iframe.addEventListener("load", () => {
-  iframe.contentWindow.postMessage({'vvheight': vvHeight,'routehash': window.location.hash}, '*');
-})
-
-window.addEventListener("scroll", () => {
-  vvHeight = window.visualViewport.height - iframe.getBoundingClientRect().top;
-
-  iframe.contentWindow.postMessage({'vvheight': vvHeight}, '*');
+  iframe.contentWindow.postMessage({'routehash': window.location.hash}, '*');
 })
 
 window.addEventListener("hashchange", () => {

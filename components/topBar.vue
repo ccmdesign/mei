@@ -19,4 +19,10 @@
   font-size: 1.5rem;
   font-weight: 800;
 }
+
+@media (max-width: 62em) {
+  .top-bar {
+    justify-content: center;
+  }
+}
 </style>

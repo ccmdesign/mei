@@ -45,7 +45,7 @@
   .mei-hero :deep(.hero__top) {
     padding-block: var(--s1);
   
-    @media (min-width: 35.98em) {
+    @media (min-width: 62em) {
       background-color: var(--base-color);
     }
   }

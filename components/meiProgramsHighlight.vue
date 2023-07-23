@@ -11,6 +11,7 @@
                 heading=""
                 :title="program.title"
                 :excerpt="program.summary"
+                :image="!!_getImage(program.title)"
                 :imageUrl="_getImage(program.title)"
                 :url="program.url"
               />
