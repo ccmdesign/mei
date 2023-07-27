@@ -14,6 +14,21 @@
       :tagline="displayDate ? date : type"
       clamp="4"
     >
+      <template #headings>
+        <h2 class="base-card__title" v-if="url"><a :href="url" target="_blank" class="base-card__title-link">{{title}}</a></h2>
+
+        <h4 class="base-card__tagline">
+          <template v-if="peopleParagraph">
+            <span v-html="peopleParagraph"></span>
+            <template v-if="displayDate ? date : type">
+              | {{displayDate ? date : type}}
+            </template>
+          </template>
+          <template v-else>
+            {{displayDate ? date : type}}
+          </template>
+        </h4>
+      </template>
       <template #action>
         <div>
           <base-button color="primary" visual="primary" el="a" :href="url" target="_blank">
@@ -60,6 +75,10 @@
   url: {
     type: String,
     default: ''
+  },
+  peopleParagraph: {
+    type: String,
+    default: ''
   }
 });
 
@@ -96,4 +115,29 @@ const { htmlExcerpt, image, location, online, tagline, title, url } = toRefs(pro
     object-fit: cover;
     object-position: top center;
   }
+
+  .mei-card-wide-publication {
+  text-align: var(--card-headings-alignment);
+  background-color: hsla(var(--card-bg-hsl), 1);
+  color: hsla(var(--card-hsl));
+
+  h4 {
+    font-size: 85%;
+    letter-spacing: .5px;
+    color: inherit;
+    font-weight: 400;
+  }
+
+  h2 { font-size: 135%; }
+
+  h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    color: currentColor;
+    text-decoration: underline;
+  }
+}
 </style>

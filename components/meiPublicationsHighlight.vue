@@ -11,6 +11,7 @@
         :image="i.image"
         :displayDate="false"
         :type="i.type"
+        :peopleParagraph="getPeople(i)"
         />
 
         <div class="text-align:center padding-top:s2">
@@ -53,6 +54,27 @@ const highlights = reactive(data.sort((a, b) => {
 }));
 // Only show two first
 
+const getPeople = (item) => {
+  let peopleParagraph = '';
+
+  if (item.authors.length == 1) {
+    peopleParagraph += `Author: <strong>${item.authors.join(', ')}</strong> `;
+  } else if (item.authors.length > 1) {
+    peopleParagraph += `Authors: <strong>${item.authors.join(', ')}</strong> `;
+  }
+
+  if (item.editors.length == 1){
+    peopleParagraph += `Editor: <strong>${item.editors.join(', ')}</strong> `;
+  } else if (item.editors.length > 1) {
+    peopleParagraph += `Editors: <strong>${item.editors.join(', ')}</strong> `;
+  }
+
+  if (item.related.length > 0) {
+    peopleParagraph += `Related: <strong>${item.related.join(', ')}</strong> `;
+  }
+
+  return peopleParagraph;
+}
 </script>
 
 <style scoped lang="scss">
