@@ -7,7 +7,7 @@
     />
 
     <mei-events :data="[upcomingEvents]" hideTabBar hideViewMore />
-      
+
     <div class="mei-texture-bg">
       <mei-events :data="[pastEvents]" hideTabBar />
     </div>
@@ -77,6 +77,7 @@ const news = {};
 const typeOptions = [];
 
 const newsTypes = [
+  'All',
   // Presentations & Speeches.
   'Presentation',
   'Speech',
@@ -98,7 +99,10 @@ const newsTypes = [
 ];
 
 for (let t of newsTypes) {
-  news[t] = await _getNews(t);
+  if (t === 'All')
+    news[t] = await queryContent("publication").where({type: {$in: newsTypes}}).find();
+  else
+    news[t] = await _getNews(t);
 
   typeOptions.push({
     label: t,

@@ -150,7 +150,7 @@ const menuData = [
     content: 'expand_less'
   }
 
-  & [submenu] { 
+  & [submenu] {
     position: relative;
   }
 }
@@ -267,7 +267,7 @@ li .nav__item.disabled {
       padding: var(--s1) var(--s2);
       margin: 0;
     }
-  
+
     & .nav__list li {
       display: inline-flex;
       flex-direction: column;
@@ -277,7 +277,7 @@ li .nav__item.disabled {
         align-items: center;
       }
     }
-    
+
     & .nav__submenu {
       display: none;
     }
@@ -307,6 +307,10 @@ li .nav__item.disabled {
 
   [submenu]:hover .nav__submenu {
     box-shadow: none;
+  }
+
+  .icon {
+    cursor: pointer;
   }
 }
 </style>

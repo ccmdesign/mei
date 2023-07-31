@@ -6,18 +6,21 @@
 
         <sorting-header :itemsCount="list[selectedValue]?.length" :typeOptions="options" v-model="selectedValue" />
 
-        <hr />
-        <stack-l v-for="i in list[selectedValue]" :key="i.title" space="var(--s2)">
-          <mei-card-wide-publication
-          :summary="i.summary"
-          :title="i.title"
-          :url="i.url"
-          :image="i.image"
-          :date="i.publication_display_date"
-          :peopleParagraph="getPeople(i)"
-          />
-          <hr />
-        </stack-l>
+        <hr style="margin-bottom: var(--space);"/>
+
+        <div style="overflow: auto; max-height: 90vh;">
+          <stack-l v-for="i in list[selectedValue]" :key="i.title" space="var(--s2)">
+            <mei-card-wide-publication
+            :summary="i.summary"
+            :title="i.title"
+            :url="i.url"
+            :image="i.image"
+            :date="i.publication_display_date"
+            :peopleParagraph="getPeople(i)"
+            />
+            <hr style="margin-bottom: var(--space);"/>
+          </stack-l>
+        </div>
       </stack-l>
     </center-l>
   </base-section>

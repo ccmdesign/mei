@@ -18,6 +18,7 @@ const publications = {};
 const typeOptions = [];
 
 const publicationsTypes = [
+'All',
 // Reports & Papers
 'Report',
 'Paper',
@@ -32,7 +33,10 @@ const publicationsTypes = [
 ];
 
 for (let t of publicationsTypes) {
-  publications[t] = await _getPublications(t);
+  if (t === 'All')
+    publications[t] = await queryContent("publication").where({type: {$in: publicationsTypes}}).find();
+  else
+    publications[t] = await _getPublications(t);
 
   typeOptions.push({
     label: t,
