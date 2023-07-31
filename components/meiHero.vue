@@ -1,5 +1,5 @@
 <template>
-  <ccm-hero :background="background" height="60vh" class="mei-hero">
+  <ccm-hero :background="background" height="375px" class="mei-hero">
     <template #top-bar>
       <center-l size="wide">
         <top-bar />
@@ -75,6 +75,7 @@
     }
     .mei-description {
       padding: 0;
+      padding-bottom: var(--s1);
     }
   }
 </style>
