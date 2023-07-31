@@ -1,5 +1,5 @@
 <template>
-  <ccm-hero :background="background" height="375px" class="mei-hero">
+  <ccm-hero :background="background" height="60vh" class="mei-hero">
     <template #top-bar>
       <center-l size="wide">
         <top-bar />
@@ -66,6 +66,15 @@
     :deep(h1) {
       font-size: 2.625rem;
       font-weight: 700;
+    }
+  }
+
+  @media (max-width: 62em) {
+    .mei-hero {
+      --height: 100%;
+    }
+    .mei-description {
+      padding: 0;
     }
   }
 </style>
