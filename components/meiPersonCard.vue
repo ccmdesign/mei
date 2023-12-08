@@ -6,6 +6,7 @@
       hideAction
       :imageUrl="data.avatar.url"
       :fullClick="false"
+      :url="data.url"
     >
     <div class="mei-person-card__content">
         <div class="padding-left:s0 | padding-right:s0 | padding-top:s0">

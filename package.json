@@ -11,7 +11,7 @@
     "nuxt": "^3.0.0-rc.5"
   },
   "dependencies": {
-    "@ccmdesign/ccm-ds": "^0.4.0-alpha",
+    "@ccmdesign/ccm-ds": "0.4.0",
     "path": "^0.12.7",
     "sass": "^1.54.4",
     "uuid": "^9.0.0"
