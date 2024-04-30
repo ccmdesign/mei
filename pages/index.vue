@@ -1,7 +1,7 @@
 <template>
   <article> 
     <mei-hero 
-      background="../assets/images/home-bg.png"
+      background="../assets/images/home-bg.jpg"
       title="Middle East Initiative"
       description="The Middle East Initiative at Harvard Kennedy School is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />

@@ -1,7 +1,7 @@
 <template>
   <article>
     <mei-hero
-      background="../assets/images/about-hero.png"
+      background="../assets/images/about-hero.jpg"
       title="About"
       description="The Middle East Initiative (MEI) is dedicated to advancing public policy in the Middle East by convening the world's foremost academics and policy experts, developing the next generation of leaders, and promoting community engagement on campus and in the region."
     />

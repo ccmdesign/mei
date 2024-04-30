@@ -1,3 +1,17 @@
+<script setup>
+  const imgs = reactive([
+    '../assets/images/01-about-highlight.jpg',
+    '../assets/images/02-about-highlight.jpeg',
+    '../assets/images/03-about-highlight.jpeg'
+  ])
+
+  const displayImg = ref(0)
+  setInterval(() => {
+    displayImg.value = (displayImg.value + 1) % imgs.length
+  }, 3000)
+
+</script>
+
 <template>
   <div class="mei-about-highlight | mei-texture-bg">
     <base-section class="mei-about-highlight" color="transparent">
@@ -5,7 +19,7 @@
         <div class="grid">
           <div class="mei-about-highlight__image | bottom-right">
             <figure class="circle | frame">
-              <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
+              <img :src=imgs[displayImg] alt="">
             </figure>
           </div>
           <div class="mei-about-highlight__content">
